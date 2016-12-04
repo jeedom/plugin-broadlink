@@ -14,6 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
+ 
+var hash = document.location.hash;
+if (hash) {
+    $('.nav-tabs a[href="'+hash+'"]').tab('show');
+} 
+$('.nav-tabs a').on('shown.bs.tab', function (e) {
+    window.location.hash = e.target.hash;
+});
+
  $('.changeIncludeState').on('click', function () {
 	var state = $(this).attr('data-state');
 	changeIncludeState(state);
@@ -228,7 +237,7 @@ $('body').on('broadlink::includeDevice', function (_event,_options) {
 
 $('body').on('broadlink::includeCommand', function (_event,_options) {
     $('#div_inclusionAlert').showAlert({message: '{{Une nouvelle commande vient d\'être ajoutée. Pensez à lui donner un nom.}}', level: 'success'});
-    $('.nav-tabs a[href="#commandtab"]').tab('show');
+    window.location.href = 'index.php?v=d&p=broadlink&m=broadlink&id=' + _options+'#commandtab';
 });
 
 $('body').on('broadlink::missedCommand', function (_event,_options) {
