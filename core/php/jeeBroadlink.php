@@ -76,12 +76,13 @@ if (isset($result['devices'])) {
 				event::add('broadlink::missedCommand', $broadlink->getId());
 				continue;
 			}
+			$number = count($broadlink->getCmd())+1;
 			$cmd = $broadlink->getCmd(null, $datas['hexcode']);
 			if (!is_object($cmd)) {
 				$cmd = new broadlinkCmd();
 				$cmd->setLogicalId($datas['hexcode']);
 				$cmd->setIsVisible(1);
-				$cmd->setName(__('Commande', __FILE__) . substr($datas['hexcode'],0,10));
+				$cmd->setName($number .__('Commande', __FILE__) . substr($datas['hexcode'],0,10));
 			}
 			$cmd->setType('action');
 			$cmd->setSubType('other');
@@ -98,6 +99,7 @@ if (isset($result['devices'])) {
 			}
 			$path = explode('::', $logicalId);
 			$value = $datas;
+			log::add('broadlink','debug',print_r($value,true));
 			foreach ($path as $key) {
 				if (!isset($value[$key])) {
 					continue (2);

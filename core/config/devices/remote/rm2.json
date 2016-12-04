@@ -17,7 +17,7 @@
                 "subtype": "numeric",
                 "isVisible": 1,
                 "isHistorized": 0,
-                "unite": "",
+                "unite": "°C",
                 "logicalId": "temperature",
                 "configuration" : {
 					"logicalid" : "temperature"

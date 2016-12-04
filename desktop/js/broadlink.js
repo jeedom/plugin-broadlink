@@ -237,7 +237,7 @@ $('body').on('broadlink::includeDevice', function (_event,_options) {
 
 $('body').on('broadlink::includeCommand', function (_event,_options) {
     $('#div_inclusionAlert').showAlert({message: '{{Une nouvelle commande vient d\'être ajoutée. Pensez à lui donner un nom.}}', level: 'success'});
-    window.location.href = 'index.php?v=d&p=broadlink&m=broadlink&id=' + _options+'#commandtab';
+    window.location.href = 'index.php?v=d&p=broadlink&m=broadlink&id=' + _options+'&nocache=' + (new Date()).getTime() +'#commandtab';
 });
 
 $('body').on('broadlink::missedCommand', function (_event,_options) {
