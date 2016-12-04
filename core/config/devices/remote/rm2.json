@@ -1,0 +1,28 @@
+{
+    "rm2": {
+        "name": "Broadlink Universal Remote",
+		"groupe" : "Télécommande",
+		"category" : {
+			"automatism" : 1
+		},
+		"configuration" : {
+			"device" : "rm2",
+			"delay" : 300,
+			"canlearn" : 1
+		},
+        "commands": [
+            {
+                "name": "Température",
+                "type": "info",
+                "subtype": "numeric",
+                "isVisible": 1,
+                "isHistorized": 0,
+                "unite": "",
+                "logicalId": "temperature",
+                "configuration" : {
+					"logicalid" : "temperature"
+				}
+            }
+        ]
+    }
+}
