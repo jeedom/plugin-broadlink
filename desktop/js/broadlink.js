@@ -80,7 +80,7 @@ $('#bt_autoDetectModule').on('click', function () {
  function getModelListParam(_conf,_id) {
     $.ajax({// fonction permettant de faire de l'ajax
         type: "POST", // methode de transmission des données au fichier php
-        url: "plugins/openenocean/core/ajax/openenocean.ajax.php", // url du fichier php
+        url: "plugins/broadlink/core/ajax/broadlink.ajax.php", // url du fichier php
         data: {
             action: "getModelListParam",
             conf: _conf,
@@ -112,7 +112,6 @@ $('#bt_autoDetectModule').on('click', function () {
 		$(".modelList").show();
         $(".listModel").html(options);
 		$icon = $('.eqLogicAttr[data-l1key=configuration][data-l2key=iconModel]').value();
-		console.log($icon);
 		if($icon != '' && $icon != null){
 			$('#img_device').attr("src", 'plugins/broadlink/core/config/devices/'+$icon+'.png');
 		} else {

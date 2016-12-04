@@ -117,7 +117,8 @@ foreach ($eqLogics as $eqLogic) {
                 <label class="col-sm-3 control-label">{{Nom de l'équipement broadlink}}</label>
                 <div class="col-sm-4">
                   <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
-                  <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="Nom de l'équipement EnOcean"/>
+				  <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="canlearn" style="display : none;" />
+                  <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="Nom de l'équipement Broadlink"/>
                 </div>
               </div>
 			  <div class="form-group">
