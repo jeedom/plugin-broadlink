@@ -92,7 +92,7 @@ if (isset($result['devices'])) {
 			continue;
 		}
 		foreach ($broadlink->getCmd('info') as $cmd) {
-			$logicalId = $cmd->getLogicalId();
+			$logicalId = $cmd->getConfiguration('logicalid');
 			if ($logicalId == '') {
 				continue;
 			}
