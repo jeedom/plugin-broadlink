@@ -1,0 +1,105 @@
+{
+    "a1": {
+        "name": "Broadlink A1 E-Air",
+		"groupe" : "Capteurs",
+		"configuration" : {
+			"device" : "a1",
+			"delay" : 300
+		},
+        "commands": [
+            {
+                "name": "Température",
+                "type": "info",
+                "subtype": "numeric",
+                "isVisible": 1,
+                "isHistorized": 0,
+                "unite": "°C",
+                "logicalId": "temperature",
+                "configuration" : {
+					"logicalid" : "temperature"
+				}
+            },
+			 {
+                "name": "Humidité",
+                "type": "info",
+                "subtype": "numeric",
+                "isVisible": 1,
+                "isHistorized": 0,
+                "unite": "%",
+                "logicalId": "humidity",
+                "configuration" : {
+					"logicalid" : "humidity"
+				}
+            },
+			 {
+                "name": "Luminosité",
+                "type": "info",
+                "subtype": "numeric",
+                "isVisible": 1,
+                "isHistorized": 0,
+                "unite": "%",
+                "logicalId": "luminosity",
+                "configuration" : {
+					"logicalid" : "luminosity"
+				}
+            },
+			{
+                "name": "Luminosité-Info",
+                "type": "info",
+                "subtype": "string",
+                "isVisible": 1,
+                "isHistorized": 0,
+                "logicalId": "luminosity_human",
+                "configuration" : {
+					"logicalid" : "luminosity_human"
+				}
+            },
+			 {
+                "name": "Air",
+                "type": "info",
+                "subtype": "numeric",
+                "isVisible": 1,
+                "isHistorized": 0,
+                "unite": "%",
+                "logicalId": "air",
+                "configuration" : {
+					"logicalid" : "air"
+				}
+            },
+			 {
+                "name": "Air-Info",
+                "type": "info",
+                "subtype": "string",
+                "isVisible": 1,
+                "isHistorized": 0,
+                "logicalId": "air_human",
+                "configuration" : {
+					"logicalid" : "air_human"
+				}
+            },
+			 {
+                "name": "Bruit",
+                "type": "info",
+                "subtype": "numeric",
+                "isVisible": 1,
+                "isHistorized": 0,
+                "unite": "%",
+                "logicalId": "noise",
+                "configuration" : {
+					"logicalid" : "noise"
+				}
+            },
+			 {
+                "name": "Bruit-Info",
+                "type": "info",
+                "subtype": "string",
+                "isVisible": 1,
+                "isHistorized": 0,
+                "logicalId": "noise_human",
+                "configuration" : {
+					"logicalid" : "noise_human"
+				}
+            }
+        ]
+    }
+}

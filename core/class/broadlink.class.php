@@ -124,7 +124,7 @@ class broadlink extends eqLogic {
 		$return = array();
 		$return['progress_file'] = '/tmp/dependancy_broadlink_in_progress';
 		$return['state'] = 'ok';
-		if (exec('sudo pip list | grep -E "broadlink" | wc -l') < 1) {
+		if (exec('sudo pip list | grep -E "pycrypto" | wc -l') < 1) {
 			$return['state'] = 'nok';
 		}
 		return $return;
@@ -262,12 +262,6 @@ class broadlink extends eqLogic {
 		}
 	}
 	
-	public function preInsert() {
-		if ($this->getLogicalId() == '') {
-			$this->setLogicalId(self::generatebroadlinkId());
-		}
-	}
-	
 	public function preRemove() {
 		$this->disallowDevice();
 	}
@@ -318,6 +312,32 @@ class broadlink extends eqLogic {
 			socket_connect($socket, '127.0.0.1', config::byKey('socketport', 'broadlink'));
 			socket_write($socket, $value, strlen($value));
 			socket_close($socket);
+		}
+	}
+	
+	public function synchronise($_commands,$_targets) {
+		$commands = json_decode($_commands,true);
+		$targets = json_decode($_targets,true);
+		foreach ($targets as $targetid){
+			$target = broadlink::byId($targetid);
+			foreach ($commands as $commandid){
+				$command = cmd::byId($commandid);
+				foreach ($target->getCmd('action') as $targetcmd){
+					if ($targetcmd->getName()== $command->getName()){
+						$targetcmd->remove();
+					}
+				}
+				$newCmd = new broadlinkCmd();
+				$newCmd->setEqLogic_id($target->getId());
+				$newCmd->setEqType('broadlink');
+				$newCmd->setLogicalId($command->getLogicalId());
+				$newCmd->setName( $command->getName() );
+				$newCmd->setConfiguration('logicalid', $command->getConfiguration('logicalid'));
+				$newCmd->setDisplay('icon', $command->getDisplay('icon'));
+				$newCmd->setType('action');
+				$newCmd->setSubType('other');
+				$newCmd->save();
+			}
 		}
 	}
 	

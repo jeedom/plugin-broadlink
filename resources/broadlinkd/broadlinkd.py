@@ -29,7 +29,7 @@ import argparse
 import traceback
 from os.path import join
 import json
-from broadlink import broadlink,rm2
+from broadlink import broadlink,rm2,a1
 import globals
 
 try:
@@ -103,6 +103,9 @@ def read_broadlink():
 				if globals.KNOWN_DEVICES[device]['type'] == 'rm2':
 					logging.debug('Handling RM2 for ' + globals.KNOWN_DEVICES[device]['name'])
 					result = rm2.read_rm2(globals.KNOWN_DEVICES[device])
+				elif globals.KNOWN_DEVICES[device]['type'] == 'a1':
+					logging.debug('Handling A1 for ' + globals.KNOWN_DEVICES[device]['name'])
+					result = a1.read_a1(globals.KNOWN_DEVICES[device])
 				if result :
 					if mac in globals.LAST_STATE and result == globals.LAST_STATE[mac]:
 						continue

@@ -5,7 +5,7 @@ echo "*             Installation des dépendances             *"
 echo "********************************************************"
 apt-get update
 echo 50 > /tmp/dependancy_broadlink_in_progress
-pip install broadlink
+sudo pip install pycrypto
 echo 100 > /tmp/dependancy_broadlink_in_progress
 echo "********************************************************"
 echo "*             Installation terminée                    *"

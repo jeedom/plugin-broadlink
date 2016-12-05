@@ -47,6 +47,13 @@ try {
 		ajax::success($broadlink->learn());
 	}
 	
+	if (init('action') == 'synchronise') {
+		$broadlink = broadlink::byLogicalId(init('id'),'broadlink');
+		if (!is_object($broadlink)) {
+			ajax::success(array());
+		}
+		ajax::success($broadlink->synchronise(init('commands'),init('targets')));
+	}
 
 	throw new Exception('Aucune methode correspondante');
 	/*     * *********Catch exeption*************** */

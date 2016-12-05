@@ -62,6 +62,11 @@ $('#bt_autoDetectModule').on('click', function () {
     $('#md_modal').load('index.php?v=d&plugin=broadlink&modal=health').dialog('open');
 });
 
+$('#btn_sync').on('click', function () {
+    var logicalId = $('.eqLogicAttr[data-l1key=logicalId]').value();
+    $('#md_modal').dialog({title: "{{Synchronisation Broadlink}}"});
+    $('#md_modal').load('index.php?v=d&plugin=broadlink&modal=synchro&id='+logicalId).dialog('open');
+});
 
  $('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').on('change', function () {
   if($('.li_eqLogic.active').attr('data-eqlogic_id') != ''){
