@@ -273,7 +273,7 @@ class broadlink extends eqLogic {
 				'mac' => $this->getLogicalId(),
 				'ip' => $this->getConfiguration('ip'),
 				'name' => $this->getName(),
-				'delay' => $this->getConfiguration('delay'),
+				'delay' => $this->getConfiguration('delay',0),
 				'port' => $this->getConfiguration('port'),
 				'type' => $this->getConfiguration('device'),
 			);
@@ -494,7 +494,21 @@ class broadlinkCmd extends cmd {
 	/*     * ***********************Methode static*************************** */
 
 	/*     * *********************Methode d'instance************************* */
-
+	
+	public function preSave() {
+		if ($this->getType() == 'action') {
+			if ($this->getConfiguration('logicalid') == '' && $this->getLogicalId() != '') {
+				$this->setConfiguration('logicalid', $this->getLogicalId());
+			}
+			if ($this->getConfiguration('logicalid') != '' && $this->getLogicalId() == '') {
+				$this->setLogicalId($this->getConfiguration('logicalid'));
+			}
+			if ($this->getConfiguration('logicalid') != $this->getLogicalId()) {
+				$this->setLogicalId($this->getConfiguration('logicalid'));
+			}
+		}
+	}
+	
 	public function execute($_options = null) {
 		if ($this->getType() != 'action') {
 			return;
@@ -526,7 +540,11 @@ class broadlinkCmd extends cmd {
 		if (count($data) == 0) {
 			return;
 		}
-		$value = json_encode(array('apikey' => jeedom::getApiKey('broadlink'), 'cmd' => 'send', 'cmdType' => 'command', 'mac' => $eqLogic->getLogicalId(), 'device' => $data));
+		if ($this->getConfiguration('logicalid') == 'refresh'){
+			$value = json_encode(array('apikey' => jeedom::getApiKey('broadlink'), 'cmd' => 'send', 'cmdType' => 'refresh', 'mac' => $eqLogic->getLogicalId(), 'device' => $data));
+		} else {
+			$value = json_encode(array('apikey' => jeedom::getApiKey('broadlink'), 'cmd' => 'send', 'cmdType' => 'command', 'mac' => $eqLogic->getLogicalId(), 'device' => $data));
+		}
 		$socket = socket_create(AF_INET, SOCK_STREAM, 0);
 		socket_connect($socket, '127.0.0.1', config::byKey('socketport', 'broadlink'));
 		socket_write($socket, $value, strlen($value));

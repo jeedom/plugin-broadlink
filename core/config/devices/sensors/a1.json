@@ -17,6 +17,14 @@
                 "logicalId": "temperature",
                 "configuration" : {
 					"logicalid" : "temperature"
+				},
+				"display": {
+					"icon": "<i class=\"fa fa-thermometer-empty\"><\/i>",
+					"generic_type": "DONT"
+				},
+				"template": {
+					"dashboard": "line",
+					"mobile": "line"
 				}
             },
 			 {
@@ -29,6 +37,14 @@
                 "logicalId": "humidity",
                 "configuration" : {
 					"logicalid" : "humidity"
+				},
+				"display": {
+					"icon": "<i class=\"fa fa-tint\"><\/i>",
+					"generic_type": "DONT"
+				},
+				"template": {
+					"dashboard": "line",
+					"mobile": "line"
 				}
             },
 			 {
@@ -41,17 +57,14 @@
                 "logicalId": "luminosity",
                 "configuration" : {
 					"logicalid" : "luminosity"
-				}
-            },
-			{
-                "name": "Luminosité-Info",
-                "type": "info",
-                "subtype": "string",
-                "isVisible": 1,
-                "isHistorized": 0,
-                "logicalId": "luminosity_human",
-                "configuration" : {
-					"logicalid" : "luminosity_human"
+				},
+				"display": {
+					"icon": "<i class=\"fa fa-sun-o\"><\/i>",
+					"generic_type": "DONT"
+				},
+				"template": {
+					"dashboard": "line",
+					"mobile": "line"
 				}
             },
 			 {
@@ -60,21 +73,18 @@
                 "subtype": "numeric",
                 "isVisible": 1,
                 "isHistorized": 0,
-                "unite": "%",
+                "unite": "",
                 "logicalId": "air",
                 "configuration" : {
 					"logicalid" : "air"
-				}
-            },
-			 {
-                "name": "Air-Info",
-                "type": "info",
-                "subtype": "string",
-                "isVisible": 1,
-                "isHistorized": 0,
-                "logicalId": "air_human",
-                "configuration" : {
-					"logicalid" : "air_human"
+				},
+				"display": {
+					"icon": "<i class=\"fa fa-leaf\"><\/i>",
+					"generic_type": "DONT"
+				},
+				"template": {
+					"dashboard": "line",
+					"mobile": "line"
 				}
             },
 			 {
@@ -83,10 +93,42 @@
                 "subtype": "numeric",
                 "isVisible": 1,
                 "isHistorized": 0,
-                "unite": "%",
+                "unite": "",
                 "logicalId": "noise",
                 "configuration" : {
 					"logicalid" : "noise"
+				},
+				"display": {
+					"icon": "<i class=\"fa fa-microphone\"><\/i>",
+					"generic_type": "DONT"
+				},
+				"template": {
+					"dashboard": "line",
+					"mobile": "line"
+				}
+            },
+			{
+                "name": "Luminosité-Info",
+                "type": "info",
+                "subtype": "string",
+                "isVisible": 1,
+                "isHistorized": 0,
+                "unite": "",
+                "logicalId": "luminosity_human",
+                "configuration" : {
+					"logicalid" : "luminosity_human"
+				}
+            },
+			 {
+                "name": "Air-Info",
+                "type": "info",
+                "subtype": "string",
+                "isVisible": 1,
+                "isHistorized": 0,
+                "unite": "",
+                "logicalId": "air_human",
+                "configuration" : {
+					"logicalid" : "air_human"
 				}
             },
 			 {
@@ -95,9 +137,22 @@
                 "subtype": "string",
                 "isVisible": 1,
                 "isHistorized": 0,
+                "unite": "",
                 "logicalId": "noise_human",
                 "configuration" : {
 					"logicalid" : "noise_human"
+				}
+            },
+			 {
+                "name": "Rafraîchir",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "isHistorized": 0,
+                "unite": "",
+                "logicalId": "refresh",
+                "configuration" : {
+					"logicalid" : "refresh"
 				}
             }
         ]

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This file is part of Jeedom.
 #
 # Jeedom is free software: you can redistribute it and/or modify
@@ -118,6 +119,19 @@ def read_broadlink():
 # ----------------------------------------------------------------------------
 
 def send_broadlink(message):
+	result = {}
+	if message['cmdType'] == 'refresh':
+		if message['device']['type'] == 'rm2':
+			result = rm2.read_rm2(message['device'])
+		elif message['device']['type'] == 'a1':
+			result = a1.read_a1(message['device'])
+		if result :
+			if message['device']['mac'] in globals.LAST_STATE and result == globals.LAST_STATE[message['device']['mac']]:
+				return
+			else:
+				globals.LAST_STATE[message['device']['mac']] = result
+				jeedom_com.add_changes('devices::'+message['device']['mac'],result)
+		return
 	if message['device']['type'] == 'rm2':
 		if message['cmdType'] == 'learn':
 			result = rm2.learn_rm2(message['device'])

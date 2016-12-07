@@ -99,7 +99,6 @@ if (isset($result['devices'])) {
 			}
 			$path = explode('::', $logicalId);
 			$value = $datas;
-			log::add('broadlink','debug',print_r($value,true));
 			foreach ($path as $key) {
 				if (!isset($value[$key])) {
 					continue (2);

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #!/usr/bin/python
 
 from datetime import datetime
@@ -360,31 +361,31 @@ class a1(device):
 				air_quality = ord(payload[0x0a])
 				noise = ord(payload[0xc])
 			if light == 0:
-				data['light'] = 'dark'
+				data['light'] = 'sombre'
 			elif light == 1:
-				data['light'] = 'dim'
+				data['light'] = 'pénombre'
 			elif light == 2:
 				data['light'] = 'normal'
 			elif light == 3:
-				data['light'] = 'bright'
+				data['light'] = 'lumineux'
 			else:
 				data['light'] = 'unknown'
 			if air_quality == 0:
 				data['air_quality'] = 'excellent'
 			elif air_quality == 1:
-				data['air_quality'] = 'good'
+				data['air_quality'] = 'bon'
 			elif air_quality == 2:
 				data['air_quality'] = 'normal'
 			elif air_quality == 3:
-				data['air_quality'] = 'bad'
+				data['air_quality'] = 'mauvais'
 			else:
 				data['air_quality'] = 'unknown'
 			if noise == 0:
-				data['noise'] = 'quiet'
+				data['noise'] = 'silencieux'
 			elif noise == 1:
 				data['noise'] = 'normal'
 			elif noise == 2:
-				data['noise'] = 'noisy'
+				data['noise'] = 'bruyant'
 			else:
 				data['noise'] = 'unknown'
 			return data
