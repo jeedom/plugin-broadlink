@@ -53,7 +53,7 @@
                 "subtype": "numeric",
                 "isVisible": 1,
                 "isHistorized": 0,
-                "unite": "%",
+                "unite": "",
                 "logicalId": "luminosity",
                 "configuration" : {
 					"logicalid" : "luminosity"
