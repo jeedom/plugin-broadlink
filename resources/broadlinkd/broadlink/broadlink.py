@@ -386,6 +386,8 @@ class a1(device):
 				data['noise'] = 'normal'
 			elif noise == 2:
 				data['noise'] = 'bruyant'
+			elif noise == 3:
+				data['noise'] = 'extrême'
 			else:
 				data['noise'] = 'unknown'
 			return data
