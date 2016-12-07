@@ -119,9 +119,9 @@ $('#btn_sync').on('click', function () {
             }
         }
 		if (data.result[1] == true){
-			$(".paramUser").show();
+			$(".learnCommand").show();
 		} else {
-			$(".paramUser").hide();
+			$(".learnCommand").hide();
 		}
 		$(".modelList").show();
         $(".listModel").html(options);

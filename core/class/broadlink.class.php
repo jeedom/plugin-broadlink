@@ -248,10 +248,10 @@ class broadlink extends eqLogic {
 				);
 			}
 		}
-		if ($this->getConfiguration('userHandling',0) != 0) {
-			$user = true;
+		if ($this->getConfiguration('canlearn',0) != 0) {
+			$canlearn = true;
 		}
-		return [$modelList, $user];
+		return [$modelList, $canlearn];
 	}
 	
 	public function postSave() {
