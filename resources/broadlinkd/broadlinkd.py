@@ -114,7 +114,10 @@ def read_broadlink():
 						globals.LAST_STATE[mac] = result
 						jeedom_com.add_changes('devices::'+mac,result)
 	except Exception,e:
-		logging.error(str(e))
+		if str(e) == 'timed out':
+			logging.debug('Device seems offline')
+		else:
+			logging.error(str(e))
 	
 # ----------------------------------------------------------------------------
 
