@@ -248,6 +248,7 @@ class broadlink extends eqLogic {
 				);
 			}
 		}
+		$canlearn = false;
 		if ($this->getConfiguration('canlearn',0) != 0) {
 			$canlearn = true;
 		}
