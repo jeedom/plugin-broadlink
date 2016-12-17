@@ -71,7 +71,7 @@ if (isset($result['devices'])) {
 		if (!$broadlink->getIsEnable()) {
 			continue;
 		}
-		if ($datas['learnedCmd'] == 1) {
+		if (isset($datas['learnedCmd']) && $datas['learnedCmd'] == 1) {
 			if ($datas['hexcode'] == 'no'){
 				event::add('broadlink::missedCommand', $broadlink->getId());
 				continue;
