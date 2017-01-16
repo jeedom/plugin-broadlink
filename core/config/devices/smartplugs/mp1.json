@@ -1,0 +1,265 @@
+{
+	"mp1": {
+		"name": "Broadlink Multiprise MP1",
+		"groupe" : "Prises",
+		"category" : {
+			"energy" : 1
+		},
+		"configuration" : {
+			"device" : "mp1",
+			"delay" : 120
+		},
+		"commands": [
+			{
+				"name": "Etat-1",
+				"type": "info",
+				"subtype": "binary",
+				"isVisible": 0,
+				"isHistorized": 0,
+				"unite": "",
+				"display": {
+					"generic_type": "ENERGY_STATE"
+				},
+				"logicalId": "s1",
+				"configuration" : {
+					"logicalid" : "s1"
+				}
+			},
+			{
+				"name": "On-1",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"value": "Etat-1",
+				"display": {
+					"generic_type": "ENERGY_ON"
+				},
+				"logicalId": "sid:1,state:1",
+				"configuration" : {
+					"logicalid" : "sid:1,state:1"
+				},
+				"template": {
+					"dashboard": "prise",
+					"mobile": "prise"
+				}
+			},
+			{
+				"name": "Off-1",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"value": "Etat-1",
+				"display": {
+					"generic_type": "ENERGY_ON"
+				},
+				"logicalId": "sid:1,state:0",
+				"configuration" : {
+					"logicalid" : "sid:1,state:0"
+				},
+				"template": {
+					"dashboard": "prise",
+					"mobile": "prise"
+				}
+			},
+			{
+				"name": "Etat-2",
+				"type": "info",
+				"subtype": "binary",
+				"isVisible": 0,
+				"isHistorized": 0,
+				"unite": "",
+				"display": {
+					"generic_type": "ENERGY_STATE"
+				},
+				"logicalId": "s2",
+				"configuration" : {
+					"logicalid" : "s2"
+				}
+			},
+			{
+				"name": "On-2",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"value": "Etat-2",
+				"display": {
+					"generic_type": "ENERGY_ON"
+				},
+				"logicalId": "sid:2,state:1",
+				"configuration" : {
+					"logicalid" : "sid:2,state:1"
+				},
+				"template": {
+					"dashboard": "prise",
+					"mobile": "prise"
+				}
+			},
+			{
+				"name": "Off-2",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"value": "Etat-2",
+				"display": {
+					"generic_type": "ENERGY_ON"
+				},
+				"logicalId": "sid:2,state:0",
+				"configuration" : {
+					"logicalid" : "sid:2,state:0"
+				},
+				"template": {
+					"dashboard": "prise",
+					"mobile": "prise"
+				}
+			},
+			{
+				"name": "Etat-3",
+				"type": "info",
+				"subtype": "binary",
+				"isVisible": 0,
+				"isHistorized": 0,
+				"unite": "",
+				"display": {
+					"generic_type": "ENERGY_STATE"
+				},
+				"logicalId": "s3",
+				"configuration" : {
+					"logicalid" : "s3"
+				}
+			},
+			{
+				"name": "On-3",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"value": "Etat-3",
+				"display": {
+					"generic_type": "ENERGY_ON"
+				},
+				"logicalId": "sid:3,state:1",
+				"configuration" : {
+					"logicalid" : "sid:3,state:1"
+				},
+				"template": {
+					"dashboard": "prise",
+					"mobile": "prise"
+				}
+			},
+			{
+				"name": "Off-3",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"value": "Etat-3",
+				"display": {
+					"generic_type": "ENERGY_ON"
+				},
+				"logicalId": "sid:3,state:0",
+				"configuration" : {
+					"logicalid" : "sid:3,state:0"
+				},
+				"template": {
+					"dashboard": "prise",
+					"mobile": "prise"
+				}
+			},
+			{
+				"name": "Etat-4",
+				"type": "info",
+				"subtype": "binary",
+				"isVisible": 0,
+				"isHistorized": 0,
+				"unite": "",
+				"display": {
+					"generic_type": "ENERGY_STATE"
+				},
+				"logicalId": "s4",
+				"configuration" : {
+					"logicalid" : "s4"
+				}
+			},
+			{
+				"name": "On-4",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"value": "Etat-4",
+				"display": {
+					"generic_type": "ENERGY_ON"
+				},
+				"logicalId": "sid:4,state:1",
+				"configuration" : {
+					"logicalid" : "sid:4,state:1"
+				},
+				"template": {
+					"dashboard": "prise",
+					"mobile": "prise"
+				}
+			},
+			{
+				"name": "Off-4",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"value": "Etat-4",
+				"display": {
+					"generic_type": "ENERGY_ON"
+				},
+				"logicalId": "sid:4,state:0",
+				"configuration" : {
+					"logicalid" : "sid:4,state:0"
+				},
+				"template": {
+					"dashboard": "prise",
+					"mobile": "prise"
+				}
+			},
+			{
+				"name": "All On",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 0,
+				"display": {
+					"generic_type": "ENERGY_ON"
+				},
+				"logicalId": "sid:all,state:1",
+				"configuration" : {
+					"logicalid" : "sid:all,state:1"
+				},
+				"template": {
+					"dashboard": "prise",
+					"mobile": "prise"
+				}
+			},
+			{
+				"name": "All Off",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 0,
+				"display": {
+					"generic_type": "ENERGY_ON"
+				},
+				"logicalId": "sid:all,state:0",
+				"configuration" : {
+					"logicalid" : "sid:all,state:0"
+				},
+				"template": {
+					"dashboard": "prise",
+					"mobile": "prise"
+				}
+			},
+			 {
+				"name": "Rafraîchir",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"isHistorized": 0,
+				"unite": "",
+				"logicalId": "refresh",
+				"configuration" : {
+					"logicalid" : "refresh"
+				}
+			}
+		]
+	}
+}

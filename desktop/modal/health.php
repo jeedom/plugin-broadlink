@@ -40,11 +40,11 @@ foreach ($eqLogics as $eqLogic) {
 	$profile = strtoupper($eqLogic->getConfiguration('rorg') . '-' . $eqLogic->getConfiguration('func') . '-' . $eqLogic->getConfiguration('type'));
 	$alternateImg = $eqLogic->getConfiguration('iconModel');
 	if (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $alternateImg . '.png')) {
-		$img = '<img class="lazy" src="plugins/avidsen/core/config/devices/' . $alternateImg . '.png" height="65" width="55" />';
+		$img = '<img class="lazy" src="plugins/broadlink/core/config/devices/' . $alternateImg . '.png" height="65" width="55" />';
 	} elseif (file_exists(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getConfiguration('device') . '.png')) {
-		$img = '<img class="lazy" src="plugins/avidsen/core/config/devices/' . $eqLogic->getConfiguration('device') . '.png" height="65" width="55" />';
+		$img = '<img class="lazy" src="plugins/broadlink/core/config/devices/' . $eqLogic->getConfiguration('device') . '.png" height="65" width="55" />';
 	} else {
-		$img = '<img class="lazy" src="plugins/avidsen/doc/images/avidsen_icon.png" height="65" width="55" />';
+		$img = '<img class="lazy" src="plugins/broadlink/plugin_info/broadlink_icon.png" height="65" width="55" />';
 	}
 	$signalcmd = $eqLogic->getCmd('info', 'dBM');
 	$signal = '';

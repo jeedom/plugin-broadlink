@@ -30,7 +30,7 @@ import argparse
 import traceback
 from os.path import join
 import json
-from broadlink import broadlink,rm2,a1
+from broadlink import broadlink,rm2,a1,mp1
 import globals
 
 try:
@@ -128,6 +128,8 @@ def send_broadlink(message):
 			result = rm2.read_rm2(message['device'])
 		elif message['device']['type'] == 'a1':
 			result = a1.read_a1(message['device'])
+		elif message['device']['type'] == 'mp1':
+			result = mp1.read_mp1(message['device'])
 		if result :
 			if message['device']['mac'] in globals.LAST_STATE and result == globals.LAST_STATE[message['device']['mac']]:
 				return
@@ -135,13 +137,17 @@ def send_broadlink(message):
 				globals.LAST_STATE[message['device']['mac']] = result
 				jeedom_com.add_changes('devices::'+message['device']['mac'],result)
 		return
-	if message['device']['type'] == 'rm2':
+	elif message['device']['type'] == 'rm2':
 		if message['cmdType'] == 'learn':
 			result = rm2.learn_rm2(message['device'])
 			if result:
 				jeedom_com.add_changes('devices::'+message['device']['mac'],result)
 		else:
 			rm2.send_rm2(message['device'])
+	elif message['device']['type'] == 'mp1':
+		result = mp1.send_mp1(message['device'])
+		if result:
+			jeedom_com.add_changes('devices::'+message['device']['mac'],result)
 	return
 
 
