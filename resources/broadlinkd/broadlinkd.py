@@ -30,7 +30,7 @@ import argparse
 import traceback
 from os.path import join
 import json
-from broadlink import broadlink,rm2,a1,mp1
+from broadlink import broadlink,rm2,a1,mp1,sp2
 import globals
 
 try:
@@ -107,6 +107,12 @@ def read_broadlink():
 				elif globals.KNOWN_DEVICES[device]['type'] == 'a1':
 					logging.debug('Handling A1 for ' + globals.KNOWN_DEVICES[device]['name'])
 					result = a1.read_a1(globals.KNOWN_DEVICES[device])
+				elif globals.KNOWN_DEVICES[device]['type'] == 'sp2':
+					logging.debug('Handling SP2 for ' + globals.KNOWN_DEVICES[device]['name'])
+					result = sp2.read_sp2(globals.KNOWN_DEVICES[device])
+				elif globals.KNOWN_DEVICES[device]['type'] == 'mp1':
+					logging.debug('Handling MP1 for ' + globals.KNOWN_DEVICES[device]['name'])
+					result = mp1.read_mp1(globals.KNOWN_DEVICES[device])
 				if result :
 					if mac in globals.LAST_STATE and result == globals.LAST_STATE[mac]:
 						continue
@@ -130,6 +136,8 @@ def send_broadlink(message):
 			result = a1.read_a1(message['device'])
 		elif message['device']['type'] == 'mp1':
 			result = mp1.read_mp1(message['device'])
+		elif message['device']['type'] == 'sp2':
+			result = sp2.read_sp2(message['device'])
 		if result :
 			if message['device']['mac'] in globals.LAST_STATE and result == globals.LAST_STATE[message['device']['mac']]:
 				return
@@ -146,6 +154,10 @@ def send_broadlink(message):
 			rm2.send_rm2(message['device'])
 	elif message['device']['type'] == 'mp1':
 		result = mp1.send_mp1(message['device'])
+		if result:
+			jeedom_com.add_changes('devices::'+message['device']['mac'],result)
+	elif message['device']['type'] == 'sp2':
+		result = sp2.send_sp2(message['device'])
 		if result:
 			jeedom_com.add_changes('devices::'+message['device']['mac'],result)
 	return

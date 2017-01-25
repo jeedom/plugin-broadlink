@@ -6,6 +6,7 @@ echo "********************************************************"
 apt-get update
 echo 50 > /tmp/dependancy_broadlink_in_progress
 sudo pip install pycrypto
+sudo pip install pyudev
 echo 100 > /tmp/dependancy_broadlink_in_progress
 echo "********************************************************"
 echo "*             Installation terminée                    *"
