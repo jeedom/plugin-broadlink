@@ -1,0 +1,78 @@
+{
+	"sp2": {
+		"name": "Broadlink Prise SP",
+		"groupe" : "Prises",
+		"category" : {
+			"energy" : 1
+		},
+		"configuration" : {
+			"device" : "sp2",
+			"delay" : 120
+		},
+		"commands": [
+			{
+				"name": "Etat",
+				"type": "info",
+				"subtype": "binary",
+				"isVisible": 0,
+				"isHistorized": 0,
+				"unite": "",
+				"display": {
+					"generic_type": "ENERGY_STATE"
+				},
+				"logicalId": "s1",
+				"configuration" : {
+					"logicalid" : "s1"
+				}
+			},
+			{
+				"name": "On",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"value": "Etat",
+				"display": {
+					"generic_type": "ENERGY_ON"
+				},
+				"logicalId": "state:1",
+				"configuration" : {
+					"logicalid" : "state:1"
+				},
+				"template": {
+					"dashboard": "prise",
+					"mobile": "prise"
+				}
+			},
+			{
+				"name": "Off",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"value": "Etat",
+				"display": {
+					"generic_type": "ENERGY_ON"
+				},
+				"logicalId": "state:0",
+				"configuration" : {
+					"logicalid" : "state:0"
+				},
+				"template": {
+					"dashboard": "prise",
+					"mobile": "prise"
+				}
+			},
+			 {
+				"name": "Rafraîchir",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"isHistorized": 0,
+				"unite": "",
+				"logicalId": "refresh",
+				"configuration" : {
+					"logicalid" : "refresh"
+				}
+			}
+		]
+	}
+}
