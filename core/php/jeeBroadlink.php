@@ -80,7 +80,7 @@ if (isset($result['devices'])) {
 			$cmd = $broadlink->getCmd(null, $datas['hexcode']);
 			if (!is_object($cmd)) {
 				$cmd = new broadlinkCmd();
-				$cmd->setLogicalId($datas['hexcode']);
+				$cmd->setLogicalId($number .__('Commande', __FILE__) . substr($datas['hexcode'],0,10));
 				$cmd->setIsVisible(1);
 				$cmd->setName($number .__('Commande', __FILE__) . substr($datas['hexcode'],0,10));
 			}
