@@ -77,10 +77,10 @@ if (isset($result['devices'])) {
 				continue;
 			}
 			$number = count($broadlink->getCmd())+1;
-			$cmd = $broadlink->getCmd(null, $datas['hexcode']);
+			$cmd = $broadlink->getCmd(null, $number.substr($datas['hexcode'],0,50));
 			if (!is_object($cmd)) {
 				$cmd = new broadlinkCmd();
-				$cmd->setLogicalId($number .__('Commande', __FILE__) . substr($datas['hexcode'],0,10));
+				$cmd->setLogicalId($number.substr($datas['hexcode'],0,50));
 				$cmd->setIsVisible(1);
 				$cmd->setName($number .__('Commande', __FILE__) . substr($datas['hexcode'],0,10));
 			}
