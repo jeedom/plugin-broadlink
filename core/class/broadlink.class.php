@@ -501,12 +501,6 @@ class broadlinkCmd extends cmd {
 			if ($this->getConfiguration('logicalid') == '' && $this->getLogicalId() != '') {
 				$this->setConfiguration('logicalid', $this->getLogicalId());
 			}
-			if ($this->getConfiguration('logicalid') != '' && $this->getLogicalId() == '') {
-				$this->setLogicalId($this->getConfiguration('logicalid'));
-			}
-			if ($this->getConfiguration('logicalid') != $this->getLogicalId()) {
-				$this->setLogicalId($this->getConfiguration('logicalid'));
-			}
 		}
 	}
 	
