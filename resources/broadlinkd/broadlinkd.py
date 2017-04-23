@@ -205,6 +205,7 @@ parser.add_argument("--loglevel", help="Log Level for the daemon", type=str)
 parser.add_argument("--callback", help="Callback", type=str)
 parser.add_argument("--apikey", help="Apikey", type=str)
 parser.add_argument("--cycle", help="Cycle to send event", type=str)
+parser.add_argument("--pid", help="Pid file", type=str)
 args = parser.parse_args()
 
 if args.socketport:
@@ -217,6 +218,8 @@ if args.apikey:
 	_apikey = args.apikey
 if args.cycle:
 	_cycle = float(args.cycle)
+if args.pid:
+	_pidfile = args.pid
 
 jeedom_utils.set_log_level(_log_level)
 
