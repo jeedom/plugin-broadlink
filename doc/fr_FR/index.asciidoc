@@ -1,0 +1,9 @@
+= Agenda
+
+Plugin permettant de s'interfacer avec des équipements broadlink
+
+include::configuration.asciidoc[]
+
+'''
+
+include::changelog.asciidoc[]

@@ -7,5 +7,7 @@
 	"require" : "3.0",
 	"category" : "automation protocol",
 	"hasDependency" : true,
-	"hasOwnDeamon" : true
+	"hasOwnDeamon" : true,
+	"changelog" : "https://github.com/jeedom/plugin-broadlink/blob/stable/doc/#language#/changelog.asciidoc",
+	"documentation" : "https://github.com/jeedom/plugin-broadlink/blob/stable/doc/#language#/index.asciidoc"
 }
