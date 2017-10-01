@@ -175,7 +175,7 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
                 </div>
               </div>
 			  <div class="form-group">
-           <div class="form-group expertModeVisible">
+           <div class="form-group">
             <label class="col-sm-3 control-label">{{Délai maximum autorisé entre 2 messages (min)}}</label>
             <div class="col-sm-4">
               <input class="eqLogicAttr form-control" data-l1key="timeout" />
@@ -188,7 +188,7 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
       <form class="form-horizontal">
         <fieldset>
           <legend><i class="fa fa-info-circle"></i>  {{Informations}}
-			 <i id="bt_autoDetectModule" class="fa fa-search expertModeVisible pull-right cursor" title="{{Recréer les commandes}}"></i>
+			 <i id="bt_autoDetectModule" class="fa fa-search pull-right cursor" title="{{Recréer les commandes}}"></i>
            <a class="btn btn-primary btn-xs pull-right paramUser" id="bt_configureUser" style="display:none"><i class="fa fa-user"></i>  {{Gestion Utilisateur}}</a>
          </legend>
          <div class="form-group">
@@ -250,8 +250,8 @@ foreach ($groups as $group) {
     <thead>
       <tr>
         <th style="width: 300px;">{{Nom}}</th>
-        <th style="width: 130px;" class="expertModeVisible">Type</th>
-        <th class="expertModeVisible">{{Logical ID (info) ou Commande brute (action)}}</th>
+        <th style="width: 130px;">Type</th>
+        <th>{{Logical ID (info) ou Commande brute (action)}}</th>
         <th >{{Paramètres}}</th>
         <th style="width: 100px;">{{Options}}</th>
         <th></th>

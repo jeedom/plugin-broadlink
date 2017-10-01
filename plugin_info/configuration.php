@@ -25,7 +25,7 @@ if (!isConnect()) {
 <form class="form-horizontal">
     <fieldset>
  <legend><i class="icon loisir-darth"></i> {{Démon}}</legend>
-<div class="form-group expertModeVisible">
+<div class="form-group">
     <label class="col-lg-4 control-label">{{Port socket interne (modification dangereuse)}}</label>
     <div class="col-lg-2">
         <input class="configKey form-control" data-l1key="socketport" />
