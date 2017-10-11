@@ -7,11 +7,11 @@ echo 0 > ${PROGRESS_FILE}
 echo "********************************************************"
 echo "*             Installation des dépendances             *"
 echo "********************************************************"
-apt-get update
-apt-get install python-requests python-pip
+sudo apt-get update
 echo 50 > ${PROGRESS_FILE}
 sudo pip install pycrypto
 sudo pip install pyudev
+sudo pip install requests
 echo 100 > ${PROGRESS_FILE}
 echo "********************************************************"
 echo "*             Installation terminée                    *"
