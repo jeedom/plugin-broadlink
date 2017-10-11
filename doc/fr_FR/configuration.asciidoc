@@ -1,4 +1,4 @@
 Changelog détaillé : https://github.com/jeedom/plugin-broadlink/commits/stable
 
-"changelog" : "https://github.com/jeedom/plugin-denonavr/blob/stable/doc/#language#/changelog.asciidoc",
-"documentation" : "https://github.com/jeedom/plugin-denonavr/blob/stable/doc/#language#/index.asciidoc"
+"changelog" : "https://github.com/jeedom/plugin-broadlink/blob/stable/doc/#language#/changelog.asciidoc",
+"documentation" : "https://github.com/jeedom/plugin-broadlink/blob/stable/doc/#language#/index.asciidoc"
