@@ -8,6 +8,7 @@ echo "********************************************************"
 echo "*             Installation des dépendances             *"
 echo "********************************************************"
 apt-get update
+apt-get install python-pip python-requests
 echo 50 > ${PROGRESS_FILE}
 sudo pip install pycrypto
 sudo pip install pyudev
