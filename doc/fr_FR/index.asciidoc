@@ -1,4 +1,4 @@
-= Agenda
+= Broadlink
 
 Plugin permettant de s'interfacer avec des équipements broadlink
 
