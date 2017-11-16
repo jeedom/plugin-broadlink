@@ -23,6 +23,9 @@ def learn_rm2(device):
 	host = device['ip']
 	port = device['port']
 	mac = device['mac']
+	if mac[-3:] == 'sub':
+		logging.debug("This is a child device original mac is " + mac[:-4])
+		mac = mac[:-4]
 	name = device['name']
 	product = broadlink.rm(host=(host,int(port)), mac=bytearray.fromhex(mac))
 	logging.debug("Connecting to Broadlink device with name " + name + "....")
@@ -50,6 +53,9 @@ def send_rm2(device):
 	host = device['ip']
 	port = device['port']
 	mac = device['mac']
+	if mac[-3:] == 'sub':
+		logging.debug("This is a child device original mac is " + mac[:-4])
+		mac = mac[:-4]
 	name = device['name']
 	hex2send = device['hex2send']
 	product = broadlink.rm(host=(host,int(port)), mac=bytearray.fromhex(mac))

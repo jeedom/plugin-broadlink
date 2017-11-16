@@ -265,6 +265,12 @@ class broadlink extends eqLogic {
 	public function preRemove() {
 		$this->disallowDevice();
 	}
+	
+	public function preUpdate() {
+		if (substr($this->getLogicalId(), -3) != 'sub') {
+			$this->setLogicalId($this->getLogicalId().'-sub');
+		}
+	}
 
 	public function allowDevice() {
 		$value = array('apikey' => jeedom::getApiKey('broadlink'), 'cmd' => 'add');

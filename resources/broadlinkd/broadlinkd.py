@@ -99,6 +99,8 @@ def read_broadlink():
 			mac = globals.KNOWN_DEVICES[device]['mac']
 			if mac in globals.LAST_TIME_READ and now < (globals.LAST_TIME_READ[mac]+datetime.timedelta(milliseconds=int(globals.KNOWN_DEVICES[device]['delay'])*1000)):
 				continue
+			if mac[-3:] == 'sub':
+				continue
 			else :
 				globals.LAST_TIME_READ[mac] = now
 				if globals.KNOWN_DEVICES[device]['type'] == 'rm2':

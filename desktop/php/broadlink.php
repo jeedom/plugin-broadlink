@@ -97,6 +97,7 @@ foreach ($eqLogics as $eqLogic) {
   <a class="btn btn-success eqLogicAction pull-right" data-action="save"><i class="fa fa-check-circle"></i> {{Sauvegarder}}</a>
   <a class="btn btn-danger eqLogicAction pull-right" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
  <a class="btn btn-default eqLogicAction pull-right" data-action="configure"><i class="fa fa-cogs"></i> {{Configuration avancée}}</a>
+ <a class="btn btn-default eqLogicAction pull-right" data-action="copy"><i class="fa fa-files-o"></i> {{Dupliquer}}</a>
   <a class="btn btn-success eqLogicAction pull-right learnCommand"><i class="fa fa-rss"></i> {{Apprendre une commande}}</a>
 
   <ul class="nav nav-tabs" role="tablist">
@@ -174,13 +175,13 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
                   <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="delay" placeholder="Delai en secondes"/>
                 </div>
               </div>
-			  <div class="form-group">
-           <div class="form-group">
-            <label class="col-sm-3 control-label">{{Délai maximum autorisé entre 2 messages (min)}}</label>
-            <div class="col-sm-4">
-              <input class="eqLogicAttr form-control" data-l1key="timeout" />
+			   <div class="form-group">
+              <label class="col-sm-3 control-label"></label>
+              <div class="col-sm-9">
+                <label class="checkbox-inline help" data-help="{{Utile si vous avez dupliqué un Broadlink Rm pour séparer les commandes à ne jamais cocher sur l'équipement principal (dans ce cas là la mac doit être obligatoirement terminée par -sub}}"><input type="checkbox" class="eqLogicAttr twoids" data-l1key="configuration" data-l2key="ischild" />{{Sous-Device}}</label>
+              </div>
             </div>
-          </div>
+			  <div class="form-group">
         </fieldset>
       </form>
     </div>
