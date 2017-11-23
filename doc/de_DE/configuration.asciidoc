@@ -1,4 +1,4 @@
-=== Configuration du plugin
+=== Plugin Konfiguration
 
 Après avoir installé le plugin, il faut l'activer et s'assurer de la bonne installation des dépendances.
 
