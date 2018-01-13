@@ -9,7 +9,7 @@ echo "*             Installation des dépendances             *"
 echo "********************************************************"
 sudo apt-get update
 echo 50 > ${PROGRESS_FILE}
-sudo apt_install python-pip python-dev python-pyudev libudev-dev python-serial python-requests
+sudo apt-get install python-pip python-dev python-pyudev libudev-dev python-serial python-requests
 sudo pip install pycrypto
 sudo pip install pyudev
 sudo pip install requests
