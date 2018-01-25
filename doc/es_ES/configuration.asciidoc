@@ -1,8 +1,8 @@
-=== Configuration du plugin
+=== Configuración del plugin
 
 Après avoir installé le plugin, il faut l'activer et s'assurer de la bonne installation des dépendances.
 
-[IMPORTANT]
+[IMPORTANTE]
 Il est déconseillé de changer le port
 
 === Inclusion des équipements

@@ -11,7 +11,7 @@ Aller dans le menu Plugins > Protocole Domotique > Broadlink.
 Une fois sur la page cliquez sur MODE INCLUSION.
 En toute logique l’ensemble des produits Broadlink de votre réseau sera reconnu.
 
-=== Configuration des équipements
+=== Geräte Konfiguration
 
 Sélectionnez un de vos équipements.
 Si ce sont des produits de type Infra rouge, un bouton apprendre une commande apparait en haut. Il vous suffit de cliquer dessus, vous avez ensuite 5 secondes pour apprendre une commande infrarouge ou 433 a votre broadlink.
