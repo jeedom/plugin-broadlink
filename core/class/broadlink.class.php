@@ -333,15 +333,15 @@ class broadlink extends eqLogic {
 						$targetcmd->remove();
 					}
 				}
-				$newCmd = new broadlinkCmd();
-				$newCmd->setEqLogic_id($target->getId());
-				$newCmd->setEqType('broadlink');
-				$newCmd->setLogicalId($command->getLogicalId());
-				$newCmd->setName($command->getName());
-				$newCmd->setConfiguration('logicalid', $command->getConfiguration('logicalid'));
-				$newCmd->setDisplay('icon', $command->getDisplay('icon'));
-				$newCmd->setType('action');
-				$newCmd->setSubType('other');
+				$newCmd = (new broadlinkCmd())
+				        ->setEqLogic_id($target->getId()) 
+					->setEqType('broadlink') 
+					->setLogicalId($command->getLogicalId())
+					->setName($command->getName())
+					->setConfiguration('logicalid', $command->getConfiguration('logicalid'))
+					->setDisplay('icon', $command->getDisplay('icon'))
+					->setType('action')
+					->setSubType('other');
 				$newCmd->save();
 			}
 		}
