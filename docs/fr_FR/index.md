@@ -50,5 +50,11 @@ Vous pouvez choisir les commandes à transférer ainsi que les broadlink
 vers lesquels vous voulez les transférer. (Le nom de la commande sera
 bien évidemment convervé (ON télévision, ventilateur off, etc.)
 
+> **Tip**
+>
+> Si vous ajouteé manuellement votre device car pas autodétecté. La MAC a renseigner est 
+> l'adresse MAC inversé par paquet de deux en minuscules sans les : exemple AA:BB:CC:DD:EE
+> devient eeddccbbaa
+
 Changelog détaillé :
 <https://github.com/jeedom/plugin-broadlink/commits/stable>
