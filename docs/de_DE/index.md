@@ -1,6 +1,6 @@
 Plugin permettant de s’interfacer avec des équipements broadlink
 
-Configuration du plugin 
+Plugin-Konfiguration
 =======================
 
 Après avoir installé le plugin, il faut l’activer et s’assurer de la
@@ -17,7 +17,7 @@ Aller dans le menu Plugins &gt; Protocole Domotique &gt; Broadlink. Une
 fois sur la page cliquez sur MODE INCLUSION. En toute logique l’ensemble
 des produits Broadlink de votre réseau sera reconnu.
 
-Configuration des équipements 
+Gerätekonfiguration
 =============================
 
 Sélectionnez un de vos équipements. Si ce sont des produits de type
@@ -49,12 +49,6 @@ transférer les commandes apprises d’un broadlink à un autre.
 Vous pouvez choisir les commandes à transférer ainsi que les broadlink
 vers lesquels vous voulez les transférer. (Le nom de la commande sera
 bien évidemment convervé (ON télévision, ventilateur off, etc.)
-
-> **Tip**
->
-> Si vous ajouteé manuellement votre device car pas autodétecté. La MAC a renseigner est 
-> l'adresse MAC inversé par paquet de deux en minuscules sans les : exemple AA:BB:CC:DD:EE
-> devient eeddccbbaa
 
 Changelog détaillé :
 <https://github.com/jeedom/plugin-broadlink/commits/stable>
