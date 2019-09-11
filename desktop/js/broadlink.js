@@ -209,21 +209,15 @@ $('body').on('broadlink::includeState', function (_event,_options) {
 	if (_options['state'] == 1) {
 		if($('.include').attr('data-state') != 0){
 			$.hideAlert();
-			$('.include:not(.card)').removeClass('btn-default').addClass('btn-success');
 			$('.include').attr('data-state', 0);
-			$('.include.card').css('background-color','#8000FF');
-			$('.include.card span center').text('{{Arrêter l\'inclusion}}');
-			$('.include:not(.card)').html('<i class="fa fa-sign-in fa-rotate-90"></i> {{Arreter inclusion}}');
+			$('.include.card span').text('{{Arrêter l\'inclusion}}');
 			$('#div_inclusionAlert').showAlert({message: '{{Vous etes en mode inclusion. Recliquez sur le bouton d\'inclusion pour sortir de ce mode. Sinon attendre que le scan de 5 secondes se termine.}}', level: 'warning'});
 		}
 	} else {
 		if($('.include').attr('data-state') != 1){
 			$.hideAlert();
-			$('.include:not(.card)').addClass('btn-default').removeClass('btn-success btn-danger');
 			$('.include').attr('data-state', 1);
-			$('.include:not(.card)').html('<i class="fa fa-sign-in fa-rotate-90"></i> {{Mode inclusion}}');
-			$('.include.card span center').text('{{Mode inclusion}}');
-			$('.include.card').css('background-color','#ffffff');
+			$('.include.card span').text('{{Mode inclusion}}');
 		}
 	}
 });
