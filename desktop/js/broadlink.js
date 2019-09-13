@@ -14,22 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
- 
-var hash = document.location.hash;
-if (hash) {
-    $('.nav-tabs a[href="'+hash+'"]').tab('show');
-} 
-$('.nav-tabs a').on('shown.bs.tab', function (e) {
-    window.location.hash = e.target.hash;
-});
-
  $('.changeIncludeState').on('click', function () {
 	var state = $(this).attr('data-state');
 	changeIncludeState(state);
 });
 
 $('#bt_autoDetectModule').on('click', function () {
-
     bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function (result) {
         if (result) {
             $.ajax({// fonction permettant de faire de l'ajax
@@ -69,8 +59,8 @@ $('#btn_sync').on('click', function () {
 });
 
  $('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').on('change', function () {
-  if($('.li_eqLogic.active').attr('data-eqlogic_id') != ''){
-   getModelListParam($(this).value(),$('.li_eqLogic.active').attr('data-eqlogic_id'));
+  if($('.eqLogicDisplayCard.active').attr('data-eqlogic_id') != ''){
+   getModelListParam($(this).value(),$('.eqLogicDisplayCard.active').attr('data-eqlogic_id'));
 }else{
     $('#img_device').attr("src",'plugins/broadlink/plugin_info/broadlink_icon.png');
 }
@@ -92,9 +82,9 @@ $('#btn_sync').on('click', function () {
     }
 });
  function getModelListParam(_conf,_id) {
-    $.ajax({// fonction permettant de faire de l'ajax
-        type: "POST", // methode de transmission des données au fichier php
-        url: "plugins/broadlink/core/ajax/broadlink.ajax.php", // url du fichier php
+    $.ajax({
+        type: "POST", 
+        url: "plugins/broadlink/core/ajax/broadlink.ajax.php", 
         data: {
             action: "getModelListParam",
             conf: _conf,
@@ -105,7 +95,7 @@ $('#btn_sync').on('click', function () {
         error: function (request, status, error) {
             handleAjaxError(request, status, error);
         },
-        success: function (data) { // si l'appel a bien fonctionné
+        success: function (data) { 
         if (data.state != 'ok') {
             $('#div_alert').showAlert({message: data.result, level: 'danger'});
             return;
@@ -191,7 +181,7 @@ function addCmdToTable(_cmd) {
     $('#table_cmd tbody').append(tr);
     var tr = $('#table_cmd tbody tr:last');
     jeedom.eqLogic.builSelectCmd({
-        id: $(".li_eqLogic.active").attr('data-eqLogic_id'),
+        id: $('.eqLogicAttr[data-l1key=id]').value(),
         filter: {type: 'info'},
         error: function (error) {
             $('#div_alert').showAlert({message: error.message, level: 'danger'});
