@@ -142,7 +142,7 @@ class broadlink extends eqLogic {
 			throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
 		}
 		$broadlink_path = realpath(dirname(__FILE__) . '/../../resources/broadlinkd');
-		$cmd = 'sudo /usr/bin/python ' . $broadlink_path . '/broadlinkd.py';
+		$cmd = '/usr/bin/python ' . $broadlink_path . '/broadlinkd.py';
 		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel('broadlink'));
 		$cmd .= ' --socketport ' . config::byKey('socketport', 'broadlink');
 		$cmd .= ' --sockethost 127.0.0.1';
