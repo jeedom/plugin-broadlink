@@ -1,12 +1,12 @@
 
 
-Plugin Konfiguration 
+Configuração do plugin 
 =======================
 
 
 .
 
-> **Wichtig**
+> ****
 >
 > 
 
@@ -17,7 +17,7 @@ Aller dans le menu Plugins &gt; Protocole Domotique &gt; Broadlink. Une
 . 
 .
 
-Gerätekonfiguration 
+ 
 =============================
 
 . 
@@ -27,7 +27,7 @@ Gerätekonfiguration
 
 .
 
-> **Spitze**
+> ****
 >
 > 
 > 
@@ -35,14 +35,14 @@ Gerätekonfiguration
 > 
 > .
 
-Synchronize 
+ 
 ============
 
 
 
 .
 
-> **Spitze**
+> ****
 >
 > .
 
@@ -50,11 +50,11 @@ Synchronize
 . 
 
 
-> **Spitze**
+> ****
 >
 > .  
 >  : ::::
 > 
 
-Changelog detailliert :
+ :
 <https://github.com/jeedom/plugin-broadlink/commits/stable>
