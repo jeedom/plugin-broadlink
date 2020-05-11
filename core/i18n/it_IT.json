@@ -25,7 +25,7 @@
         "Lancer la synchronisation": ""
     },
     "plugins\/broadlink\/desktop\/php\/broadlink.php": {
-        "Vous etes en mode inclusion. Recliquez sur le bouton d\\'inclusion pour sortir de ce mode": "Sei in modalità inclusione. Clicca nuovamente il pulsante per uscire da questa modalità.",
+        "Vous etes en mode inclusion. Recliquez sur le bouton d\\'inclusion pour sortir de ce mode": "Sei in modalità inclusione. Clicca nuovamente il pulsante per uscire da questa modalità",
         "Gestion": "Gestione",
         "Ajouter": "Aggiungi",
         "Arrêter inclusion": "Ferma inclusione",
@@ -78,7 +78,7 @@
         "Arrêter l\\'inclusion": "Ferma inclusione",
         "Vous etes en mode inclusion. Recliquez sur le bouton d\\'inclusion pour sortir de ce mode. Sinon attendre que le scan de 5 secondes se termine.": "",
         "Mode inclusion": "Modalità inclusione",
-        "Un périphérique vient d\\'être inclu\/exclu. Veuillez réactualiser la page": "Un dispositivo è stato incluso\/escluso. Si prega di ricaricare la pagina.",
+        "Un périphérique vient d\\'être inclu\/exclu. Veuillez réactualiser la page": "Un dispositivo è stato incluso\/escluso. Si prega di ricaricare la pagina",
         "Une nouvelle commande vient d\\'être ajoutée. Pensez à lui donner un nom.": "",
         "Aucune commande reçue dans le temps imparti": "",
         "Veuillez appuyer sur le bouton de votre télécommande": ""

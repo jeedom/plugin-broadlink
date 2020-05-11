@@ -8,7 +8,7 @@ buena instalación de dependencias.
 
 > **Importante**
 >
-> No se recomienda cambiar el puerto.
+> No se recomienda cambiar el puerto
 
 Inclusión de equipos 
 =========================
@@ -29,7 +29,7 @@ solo necesitas nombrar.
 
 > **Punta**
 >
-> Para evitar aprender lo que podría venir del medio ambiente.
+> Para evitar aprender lo que podría venir del medio ambiente
 > (control remoto de un vecino u otro), el broadlink en modo
 > aprender VOLUNTARIAMENTE entra en un nivel de recepción muy
 > débil, por lo que debes estar MUY cerca del broadlink para aprender un
@@ -44,7 +44,7 @@ transferir comandos aprendidos de un enlace ancho a otro.
 
 > **Punta**
 >
-> Funciona desde un rm-pro a un mini o viceversa..
+> Funciona desde un rm-pro a un mini o viceversa.
 
 Puede elegir los pedidos para transferir, así como los enlaces generales
 a la que quieres transferirlos. (El nombre del pedido será

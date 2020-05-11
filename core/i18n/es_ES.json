@@ -55,7 +55,7 @@
         "Informations": "Información",
         "Recréer les commandes": "Recrea comandos",
         "Gestion Utilisateur": "Gestión de usuarios",
-        " . $info['groupe'] . ": ". $ info ['grupo'].",
+        " . $info['groupe'] . ": "$ info ['grupo']",
         "Modèle": "Modelo",
         "Ajouter une commande": "Añadir una orden",
         "Synchroniser": "Sincronizar",
@@ -65,7 +65,7 @@
         "Options": "Opciones"
     },
     "plugins\/broadlink\/desktop\/js\/broadlink.js": {
-        "Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes": "¿Seguro que quieres recrear todos los comandos? Esto eliminará los pedidos existentes.",
+        "Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes": "¿Seguro que quieres recrear todos los comandos? Esto eliminará los pedidos existentes",
         "Opération réalisée avec succès": "Operación completada con éxito",
         "Santé Broadlink": "Broadlink Health",
         "Synchronisation Broadlink": "Sincronización Broadlink",
@@ -76,11 +76,11 @@
         "Historiser": "Guardar historial",
         "Inverser": "Invertir",
         "Arrêter l\\'inclusion": "Detener la inclusión",
-        "Vous etes en mode inclusion. Recliquez sur le bouton d\\'inclusion pour sortir de ce mode. Sinon attendre que le scan de 5 secondes se termine.": "Estás en modo de inclusión. Haga clic nuevamente en el botón de inclusión para salir de este modo. De lo contrario, espere a que finalice la exploración de 5 segundos.",
+        "Vous etes en mode inclusion. Recliquez sur le bouton d\\'inclusion pour sortir de ce mode. Sinon attendre que le scan de 5 secondes se termine.": "Estás en modo de inclusión. Haga clic nuevamente en el botón de inclusión para salir de este modo. De lo contrario, espere a que finalice la exploración de 5 segundos",
         "Mode inclusion": "Modo de inclusión",
         "Un périphérique vient d\\'être inclu\/exclu. Veuillez réactualiser la page": "Un dispositivo acaba de ser incluido \/ excluido. Por favor actualiza la página",
-        "Une nouvelle commande vient d\\'être ajoutée. Pensez à lui donner un nom.": "Se acaba de agregar un nuevo pedido. Considera darle un nombre.",
-        "Aucune commande reçue dans le temps imparti": "No se recibió ningún pedido dentro del límite de tiempo.",
+        "Une nouvelle commande vient d\\'être ajoutée. Pensez à lui donner un nom.": "Se acaba de agregar un nuevo pedido. Considera darle un nombre",
+        "Aucune commande reçue dans le temps imparti": "No se recibió ningún pedido dentro del límite de tiempo",
         "Veuillez appuyer sur le bouton de votre télécommande": "Presione el botón en su control remoto"
     },
     "plugins\/broadlink\/core\/php\/jeeBroadlink.php": {
@@ -95,7 +95,7 @@
         "Veuillez vérifier la configuration": "Por favor verifique la configuración",
         "Défaut": "Por defecto",
         "Périphérique reconnu, intégration en cours": "Dispositivo reconocido, integración en progreso",
-        "Création des commandes": "Creación de pedidos.",
+        "Création des commandes": "Creación de pedidos",
         "Envoi des commandes post-inclusion": "Envío de pedidos posteriores a la inclusión"
     }
 }
