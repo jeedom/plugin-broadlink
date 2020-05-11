@@ -6,7 +6,7 @@ Plugin Konfiguration
 Nach der Installation des Plugins müssen Sie es aktivieren und sicherstellen, dass
 gute Installation von Nebengebäuden.
 
-> **Important**
+> **Wichtig**
 >
 > Es wird nicht empfohlen, den Port zu ändern
 
@@ -27,7 +27,7 @@ ein Infrarot- oder 433-Befehl an Ihren Broadlink. Anschließend das Plugin
 bestätigt den Erfolg des Vorgangs und erstellt die zugehörige Bestellung
 Sie müssen nur benennen.
 
-> **Tip**
+> **Spitze**
 >
 > Um nicht zu lernen, was aus der Umwelt kommen könnte
 > (Fernbedienung eines Nachbarn oder eines anderen), der Broadlink im Modus
@@ -42,7 +42,7 @@ Auf der Registerkarte Gerätesteuerung finden Sie die Schaltfläche
 Synchronisieren. Wenn Sie mehr als einen Broadlink haben, können Sie
 Übertragen Sie gelernte Befehle von einem Broadlink auf einen anderen.
 
-> **Tip**
+> **Spitze**
 >
 > Es funktioniert von einem RM-Pro zu einem Mini oder umgekehrt.
 
@@ -50,7 +50,7 @@ Sie können die zu übertragenden Bestellungen sowie die Broadlinks auswählen
 auf die Sie sie übertragen möchten. (Der Name der Bestellung lautet
 offensichtlich Convervé (im Fernsehen, Fan aus, etc.)
 
-> **Tip**
+> **Spitze**
 >
 > Wenn Sie Ihr Gerät manuell hinzugefügt haben, weil es nicht automatisch erkannt wurde. Der zu informierende MAC ist 
 > umgekehrte MAC-Adresse im Zweierpaket in Kleinbuchstaben ohne : Beispiel AA:BB:CC:DD:EE

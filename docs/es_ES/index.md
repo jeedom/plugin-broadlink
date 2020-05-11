@@ -6,7 +6,7 @@ Configuración del plugin
 Después de instalar el complemento, debe activarlo y asegurarse de que
 buena instalación de dependencias.
 
-> **Important**
+> **Importante**
 >
 > No se recomienda cambiar el puerto.
 
@@ -27,7 +27,7 @@ un comando infrarrojo o 433 a su broadlink. Después de esto, el complemento
 confirmará el éxito de la operación y creará el pedido asociado
 solo necesitas nombrar.
 
-> **Tip**
+> **Punta**
 >
 > Para evitar aprender lo que podría venir del medio ambiente.
 > (control remoto de un vecino u otro), el broadlink en modo
@@ -42,7 +42,7 @@ En la pestaña Controles del equipo encontrarás el botón
 Sincronizar Si tiene más de un Broadlink, puede
 transferir comandos aprendidos de un enlace ancho a otro.
 
-> **Tip**
+> **Punta**
 >
 > Funciona desde un rm-pro a un mini o viceversa..
 
@@ -50,7 +50,7 @@ Puede elegir los pedidos para transferir, así como los enlaces generales
 a la que quieres transferirlos. (El nombre del pedido será
 obviamente convervé (EN televisión, ventilador apagado, etc.)
 
-> **Tip**
+> **Punta**
 >
 > Si agregó manualmente su dispositivo porque no se detectó automáticamente. El MAC para informar es 
 > invertir la dirección MAC en paquete de dos en minúsculas sin : ejemplo AA:BB:CC:DD:EE
