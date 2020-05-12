@@ -1,3 +1,5 @@
+# Changelog Broadlink
+
 # 11/09/2019
 
 - Adaptação para jeedom v4
