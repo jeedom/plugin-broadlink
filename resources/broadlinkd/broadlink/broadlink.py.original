@@ -13,7 +13,6 @@ import socket
 import sys
 import threading
 import codecs
-from .exceptions import check_error, exception
 
 def gendevice(devtype, host, mac):
   if devtype == 0: # SP1
@@ -54,40 +53,6 @@ def gendevice(devtype, host, mac):
     return rm(host=host, mac=mac)
   elif devtype == 0x278f: # RM Mini Shate
     return rm(host=host, mac=mac)
-  elif devtype == 0x2797: # RM pro+
-    return rm(host=host, mac=mac)
-  elif devtype == 0x279d: # RM pro+
-    return rm(host=host, mac=mac)
-  elif devtype == 0x27a1: # RM plus
-    return rm(host=host, mac=mac)
-  elif devtype == 0x27a6: # RM plus
-    return rm(host=host, mac=mac)
-  elif devtype == 0x27a9: # RM pro+
-    return rm(host=host, mac=mac)
-  elif devtype == 0x27c2: # RM mini 3
-    return rm(host=host, mac=mac)
-  elif devtype == 0x27d1: # RM mini 3
-    return rm(host=host, mac=mac)
-  elif devtype == 0x27de: # RM mini 3
-    return rm(host=host, mac=mac)
-  elif devtype == 0x51da: # RM4 mini"
-    return rm4(host=host, mac=mac)
-  elif devtype == 0x5f36: # RM mini 3"
-    return rm4(host=host, mac=mac)
-  elif devtype == 0x6026: # RM4 pro"
-    return rm4(host=host, mac=mac)
-  elif devtype == 0x6070: # RM4C mini"
-    return rm4(host=host, mac=mac)
-  elif devtype == 0x610e: # RM4 mini"
-    return rm4(host=host, mac=mac)
-  elif devtype == 0x610f: # RM4C mini"
-    return rm4(host=host, mac=mac)
-  elif devtype == 0x61a2: # RM4 pro"
-    return rm4(host=host, mac=mac)
-  elif devtype == 0x62bc: # RM4 mini"
-    return rm4(host=host, mac=mac)
-  elif devtype == 0x62be: # RM4C mini"
-    return rm4(host=host, mac=mac)
   elif devtype == 0x2714: # A1
     return a1(host=host, mac=mac)
   elif devtype == 0x4EB5 or devtype == 0x4EF7: # MP1: 0x4eb5, honyar oem mp1: 0x4ef7
@@ -516,108 +481,47 @@ class a1(device):
         data['noise'] = ord(payload[0xc])
       return data
 
+
 class rm(device):
-  def __init__(self, host, mac):
+  def __init__ (self, host, mac):
     device.__init__(self, host, mac)
     self.type = "RM2"
-    self._request_header = bytes()
-    self._code_sending_header = bytes()
 
   def check_data(self):
-    packet = bytearray(self._request_header)
-    packet.append(0x04)
+    packet = bytearray(16)
+    packet[0] = 4
     response = self.send_packet(0x6a, packet)
-    check_error(response[0x22:0x24])
-    payload = self.decrypt(bytes(response[0x38:]))
-    return payload[len(self._request_header) + 4:]
+    err = response[0x22] | (response[0x23] << 8)
+    if err == 0:
+      payload = self.decrypt(bytes(response[0x38:]))
+      return payload[0x04:]
 
   def send_data(self, data):
-    packet = bytearray(self._code_sending_header)
-    packet += bytearray([0x02, 0x00, 0x00, 0x00])
+    packet = bytearray([0x02, 0x00, 0x00, 0x00])
     packet += data
-    response = self.send_packet(0x6a, packet)
-    check_error(response[0x22:0x24])
+    self.send_packet(0x6a, packet)
 
   def enter_learning(self):
-    packet = bytearray(self._request_header)
-    packet.append(0x03)
-    response = self.send_packet(0x6a, packet)
-    check_error(response[0x22:0x24])
-
-  def stop_learning(self):
-    packet = bytearray(self._request_header)
-    packet.append(0x02)
+    packet = bytearray(16)
+    packet[0] = 3
     self.send_packet(0x6a, packet)
-    
-  def sweep_frequency(self):
-    packet = bytearray(self._request_header)
-    packet.append(0x19)
-    response = self.send_packet(0x6a, packet)
-    check_error(response[0x22:0x24])
-
-  def cancel_sweep_frequency(self):
-    packet = bytearray(self._request_header)
-    packet.append(0x1e)
-    response = self.send_packet(0x6a, packet)
-    check_error(response[0x22:0x24])
-
-  def check_frequency(self):
-    packet = bytearray(self._request_header)
-    packet.append(0x1a)
-    response = self.send_packet(0x6a, packet)
-    check_error(response[0x22:0x24])
-    payload = self.decrypt(bytes(response[0x38:]))
-    if payload[len(self._request_header) + 4] == 1:
-      return True
-    return False
-
-  def find_rf_packet(self):
-    packet = bytearray(self._request_header)
-    packet.append(0x1b)
-    response = self.send_packet(0x6a, packet)
-    check_error(response[0x22:0x24])
-    payload = self.decrypt(bytes(response[0x38:]))
-    if payload[len(self._request_header) + 4] == 1:
-      return True
-    return False
-
-  def _check_sensors(self, command):
-    packet = bytearray(self._request_header)
-    packet.append(command)
-    response = self.send_packet(0x6a, packet)
-    check_error(response[0x22:0x24])
-    payload = self.decrypt(bytes(response[0x38:]))
-    return bytearray(payload[len(self._request_header) + 4:])
+  def stop_learning(self):
+    packet = bytearray(16)
+    packet[0] = 2
+    self.send_packet(0x6a, packet)
 
   def check_temperature(self):
-    data = self._check_sensors(0x1)
-    return data[0x0] + data[0x1] / 10.0
-
-  def check_sensors(self):
-    data = self._check_sensors(0x1)
-    return {'temperature': data[0x0] + data[0x1] / 10.0}
-
-class rm4(rm):
-  def __init__(self, host, mac):
-    device.__init__(self, host, mac)
-    self.type = "RM4"
-    self._request_header = b'\x04\x00'
-    self._code_sending_header = b'\xd0\x00'
-
-  def check_temperature(self):
-    data = self._check_sensors(0x24)
-    return data[0x0] + data[0x1] / 100.0
-
-  def check_humidity(self):
-    data = self._check_sensors(0x24)
-    return data[0x2] + data[0x3] / 100.0
-
-  def check_sensors(self):
-    data = self._check_sensors(0x24)
-    return {
-      'temperature': data[0x0] + data[0x1] / 100.0,
-      'humidity': data[0x2] + data[0x3] / 100.0
-    }
+    packet = bytearray(16)
+    packet[0] = 1
+    response = self.send_packet(0x6a, packet)
+    err = response[0x22] | (response[0x23] << 8)
+    if err == 0:
+      payload = self.decrypt(bytes(response[0x38:]))
+      if type(payload[0x4]) == int:
+        temp = (payload[0x4] * 10 + payload[0x5]) / 10.0
+      else:
+        temp = (ord(payload[0x4]) * 10 + ord(payload[0x5])) / 10.0
+      return temp
 
 # For legay compatibility - don't use this
 class rm2(rm):
@@ -628,6 +532,7 @@ class rm2(rm):
     dev = discover()
     self.host = dev.host
     self.mac = dev.mac
+
 
 S1C_SENSORS_TYPES = {
     0x31: 'Door Sensor',  # 49 as hex

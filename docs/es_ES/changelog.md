@@ -1,5 +1,3 @@
-# Registro de cambios Broadlink
-
 # 11/09/2019
 
 - Adaptación para jeedom v4

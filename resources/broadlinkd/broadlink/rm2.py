@@ -10,9 +10,9 @@ def read_rm2(device):
 	mac = device['mac']
 	name = device['name']
 	product = broadlink.rm(host=(host,int(port)), mac=bytearray.fromhex(mac))
-	logging.debug("Connecting to Broadlink device with name " + name + "....")
+	logging.debug("Connecting to Broadlink RM2 device with name " + name + "....")
 	product.auth()
-	logging.debug("Connected to Broadlink device with name " + name + "....")
+	logging.debug("Connected to Broadlink RM2 device with name " + name + "....")
 	result['mac']=mac
 	result['temperature'] = product.check_temperature()
 	logging.debug(str(result))
