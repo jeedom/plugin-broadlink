@@ -30,7 +30,7 @@ solo necesitas nombrar.
 > **Punta**
 >
 > Para evitar aprender lo que podría venir del medio ambiente
-> (control remoto de un vecino u otro), el broadlink en modo
+> (control remoto desde un vecino u otro), el broadlink en
 > aprender VOLUNTARIAMENTE entra en un nivel de recepción muy
 > débil, por lo que debes estar MUY cerca del broadlink para aprender un
 > ordene especialmente si es una orden de 433Mhz.
@@ -48,7 +48,7 @@ transferir comandos aprendidos de un enlace ancho a otro.
 
 Puede elegir los pedidos para transferir, así como los enlaces generales
 a la que quieres transferirlos. (El nombre del pedido será
-obviamente convervé (EN televisión, ventilador apagado, etc.)
+obviamente convergente (TV ENCENDIDO, ventilador apagado, etc.)
 
 > **Punta**
 >

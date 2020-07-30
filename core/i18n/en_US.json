@@ -97,5 +97,8 @@
         "Périphérique reconnu, intégration en cours": "Recognized device, integration in progress",
         "Création des commandes": "Creation of orders",
         "Envoi des commandes post-inclusion": "Sending post-inclusion orders"
+    },
+    "info.json": {
+        "Plugin ajoutant le support de certains produits Broadlink comme (le RM, le A1 etccc)": "Plugin adding support for some Broadlink products such as (RM, A1 etccc)"
     }
 }

@@ -97,5 +97,8 @@
         "Périphérique reconnu, intégration en cours": "Tanınan cihaz, entegrasyon işlemde",
         "Création des commandes": "",
         "Envoi des commandes post-inclusion": ""
+    },
+    "info.json": {
+        "Plugin ajoutant le support de certains produits Broadlink comme (le RM, le A1 etccc)": ""
     }
 }

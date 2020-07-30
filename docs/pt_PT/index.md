@@ -30,7 +30,7 @@ você só precisa citar.
 > **Dica**
 >
 > Para evitar aprender o que poderia vir do meio ambiente
-> (controle remoto de um vizinho ou outro), o link amplo no modo
+> (controle remoto de um vizinho ou de outro), o link em
 > aprendendo VOLUNTARIAMENTE entra em um nível de recepção muito
 > fraco, então você precisa estar MUITO perto do broadlink para aprender uma
 > pedido especialmente se for um 433Mhz.
@@ -48,7 +48,7 @@ transferir comandos aprendidos de um broadlink para outro.
 
 Você pode escolher os pedidos a serem transferidos, bem como os links
 para o qual você deseja transferi-los. (O nome do pedido será
-obviamente conversível (na televisão, ventilador desligado, etc.)
+obviamente convergido (TV ligada, ventilador desligado, etc.)
 
 > **Dica**
 >

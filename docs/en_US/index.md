@@ -30,7 +30,7 @@ you just need to name.
 > **Tip**
 >
 > To avoid learning what could come from the environment
-> (remote control of a neighbor or other), the broadlink in mode
+> (remote control from a neighbor or other), the broadlink in
 > learning VOLUNTARILY goes into a very reception level
 > weak, so you have to be VERY close to the broadlink to learn a
 > order especially if it is a 433Mhz order.
@@ -48,7 +48,7 @@ transfer learned commands from one broadlink to another.
 
 You can choose the orders to transfer as well as the broadlinks
 to which you want to transfer them. (The name of the order will be
-obviously convervé (ON television, fan off, etc.)
+obviously convervated (TV ON, fan off, etc.)
 
 > **Tip**
 >

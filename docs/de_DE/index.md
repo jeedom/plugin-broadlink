@@ -30,7 +30,7 @@ Sie müssen nur benennen.
 > **Spitze**
 >
 > Um nicht zu lernen, was aus der Umwelt kommen könnte
-> (Fernbedienung eines Nachbarn oder eines anderen), der Broadlink im Modus
+> (Fernbedienung von einem Nachbarn oder einem anderen), der Broadlink in
 > Das freiwillige Lernen geht in eine sehr empfängliche Ebene
 > schwach, also muss man SEHR nah am Broadlink sein, um a zu lernen
 > Bestellen Sie besonders, wenn es sich um eine 433-MHz-Bestellung handelt.
@@ -48,7 +48,7 @@ Synchronisieren. Wenn Sie mehr als einen Broadlink haben, können Sie
 
 Sie können die zu übertragenden Bestellungen sowie die Broadlinks auswählen
 auf die Sie sie übertragen möchten. (Der Name der Bestellung lautet
-offensichtlich Convervé (im Fernsehen, Fan aus, etc.)
+offensichtlich konvergiert (TV EIN, Lüfter aus usw.).)
 
 > **Spitze**
 >
