@@ -35,6 +35,7 @@
         "Mes équipements broadlink": "Mi equipo broadlink",
         "Rechercher": "Buscar",
         "Apprendre une commande": "Aprende un pedido",
+        "Apprendre commande RF Avancée": "Aprenda el comando avanzado de RF",
         "Configuration avancée": "Configuración avanzada",
         "Dupliquer": "Duplicar",
         "Sauvegarder": "Guardar",
@@ -81,7 +82,11 @@
         "Un périphérique vient d\\'être inclu\/exclu. Veuillez réactualiser la page": "Un dispositivo acaba de ser incluido \/ excluido. Por favor actualiza la página",
         "Une nouvelle commande vient d\\'être ajoutée. Pensez à lui donner un nom.": "Se acaba de agregar un nuevo pedido. Considera darle un nombre",
         "Aucune commande reçue dans le temps imparti": "No se recibió ningún pedido dentro del límite de tiempo",
-        "Veuillez appuyer sur le bouton de votre télécommande": "Presione el botón en su control remoto"
+        "Fréquence RF trouvée, vous pouvez lachez le bouton et vous préparer a appuyer dans 3 secondes": "Frecuencia de RF encontrada, puede soltar el botón y prepararse para presionar en 3 segundos",
+        "Aucune Fréquence RF trouvée": "No se encontró frecuencia de RF",
+        "Etape 2, appuyez sur le bouton": "Paso 2, presiona el botón",
+        "Veuillez appuyer sur le bouton de votre télécommande": "Presione el botón en su control remoto",
+        "Veuillez maintenir appuyé le bouton de votre télécommande (ou appuyez successivement dessus) pour trouver la fréquence RF": "Mantenga presionado el botón de su control remoto (o presiónelo sucesivamente) para encontrar la frecuencia de RF"
     },
     "plugins\/broadlink\/core\/php\/jeeBroadlink.php": {
         "Aucun équipement trouvé pour : ": "No se encontraron equipos para:",

@@ -25,7 +25,11 @@ Infravermelho, um botão para aprender um comando aparece na parte superior. Ai 
 basta clicar nele, você tem 5 segundos para aprender
 um comando infravermelho ou 433 para o seu broadlink. Após isso, o plugin
 confirmará o sucesso da operação e criará o pedido associado
-você só precisa citar.
+você só precisa citar. Há também um modo avançado 
+para detectar frequências Rf ligeiramente diferentes.
+Este modo funciona em dois estágios, um estágio de detecção de frequência 
+(ou você deve continuar pressionando o botão ou pressionando-o várias vezes).
+E um segundo passo semelhante ao modo clássico.
 
 > **Dica**
 >
@@ -55,6 +59,13 @@ obviamente convergido (TV ligada, ventilador desligado, etc.)
 > Se você adicionou seu dispositivo manualmente porque não foi detectado automaticamente. O MAC para informar é 
 > endereço MAC reverso em pacotes de dois em minúsculas sem : exemplo AA:BB:CC:DD:EE
 > torna-se eeddccbbaa
+
+> **Dica**
+>
+> Para alguns RM Pro, incluindo as versões 4. O dispositivo não deve estar vinculado à nuvem.
+> Caso contrário, não será mais controlável localmente. Para fazer isso, você deve adicionar o dispositivo usando o aplicativo.
+> Mas não continue assim que for adicionado ao seu wifi (não o adicione a uma sala ou qualquer coisa). Tem que parar
+> neste momento.
 
 Registro de alterações detalhado :
 <https://github.com/jeedom/plugin-broadlink/commits/stable>

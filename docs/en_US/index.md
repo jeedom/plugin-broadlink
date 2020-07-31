@@ -25,7 +25,11 @@ Infrared, a button to learn a command appears at the top. There you
 just click on it, you then have 5 seconds to learn
 an infrared or 433 command to your broadlink. Following this the plugin
 will confirm the success of the operation and create the associated order
-you just need to name.
+you just need to name. There is also an advanced mode 
+to possibly detect slightly different Rf frequencies.
+This mode works in two stages, one frequency detection stage 
+(or you have to keep pressing the button or pressing it several times).
+And a second step similar to classic mode.
 
 > **Tip**
 >
@@ -55,6 +59,13 @@ obviously convervated (TV ON, fan off, etc.)
 > If you manually added your device because not auto-detected. The MAC to inform is 
 > reverse MAC address in packet of two in lower case without : example AA:BB:CC:DD:EE
 > becomes eeddccbbaa
+
+> **Tip**
+>
+> For some RM Pro including versions 4. The device must not be linked to the cloud.
+> Otherwise it is no longer controllable locally. To do this you have to add the device using the application.
+> But don't continue once it's added to your wifi (don't add it to a room or anything). It has to stop
+> at this moment.
 
 Changelog detailed :
 <https://github.com/jeedom/plugin-broadlink/commits/stable>

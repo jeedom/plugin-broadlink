@@ -35,6 +35,7 @@
         "Mes équipements broadlink": "Meine Broadlink-Ausrüstung",
         "Rechercher": "Suchen nach",
         "Apprendre une commande": "Lerne eine Bestellung",
+        "Apprendre commande RF Avancée": "Erfahren Sie Advanced RF Command",
         "Configuration avancée": "Erweiterte Konfiguration",
         "Dupliquer": "Duplikat",
         "Sauvegarder": "Speichern",
@@ -81,7 +82,11 @@
         "Un périphérique vient d\\'être inclu\/exclu. Veuillez réactualiser la page": "Ein Gerät wurde gerade aufgenommen \/ ausgeschlossen. Bitte aktualisieren Sie die Seite",
         "Une nouvelle commande vient d\\'être ajoutée. Pensez à lui donner un nom.": "Eine neue Bestellung wurde gerade hinzugefügt. Erwägen Sie, ihm einen Namen zu geben",
         "Aucune commande reçue dans le temps imparti": "Keine Bestellung innerhalb der Frist erhalten",
-        "Veuillez appuyer sur le bouton de votre télécommande": "Bitte drücken Sie die Taste auf Ihrer Fernbedienung"
+        "Fréquence RF trouvée, vous pouvez lachez le bouton et vous préparer a appuyer dans 3 secondes": "Wenn die HF-Frequenz gefunden wurde, können Sie die Taste loslassen und sich in 3 Sekunden zum Drücken bereit machen",
+        "Aucune Fréquence RF trouvée": "Keine HF-Frequenz gefunden",
+        "Etape 2, appuyez sur le bouton": "Schritt 2, drücken Sie die Taste",
+        "Veuillez appuyer sur le bouton de votre télécommande": "Bitte drücken Sie die Taste auf Ihrer Fernbedienung",
+        "Veuillez maintenir appuyé le bouton de votre télécommande (ou appuyez successivement dessus) pour trouver la fréquence RF": "Bitte halten Sie die Taste auf Ihrer Fernbedienung gedrückt (oder drücken Sie sie nacheinander), um die HF-Frequenz zu ermitteln"
     },
     "plugins\/broadlink\/core\/php\/jeeBroadlink.php": {
         "Aucun équipement trouvé pour : ": "Keine Ausrüstung gefunden für:",

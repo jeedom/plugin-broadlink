@@ -1,6 +1,11 @@
 {
     "changelog.md": {
         "Changelog Broadlink": "Changelog Broadlink",
+        "31\/07\/2020": "31\/07\/2020",
+        "Passage a python 3 (il faut probablement relancer les dépendances": "Passage a python 3 (il faut probablement relancer les dépendances",
+        "Ajout de la gestion du RM4 (lire la doc pour la particularité": "Ajout de la gestion du RM4 (lire la doc pour la particularité",
+        "Ajout d'un apprentissage avancé RF (avec deux étapes, une pour faire varier les fréquences et la trouver et une autre pour apprendre": "Ajout d'un apprentissage avancé RF (avec deux étapes, une pour faire varier les fréquences et la trouver et une autre pour apprendre",
+        "Cela augmentera la compatibilité d'apprentissage": "Cela augmentera la compatibilité d'apprentissage",
         "11\/09\/2019": "11\/09\/2019",
         "Adaptation pour jeedom v4": "Adaptation pour jeedom v4",
         "09\/05\/2018": "09\/05\/2018",
@@ -30,6 +35,11 @@
         "Suite à cela le plugin": "Suite à cela le plugin",
         "vous confirmera le succès de l'opération et créera la commande associée": "vous confirmera le succès de l'opération et créera la commande associée",
         "qu'il vous suffira simplement de nommer": "qu'il vous suffira simplement de nommer",
+        "Il existe aussi un mode avancée": "Il existe aussi un mode avancée",
+        "pour éventuellement détecter des fréquences Rf légèrement différente": "pour éventuellement détecter des fréquences Rf légèrement différente",
+        "Ce mode fonctionne en deux étapes, une étape de détection de fréquence": "Ce mode fonctionne en deux étapes, une étape de détection de fréquence",
+        "ou il faut rester appuyer sur le bouton ou appuyer plusieurs fois dessus": "ou il faut rester appuyer sur le bouton ou appuyer plusieurs fois dessus",
+        "Et une deuxième étape similaire au mode classique": "Et une deuxième étape similaire au mode classique",
         "Tip": "Tip",
         "Pour éviter d'apprendre ce qui pourrait venir de l'environnement": "Pour éviter d'apprendre ce qui pourrait venir de l'environnement",
         "télécommande d'un voisin ou autre), le broadlink en mode": "télécommande d'un voisin ou autre), le broadlink en mode",
@@ -54,6 +64,13 @@
         "DD": "DD",
         "EE": "EE",
         "devient eeddccbbaa": "devient eeddccbbaa",
+        "Pour certains RM Pro notamment les versions 4": "Pour certains RM Pro notamment les versions 4",
+        "Il ne faut pas que le device soit lié au cloud": "Il ne faut pas que le device soit lié au cloud",
+        "Sinon il n'est plus contrôlable en local": "Sinon il n'est plus contrôlable en local",
+        "Pour cela il faut ajouter le device en utilisant l'application": "Pour cela il faut ajouter le device en utilisant l'application",
+        "Mais ne pas continuer une fois celui-ci ajouté à votre wifi (ne pas l'ajouter à une pièce ni rien": "Mais ne pas continuer une fois celui-ci ajouté à votre wifi (ne pas l'ajouter à une pièce ni rien",
+        "Il faut arrêter": "Il faut arrêter",
+        "à ce moment là": "à ce moment là",
         "Changelog détaillé": "Changelog détaillé"
     }
 }

@@ -35,6 +35,7 @@
         "Mes équipements broadlink": "My Broadlink Equipments",
         "Rechercher": "Search",
         "Apprendre une commande": "Learn a command",
+        "Apprendre commande RF Avancée": "Learn Advanced RF Command",
         "Configuration avancée": "Advanced configuration",
         "Dupliquer": "Duplicate",
         "Sauvegarder": "Save",
@@ -81,7 +82,11 @@
         "Un périphérique vient d\\'être inclu\/exclu. Veuillez réactualiser la page": "A device has just been included \/ excluded. Please refresh the page",
         "Une nouvelle commande vient d\\'être ajoutée. Pensez à lui donner un nom.": "A new command has been added. Don\\'t forget to give it a name",
         "Aucune commande reçue dans le temps imparti": "No commands received before timeout",
-        "Veuillez appuyer sur le bouton de votre télécommande": "Please press the button on your remote control"
+        "Fréquence RF trouvée, vous pouvez lachez le bouton et vous préparer a appuyer dans 3 secondes": "RF frequency found, you can let go of the button and get ready to press in 3 seconds",
+        "Aucune Fréquence RF trouvée": "No RF frequency found",
+        "Etape 2, appuyez sur le bouton": "Step 2, press the button",
+        "Veuillez appuyer sur le bouton de votre télécommande": "Please press the button on your remote control",
+        "Veuillez maintenir appuyé le bouton de votre télécommande (ou appuyez successivement dessus) pour trouver la fréquence RF": "Please hold down the button on your remote control (or press it successively) to find the RF frequency"
     },
     "plugins\/broadlink\/core\/php\/jeeBroadlink.php": {
         "Aucun équipement trouvé pour : ": "No equipment found for:",
