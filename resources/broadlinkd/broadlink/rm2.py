@@ -17,7 +17,6 @@ def read_rm2(device):
 	logging.debug("Connected to Broadlink device with name " + name + "....")
 	result['mac']=mac
 	result['temperature'] = product.check_temperature()
-	result['humidity'] = product.check_humidity()
 	logging.debug(str(result))
 	return result
 
