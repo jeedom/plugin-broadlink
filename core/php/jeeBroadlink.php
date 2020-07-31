@@ -45,6 +45,24 @@ if (isset($result['learn_mode'])) {
 	}
 	die();
 }
+if (isset($result['foundfrequency'])) {
+	if ($result['foundfrequency'] == 1) {
+		event::add('broadlink::foundfrequency', array(
+			'state' => 1)
+		);
+	} else {
+		event::add('broadlink::foundfrequency', array(
+			'state' => 0)
+		);
+	}
+	die();
+}
+if (isset($result['step2'])) {
+	event::add('broadlink::step2', array(
+			'state' => 1)
+		);
+	die();
+}
 if (isset($result['devices'])) {
 	foreach ($result['devices'] as $key => $datas) {
 		if (!isset($datas['mac'])) {
@@ -52,6 +70,10 @@ if (isset($result['devices'])) {
 		}
 		$logicalId = $datas['mac'];
 		$broadlink = broadlink::byLogicalId($logicalId, 'broadlink');
+		$broadlink2 = broadlink::byLogicalId($datas['reversemac'], 'broadlink');
+		if (!is_object($broadlink) && is_object($broadlink2)) {
+			$broadlink = $broadlink2;
+		}
 		if (!is_object($broadlink)) {
 			if ($datas['learn'] != 1) {
 				continue;

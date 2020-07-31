@@ -30,13 +30,13 @@ import argparse
 import traceback
 from os.path import join
 import json
-from broadlink import broadlink,rm2,a1,mp1,sp2
+from broadlink import broadlink,rm2,a1,mp1,sp2,rm4
 import globals
 
 try:
 	from jeedom.jeedom import *
 except ImportError:
-	print "Error: importing module from jeedom folder"
+	print("Error: importing module from jeedom folder")
 	sys.exit(1)
 
 
@@ -58,7 +58,8 @@ def read_socket():
 		global JEEDOM_SOCKET_MESSAGE
 		if not JEEDOM_SOCKET_MESSAGE.empty():
 			logging.debug("Message received in socket JEEDOM_SOCKET_MESSAGE")
-			message = json.loads(jeedom_utils.stripped(JEEDOM_SOCKET_MESSAGE.get()))
+			message = JEEDOM_SOCKET_MESSAGE.get().decode('utf-8')
+			message =json.loads(message)
 			if message['apikey'] != _apikey:
 				logging.error("Invalid apikey from socket : " + str(message))
 				return
@@ -73,22 +74,24 @@ def read_socket():
 			elif message['cmd'] == 'learnin':
 				logging.debug('Enter in learn mode')
 				globals.LEARN_MODE = True
-				jeedom_com.send_change_immediate({'learn_mode' : 1});
+				globals.JEEDOMCOM.send_change_immediate({'learn_mode' : 1});
 				devices = broadlink.discover(timeout=5)
 				logging.debug("found " + str(devices))
 				globals.LEARN_MODE = False
-				jeedom_com.send_change_immediate({'learn_mode' : 0});
+				globals.JEEDOMCOM.send_change_immediate({'learn_mode' : 0});
 				for device in devices:
 					type = device.type
+					devtype = device.devtype
 					ip = device.host[0]
 					port = device.host[1]
-					mac = binascii.hexlify(bytearray(device.mac))
-					jeedom_com.add_changes('devices::'+mac,{'type' : type, 'ip' : ip , 'mac': mac, 'port' : port, 'learn' : 1})
+					mac = device.mac.hex()
+					reversemac = "".join(reversed([mac[i:i+2] for i in range(0, len(mac), 2)]))
+					globals.JEEDOMCOM.add_changes('devices::'+mac,{'type' : type, 'ip' : ip , 'mac': mac,'reversemac': reversemac, 'port' : port, 'learn' : 1 ,'devtype' :devtype})
 			elif message['cmd'] == 'send':
 				if 'mac' in message['device']:
 					logging.debug('Send command')
 					send_broadlink(message)
-	except Exception,e:
+	except Exception as e:
 		logging.error(str(e))
 # ----------------------------------------------------------------------------
 def read_broadlink():
@@ -115,13 +118,16 @@ def read_broadlink():
 				elif globals.KNOWN_DEVICES[device]['type'] == 'mp1':
 					logging.debug('Handling MP1 for ' + globals.KNOWN_DEVICES[device]['name'])
 					result = mp1.read_mp1(globals.KNOWN_DEVICES[device])
+				elif globals.KNOWN_DEVICES[device]['type'] == 'rm4':
+					logging.debug('Handling RM4 for ' + globals.KNOWN_DEVICES[device]['name'])
+					result = rm4.read_rm4(globals.KNOWN_DEVICES[device])
 				if result :
 					if mac in globals.LAST_STATE and result == globals.LAST_STATE[mac]:
 						continue
 					else:
 						globals.LAST_STATE[mac] = result
-						jeedom_com.add_changes('devices::'+mac,result)
-	except Exception,e:
+						globals.JEEDOMCOM.add_changes('devices::'+mac,result)
+	except Exception as e:
 		if str(e) == 'timed out':
 			logging.debug('Device seems offline')
 		else:
@@ -140,28 +146,37 @@ def send_broadlink(message):
 			result = mp1.read_mp1(message['device'])
 		elif message['device']['type'] == 'sp2':
 			result = sp2.read_sp2(message['device'])
+		elif message['device']['type'] == 'rm4':
+			result = rm4.read_rm4(message['device'])
 		if result :
 			if message['device']['mac'] in globals.LAST_STATE and result == globals.LAST_STATE[message['device']['mac']]:
 				return
 			else:
 				globals.LAST_STATE[message['device']['mac']] = result
-				jeedom_com.add_changes('devices::'+message['device']['mac'],result)
+				globals.JEEDOMCOM.add_changes('devices::'+message['device']['mac'],result)
 		return
 	elif message['device']['type'] == 'rm2':
 		if message['cmdType'] == 'learn':
 			result = rm2.learn_rm2(message['device'])
 			if result:
-				jeedom_com.add_changes('devices::'+message['device']['mac'],result)
+				globals.JEEDOMCOM.add_changes('devices::'+message['device']['mac'],result)
 		else:
 			rm2.send_rm2(message['device'])
+	elif message['device']['type'] == 'rm4':
+		if message['cmdType'] == 'learn':
+			result = rm4.learn_rm4(message['device'])
+			if result:
+				globals.JEEDOMCOM.add_changes('devices::'+message['device']['mac'],result)
+		else:
+			rm4.send_rm4(message['device'])
 	elif message['device']['type'] == 'mp1':
 		result = mp1.send_mp1(message['device'])
 		if result:
-			jeedom_com.add_changes('devices::'+message['device']['mac'],result)
+			globals.JEEDOMCOM.add_changes('devices::'+message['device']['mac'],result)
 	elif message['device']['type'] == 'sp2':
 		result = sp2.send_sp2(message['device'])
 		if result:
-			jeedom_com.add_changes('devices::'+message['device']['mac'],result)
+			globals.JEEDOMCOM.add_changes('devices::'+message['device']['mac'],result)
 	return
 
 
@@ -239,13 +254,13 @@ signal.signal(signal.SIGTERM, handler)
 
 try:
 	jeedom_utils.write_pid(str(_pidfile))
-	jeedom_com = jeedom_com(apikey = _apikey,url = _callback,cycle=_cycle)
-	if not jeedom_com.test():
+	globals.JEEDOMCOM = jeedom_com(apikey = _apikey,url = _callback,cycle=_cycle)
+	if not globals.JEEDOMCOM.test():
 		logging.error('Network communication issues. Please fixe your Jeedom network configuration.')
 		shutdown()
 	jeedom_socket = jeedom_socket(port=_socket_port,address=_socket_host)
 	listen()
-except Exception,e:
+except Exception as e:
 	logging.error('Fatal error : '+str(e))
 	logging.debug(traceback.format_exc())
 	shutdown()

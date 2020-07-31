@@ -25,7 +25,11 @@ Infra rouge, un bouton apprendre une commande apparait en haut. Il vous
 suffit de cliquer dessus, vous avez ensuite 5 secondes pour apprendre
 une commande infrarouge ou 433 a votre broadlink. Suite à cela le plugin
 vous confirmera le succès de l’opération et créera la commande associée
-qu’il vous suffira simplement de nommer.
+qu’il vous suffira simplement de nommer. Il existe aussi un mode avancée 
+pour éventuellement détecter des fréquences Rf légèrement différente.
+Ce mode fonctionne en deux étapes, une étape de détection de fréquence 
+(ou il faut rester appuyer sur le bouton ou appuyer plusieurs fois dessus).
+Et une deuxième étape similaire au mode classique.
 
 > **Tip**
 >
@@ -55,6 +59,13 @@ bien évidemment convervé (ON télévision, ventilateur off, etc.)
 > Si vous ajouteé manuellement votre device car pas autodétecté. La MAC a renseigner est 
 > l'adresse MAC inversé par paquet de deux en minuscules sans les : exemple AA:BB:CC:DD:EE
 > devient eeddccbbaa
+
+> **Tip**
+>
+> Pour certains RM Pro notamment les versions 4. Il ne faut pas que le device soit lié au cloud.
+> Sinon il n'est plus contrôlable en local. Pour cela il faut ajouter le device en utilisant l'application.
+> Mais ne pas continuer une fois celui-ci ajouté à votre wifi (ne pas l'ajouter à une pièce ni rien). Il faut arrêter
+> à ce moment là.
 
 Changelog détaillé :
 <https://github.com/jeedom/plugin-broadlink/commits/stable>

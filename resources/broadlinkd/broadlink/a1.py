@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import broadlink
+from broadlink import broadlink
 import logging
 import time
 
@@ -9,7 +9,7 @@ def read_a1(device):
 	port = device['port']
 	mac = device['mac']
 	name = device['name']
-	product = broadlink.a1(host=(host,int(port)), mac=bytearray.fromhex(mac))
+	product = broadlink.gendevice(0x2714,host=(host,int(port)), mac=bytearray.fromhex(mac))
 	logging.debug("Connecting to Broadlink device with name " + name + "....")
 	product.auth()
 	logging.debug("Connected to Broadlink device with name " + name + "....")
