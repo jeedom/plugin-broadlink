@@ -235,7 +235,7 @@ $('body').on('broadlink::missedCommand', function (_event,_options) {
 
 $('body').on('broadlink::foundfrequency', function (_event,_options) {
 	if (_options['state'] == 1) {
-		$('#div_inclusionAlert').showAlert({message: '{{Fréquence RF trouvée, vous pouvez lachez le bouton et vous préparer a appuyer dans 5 secondes}}', level: 'warning'});
+		$('#div_inclusionAlert').showAlert({message: '{{Fréquence RF trouvée, vous pouvez lachez le bouton et vous préparer a appuyer dans 3 secondes}}', level: 'warning'});
 	} else {
 		$('#div_inclusionAlert').showAlert({message: '{{Aucune Fréquence RF trouvée}}', level: 'danger'});
 	}
