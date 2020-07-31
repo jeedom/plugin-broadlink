@@ -68,11 +68,13 @@ if (isset($result['devices'])) {
 		if (!isset($datas['mac'])) {
 			continue;
 		}
-		$logicalId = $datas['mac'];
+		$logicalId = $key;
 		$broadlink = broadlink::byLogicalId($logicalId, 'broadlink');
-		$broadlink2 = broadlink::byLogicalId($datas['reversemac'], 'broadlink');
-		if (!is_object($broadlink) && is_object($broadlink2)) {
-			$broadlink = $broadlink2;
+		if (isset($datas['reversemac'])){
+			$broadlink2 = broadlink::byLogicalId($datas['reversemac'], 'broadlink');
+			if (!is_object($broadlink) && is_object($broadlink2)) {
+				$broadlink = $broadlink2;
+			}
 		}
 		if (!is_object($broadlink)) {
 			if ($datas['learn'] != 1) {
