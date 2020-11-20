@@ -51,7 +51,12 @@ if (config::byKey('include_mode', 'broadlink', 0) == 1) {
 </div>
 </div>
 <legend><i class="fa fa-table"></i>  {{Mes équipements broadlink}}</legend>
-	 <input class="form-control" placeholder="{{Rechercher}}" id="in_searchEqlogic" />
+	 <div class="input-group" style="margin:5px;">
+		<input class="form-control" placeholder="{{Rechercher}}" id="in_searchEqlogic"/>
+		<div class="input-group-btn">
+			<a id="bt_resetSearch" class="btn roundedRight" style="width:30px"><i class="fas fa-times"></i></a>
+		</div>
+	</div>
 <div class="eqLogicThumbnailContainer">
   <?php
 foreach ($eqLogics as $eqLogic) {
@@ -87,13 +92,14 @@ foreach ($eqLogics as $eqLogic) {
 
   <div class="tab-content" style="height:calc(100% - 50px);overflow:auto;overflow-x: hidden;">
     <div role="tabpanel" class="tab-pane active" id="eqlogictab">
+	<br/>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-lg-7">
           <form class="form-horizontal">
             <fieldset>
               <div class="form-group">
                 <label class="col-sm-3 control-label">{{Nom de l'équipement broadlink}}</label>
-                <div class="col-sm-4">
+                <div class="col-sm-7">
                   <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
 				  <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="canlearn" style="display : none;" />
                   <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="Nom de l'équipement Broadlink"/>
@@ -101,27 +107,29 @@ foreach ($eqLogics as $eqLogic) {
               </div>
 			  <div class="form-group">
                 <label class="col-sm-3 control-label">{{Mac}}</label>
-                <div class="col-sm-4">
+                <div class="col-sm-7">
                   <input type="text" class="eqLogicAttr form-control" data-l1key="logicalId" placeholder="Logical ID"/>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-3 control-label"></label>
-                <div class="col-sm-9">
+                <div class="col-sm-7">
                   <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/>{{Activer}}</label>
                   <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-3 control-label">{{Objet parent}}</label>
-                <div class="col-sm-4">
+                <div class="col-sm-7">
                   <select class="eqLogicAttr form-control" data-l1key="object_id">
-                    <option value="">Aucun</option>
-                    <?php
-foreach (jeeObject::all() as $object) {
-	echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
-}
-?>
+                     <option value="">{{Aucun}}</option>
+					<?php
+					$options = '';
+					foreach ((jeeObject::buildTree(null, false)) as $object) {
+					$options .= '<option value="' . $object->getId() . '">' . str_repeat('&nbsp;&nbsp;', $object->getConfiguration('parentNumber')) . $object->getName() . '</option>';
+					}
+					echo $options;
+					?>
                  </select>
                </div>
              </div>
@@ -140,23 +148,23 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
            </div>
 		   <div class="form-group">
                 <label class="col-sm-3 control-label">{{Ip}}</label>
-                <div class="col-sm-3">
+                <div class="col-sm-7">
                   <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="Adresse Ip"/>
                 </div>
-				<label class="col-sm-1 control-label">{{Port}}</label>
-                <div class="col-sm-2">
+				<label class="col-sm-3 control-label">{{Port}}</label>
+                <div class="col-sm-7">
                   <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port" placeholder="Port"/>
                 </div>
               </div>
 			 <div class="form-group">
                 <label class="col-sm-3 control-label">{{Refresh des infos (en s)}}</label>
-                <div class="col-sm-3">
+                <div class="col-sm-7">
                   <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="delay" placeholder="Delai en secondes"/>
                 </div>
               </div>
 			   <div class="form-group">
               <label class="col-sm-3 control-label"></label>
-              <div class="col-sm-9">
+              <div class="col-sm-7">
                 <label class="checkbox-inline help" data-help="{{Utile si vous avez dupliqué un Broadlink Rm pour séparer les commandes à ne jamais cocher sur l'équipement principal (dans ce cas là la mac doit être obligatoirement terminée par -sub}}"><input type="checkbox" class="eqLogicAttr twoids" data-l1key="configuration" data-l2key="ischild" />{{Sous-Device}}</label>
               </div>
             </div>
@@ -164,7 +172,7 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
         </fieldset>
       </form>
     </div>
-    <div class="col-sm-6">
+    <div class="col-lg-5">
       <form class="form-horizontal">
         <fieldset>
           <legend><i class="fa fa-info-circle"></i>  {{Informations}}
