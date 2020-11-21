@@ -1,6 +1,10 @@
 {
     "changelog.md": {
         "Changelog Broadlink": "Changelog Broadlink",
+        "20\/11\/2020": "20\/11\/2020",
+        "Optimisations générales": "Optimisations générales",
+        "Nouvelle présentation de la liste des objets": "Nouvelle présentation de la liste des objets",
+        "Ajout du tag \"Compatibilité V4": "Ajout du tag \"Compatibilité V4",
         "31\/07\/2020": "31\/07\/2020",
         "Passage a python 3 (il faut probablement relancer les dépendances": "Passage a python 3 (il faut probablement relancer les dépendances",
         "Ajout de la gestion du RM4 (lire la doc pour la particularité": "Ajout de la gestion du RM4 (lire la doc pour la particularité",

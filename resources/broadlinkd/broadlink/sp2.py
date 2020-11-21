@@ -21,10 +21,10 @@ def read_sp2(device):
 		result['s1']=0
 	logging.debug(str(result))
 	data_poweroutput = product.get_energy()
-        if data_poweroutput != None and result['s1']==1:
-            result['power_output']=data_poweroutput
-        else:
-            result['power_output']=0
+	if data_poweroutput != None and result['s1']==1:
+		result['power_output']=data_poweroutput
+	else:
+		result['power_output']=0
 	logging.debug("value from sp2="+str(result))
 	return result
 
