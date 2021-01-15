@@ -124,7 +124,7 @@ class broadlink extends eqLogic {
 		$return = array();
 		$return['progress_file'] = '/tmp/dependancy_broadlink_in_progress';
 		$return['state'] = 'ok';
-		if (exec('sudo pip list | grep -E "pycrypto" | wc -l') < 1) {
+		if (exec('sudo pip3 list | grep -E "pycrypto" | wc -l') < 1) {
 			$return['state'] = 'nok';
 		}
 		return $return;

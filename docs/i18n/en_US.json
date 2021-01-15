@@ -1,6 +1,8 @@
 {
     "changelog.md": {
         "Changelog Broadlink": "Changelog Broadlink",
+        "23\/11\/2020": "23\/11\/2020",
+        "Gestion des les dependances de certains installations corrompus par tierces de cryptography en python 3 (relancez les dépendances si vous êtes confrontés a un soucis": "Management of the dependencies of certain corrupted installations by third parties of cryptography in python 3 (relaunch the dependencies if you are faced with a problem",
         "20\/11\/2020": "20\/11\/2020",
         "Optimisations générales": "General optimizations",
         "Nouvelle présentation de la liste des objets": "New presentation of the list of objects",
