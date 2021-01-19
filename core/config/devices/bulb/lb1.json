@@ -1,0 +1,272 @@
+{
+	"lb1": {
+		"name": "SmartBulb",
+		"groupe" : "Lumière",
+		"category" : {
+			"light" : 1
+		},
+		"configuration" : {
+			"device" : "lb1",
+			"delay" : 300,
+			"canlearn" : 0,
+			"ischild" :0
+		},
+		"commands": [{
+				"name": "pwr",
+				"type": "info",
+				"subtype": "numeric",
+				"isVisible": 1,
+				"isHistorized": 0,
+				"unite": "",
+				"logicalId": "pwr",
+				"configuration" : {
+					"logicalid" : "pwr"
+				},
+				"template": {
+					"dashboard": "light",
+					"mobile": "light"
+				}
+			},{
+				"name": "brightness",
+				"type": "info",
+				"subtype": "numeric",
+				"isVisible": 1,
+				"isHistorized": 0,
+				"unite": "",
+				"logicalId": "brightness",
+				"configuration" : {
+					"logicalid" : "brightness"
+				}
+			},{
+				"name": "colortemp",
+				"type": "info",
+				"subtype": "numeric",
+				"isVisible": 1,
+				"isHistorized": 0,
+				"unite": "",
+				"logicalId": "colortemp",
+				"configuration" : {
+					"logicalid" : "colortemp"
+				}
+			},{
+				"name": "hue",
+				"type": "info",
+				"subtype": "numeric",
+				"isVisible": 1,
+				"isHistorized": 0,
+				"unite": "",
+				"logicalId": "hue",
+				"configuration" : {
+					"logicalid" : "hue"
+				}
+			},{
+				"name": "saturation",
+				"type": "info",
+				"subtype": "numeric",
+				"isVisible": 1,
+				"isHistorized": 0,
+				"unite": "",
+				"logicalId": "saturation",
+				"configuration" : {
+					"logicalid" : "saturation"
+				}
+			},{
+				"name": "transitionduration",
+				"type": "info",
+				"subtype": "numeric",
+				"isVisible": 1,
+				"isHistorized": 0,
+				"unite": "ms",
+				"logicalId": "transitionduration",
+				"configuration" : {
+					"logicalid" : "transitionduration"
+				}
+			},{
+				"name": "maxworktime",
+				"type": "info",
+				"subtype": "numeric",
+				"isVisible": 1,
+				"isHistorized": 0,
+				"unite": "s",
+				"logicalId": "maxworktime",
+				"configuration" : {
+					"logicalid" : "maxworktime"
+				}
+			},{
+				"name": "Mode",
+				"type": "info",
+				"subtype": "numeric",
+				"isVisible": 1,
+				"isHistorized": 0,
+				"unite": "",
+				"logicalId": "bulb_colormode",
+				"configuration" : {
+					"logicalid" : "bulb_colormode",
+					"minValue" : 0,
+					"maxValue" : 2
+				}
+			},{
+				"name": "Scene",
+				"type": "info",
+				"subtype": "numeric",
+				"isVisible": 1,
+				"isHistorized": 0,
+				"unite": "",
+				"logicalId": "bulb_sceneidx",
+				"configuration" : {
+					"logicalid" : "bulb_sceneidx"
+				}
+			},{
+				"name": "Allumer",
+				"type": "action",
+				"subtype": "other",
+				"display": {
+					"icon": "<i class=\"fas fa-lightbulb\"><\/i>",
+					"generic_type": "LIGHT_ON"
+				},
+				"isVisible": 1,
+				"logicalId": "pwr:1"
+			},{
+				"name": "Eteindre",
+				"type": "action",
+				"subtype": "other",
+				"display": {
+					"icon": "<i class=\"fas fa-power-off\"><\/i>",
+					"generic_type": "LIGHT_OFF"
+				},
+				"isVisible": 1,
+				"logicalId": "pwr:0"
+			},{
+				"name": "_Couleur",
+				"type": "action",
+				"subtype": "color",
+				"display": {
+					"generic_type": "LIGHT_SET_COLOR"
+				},
+				"configuration" : {
+					"request" : "rgbAct"
+				},
+				"isVisible": 1,
+				"logicalId": "rgbAct"
+			},{
+				"name": "_Luminosité",
+				"type": "action",
+				"subtype": "slider",
+				"display": {
+					"generic_type": "LIGHT_SLIDER",
+					"forceReturnLineBefore": 1
+				},
+				"configuration" : {
+					"request" : "brightnessAct",
+					"minValue" : 0,
+					"maxValue" : 100
+				},
+				"isVisible": 1,
+				"logicalId": "brightnessAct"
+			},{
+				"name": "_Hue",
+				"type": "action",
+				"subtype": "slider",
+				"display": {
+					"generic_type": "LIGHT_SLIDER",
+					"forceReturnLineBefore": 0
+				},
+				"configuration" : {
+					"request" : "hueAct",
+					"minValue" : 0,
+					"maxValue" : 360
+				},
+				"isVisible": 1,
+				"logicalId": "hueAct"
+			},{
+				"name": "_Saturation",
+				"type": "action",
+				"subtype": "slider",
+				"display": {
+					"generic_type": "LIGHT_SLIDER",
+					"forceReturnLineBefore": 0
+				},
+				"configuration" : {
+					"request" : "saturationAct",
+					"minValue" : 0,
+					"maxValue" : 100
+				},
+				"isVisible": 1,
+				"logicalId": "saturationAct"
+			},{
+				"name": "_Transition",
+				"type": "action",
+				"subtype": "slider",
+				"display": {
+					"generic_type": "LIGHT_SLIDER",
+					"forceReturnLineBefore": 0
+				},
+				"configuration" : {
+					"request" : "transitiondurationAct",
+					"minValue" : 0,
+					"maxValue" : 10000
+				},
+				"isVisible": 1,
+				"logicalId": "transitiondurationAct"
+			},{
+				"name": "Timer",
+				"type": "action",
+				"subtype": "slider",
+				"display": {
+					"generic_type": "LIGHT_SLIDER",
+					"forceReturnLineBefore": 1
+				},
+				"configuration" : {
+					"request" : "maxworktimeAct",
+					"minValue" : 0,
+					"maxValue" : 360
+				},
+				"isVisible": 1,
+				"logicalId": "maxworktimeAct"
+			},{
+				"name": "_Mode",
+				"type": "action",
+				"subtype": "slider",
+				"display": {
+					"generic_type": "LIGHT_SLIDER",
+					"forceReturnLineBefore": 0
+				},
+				"configuration" : {
+					"request" : "bulb_colormodeAct",
+					"minValue" : 0,
+					"maxValue" : 2
+				},
+				"isVisible": 1,
+				"value": "Luminosité Info",
+				"logicalId": "bulb_colormodeAct"
+			},{
+				"name": "_Scene",
+				"type": "action",
+				"subtype": "slider",
+				"display": {
+					"generic_type": "LIGHT_SLIDER",
+					"forceReturnLineBefore": 0
+				},
+				"configuration" : {
+					"request" : "bulb_sceneidxAct",
+					"minValue" : 0,
+					"maxValue" : 7
+				},
+				"isVisible": 1,
+				"value": "Luminosité Info",
+				"logicalId": "bulb_sceneidxAct"
+			},{
+				"name": "Rafraîchir",
+				"type": "action",
+				"subtype": "other",
+				"isVisible": 1,
+				"isHistorized": 0,
+				"unite": "",
+				"logicalId": "refresh",
+				"configuration" : {
+					"logicalid" : "refresh"
+				}
+			}
+		]
+	}
+}
