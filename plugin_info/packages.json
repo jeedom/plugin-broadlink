@@ -1,0 +1,11 @@
+{
+  "apt" : {
+    "python" : {},
+    "python-pip" : {},
+    "python-pyudev" : {},
+    "python-requests" : {},
+    "python-dev" : {},
+    "libudev-dev" : {},
+    "python-serial" : {}
+  }
+}
