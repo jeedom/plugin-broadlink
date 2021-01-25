@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import broadlink
+from broadlink import broadlink
 import logging
 import time
 
@@ -9,7 +9,7 @@ def read_sp2(device):
 	port = device['port']
 	mac = device['mac']
 	name = device['name']
-	product = broadlink.sp2(host=(host,int(port)), mac=bytearray.fromhex(mac))
+	product = broadlink.gendevice(0x2711,host=(host,int(port)), mac=bytearray.fromhex(mac))
 	logging.debug("Connecting to Broadlink device with name " + name + "....")
 	product.auth()
 	logging.debug("Connected to Broadlink device with name " + name + "....")
@@ -20,6 +20,12 @@ def read_sp2(device):
 	else:
 		result['s1']=0
 	logging.debug(str(result))
+	data_poweroutput = product.get_energy()
+	if data_poweroutput != None and result['s1']==1:
+		result['power_output']=data_poweroutput
+	else:
+		result['power_output']=0
+	logging.debug("value from sp2="+str(result))
 	return result
 
 def send_sp2(device):
@@ -32,7 +38,7 @@ def send_sp2(device):
 	wantedstate = device['state']
 	if int(wantedstate) == 0:
 		state = False
-	product = broadlink.sp2(host=(host,int(port)), mac=bytearray.fromhex(mac))
+	product = broadlink.gendevice(0x2711,host=(host,int(port)), mac=bytearray.fromhex(mac))
 	logging.debug("Connecting to Broadlink device with name " + name + "....")
 	product.auth()
 	logging.debug("Connected to Broadlink device with name " + name + "....")

@@ -35,6 +35,7 @@
         "Mes équipements broadlink": "",
         "Rechercher": "検索",
         "Apprendre une commande": "",
+        "Apprendre commande RF Avancée": "",
         "Configuration avancée": "高度な構成",
         "Dupliquer": "重複",
         "Sauvegarder": "セーブ",
@@ -46,6 +47,7 @@
         "Activer": "アクティブ",
         "Visible": "目に見えます",
         "Objet parent": "親オブジェクト",
+        "Aucun": "何でもありません",
         "Catégorie": "カテゴリ",
         "Ip": "",
         "Port": "ポート",
@@ -81,7 +83,11 @@
         "Un périphérique vient d\\'être inclu\/exclu. Veuillez réactualiser la page": "デバイスだけ\\ \/含ま除外すること。ページを再読み込みしてください",
         "Une nouvelle commande vient d\\'être ajoutée. Pensez à lui donner un nom.": "",
         "Aucune commande reçue dans le temps imparti": "",
-        "Veuillez appuyer sur le bouton de votre télécommande": ""
+        "Fréquence RF trouvée, vous pouvez lachez le bouton et vous préparer a appuyer dans 3 secondes": "",
+        "Aucune Fréquence RF trouvée": "",
+        "Etape 2, appuyez sur le bouton": "",
+        "Veuillez appuyer sur le bouton de votre télécommande": "",
+        "Veuillez maintenir appuyé le bouton de votre télécommande (ou appuyez successivement dessus) pour trouver la fréquence RF": ""
     },
     "plugins\/broadlink\/core\/php\/jeeBroadlink.php": {
         "Aucun équipement trouvé pour : ": "",
@@ -97,5 +103,8 @@
         "Périphérique reconnu, intégration en cours": "",
         "Création des commandes": "",
         "Envoi des commandes post-inclusion": ""
+    },
+    "info.json": {
+        "Plugin ajoutant le support de certains produits Broadlink comme (le RM, le A1 etccc)": ""
     }
 }

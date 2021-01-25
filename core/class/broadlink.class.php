@@ -124,7 +124,7 @@ class broadlink extends eqLogic {
 		$return = array();
 		$return['progress_file'] = '/tmp/dependancy_broadlink_in_progress';
 		$return['state'] = 'ok';
-		if (exec('sudo pip list | grep -E "pycrypto" | wc -l') < 1) {
+		if (exec('sudo pip3 list | grep -E "pycrypto" | wc -l') < 1) {
 			$return['state'] = 'nok';
 		}
 		return $return;
@@ -142,7 +142,7 @@ class broadlink extends eqLogic {
 			throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
 		}
 		$broadlink_path = realpath(dirname(__FILE__) . '/../../resources/broadlinkd');
-		$cmd = 'sudo /usr/bin/python ' . $broadlink_path . '/broadlinkd.py';
+		$cmd = 'sudo /usr/bin/python3 ' . $broadlink_path . '/broadlinkd.py';
 		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel('broadlink'));
 		$cmd .= ' --socketport ' . config::byKey('socketport', 'broadlink');
 		$cmd .= ' --sockethost 127.0.0.1';
@@ -302,7 +302,7 @@ class broadlink extends eqLogic {
 		socket_close($socket);
 	}
 
-	public function learn() {
+	public function learn($_mode) {
 		$value = array('apikey' => jeedom::getApiKey('broadlink'), 'cmd' => 'send', 'cmdType' => 'learn');
 		if ($this->getConfiguration('device') != '') {
 			$value['device'] = array(
@@ -312,6 +312,7 @@ class broadlink extends eqLogic {
 				'delay' => $this->getConfiguration('delay'),
 				'port' => $this->getConfiguration('port'),
 				'type' => $this->getConfiguration('device'),
+				'mode' => $_mode,
 			);
 			$value = json_encode($value);
 			$socket = socket_create(AF_INET, SOCK_STREAM, 0);

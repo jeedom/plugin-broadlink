@@ -44,7 +44,7 @@ try {
 		if (!is_object($broadlink)) {
 			ajax::success(array());
 		}
-		ajax::success($broadlink->learn());
+		ajax::success($broadlink->learn(init('mode')));
 	}
 	
 	if (init('action') == 'synchronise') {

@@ -14,6 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
+  $('#bt_resetSearch').off('click').on('click', function () {
+     $('#in_searchEqlogic').val('')
+     $('#in_searchEqlogic').keyup();
+ })
+ 
  $('.changeIncludeState').on('click', function () {
 	var state = $(this).attr('data-state');
 	changeIncludeState(state);
@@ -233,6 +238,18 @@ $('body').on('broadlink::missedCommand', function (_event,_options) {
     $('#div_inclusionAlert').showAlert({message: '{{Aucune commande reçue dans le temps imparti}}', level: 'danger'});
 });
 
+$('body').on('broadlink::foundfrequency', function (_event,_options) {
+	if (_options['state'] == 1) {
+		$('#div_inclusionAlert').showAlert({message: '{{Fréquence RF trouvée, vous pouvez lachez le bouton et vous préparer a appuyer dans 3 secondes}}', level: 'warning'});
+	} else {
+		$('#div_inclusionAlert').showAlert({message: '{{Aucune Fréquence RF trouvée}}', level: 'danger'});
+	}
+});
+
+$('body').on('broadlink::step2', function (_event,_options) {
+	$('#div_inclusionAlert').showAlert({message: '{{Etape 2, appuyez sur le bouton}}', level: 'warning'});
+});
+
 
 function changeIncludeState(_state) {
     $.ajax({// fonction permettant de faire de l'ajax
@@ -263,6 +280,30 @@ $('.learnCommand').on('click', function () {
         data: {
             action: "learn",
 			id : $('.eqLogicAttr[data-l1key=id]').value(),
+			mode : 'normal',
+        },
+        dataType: 'json',
+        error: function (request, status, error) {
+            handleAjaxError(request, status, error);
+        },
+        success: function (data) { // si l'appel a bien fonctionné
+        if (data.state != 'ok') {
+            $('#div_alert').showAlert({message: data.result, level: 'danger'});
+            return;
+        }
+    }
+	});
+});
+
+$('.learnCommandRF').on('click', function () {
+	$('#div_inclusionAlert').showAlert({message: '{{Veuillez maintenir appuyé le bouton de votre télécommande (ou appuyez successivement dessus) pour trouver la fréquence RF}}', level: 'warning'});
+	$.ajax({// fonction permettant de faire de l'ajax
+        type: "POST", // methode de transmission des données au fichier php
+        url: "plugins/broadlink/core/ajax/broadlink.ajax.php", // url du fichier php
+        data: {
+            action: "learn",
+			id : $('.eqLogicAttr[data-l1key=id]').value(),
+			mode : 'rf',
         },
         dataType: 'json',
         error: function (request, status, error) {

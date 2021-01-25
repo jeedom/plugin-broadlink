@@ -35,6 +35,7 @@
         "Mes équipements broadlink": "Meu equipamento de broadlink",
         "Rechercher": "Pesquisa",
         "Apprendre une commande": "Aprenda um pedido",
+        "Apprendre commande RF Avancée": "Aprenda o comando avançado de RF",
         "Configuration avancée": "Configuração avançada",
         "Dupliquer": "Duplicar",
         "Sauvegarder": "Salvar",
@@ -46,6 +47,7 @@
         "Activer": "Ativar",
         "Visible": "Visivél",
         "Objet parent": "Objeto pai",
+        "Aucun": "Nemhum",
         "Catégorie": "Categoria",
         "Ip": "IP",
         "Port": "Porta",
@@ -81,7 +83,11 @@
         "Un périphérique vient d\\'être inclu\/exclu. Veuillez réactualiser la page": "Um dispositivo apenas \\ ser incluídos \/ excluídos. Atualize a página",
         "Une nouvelle commande vient d\\'être ajoutée. Pensez à lui donner un nom.": "Um novo pedido acabou de ser adicionado. Considere dar um nome a ele",
         "Aucune commande reçue dans le temps imparti": "Nenhum pedido recebido dentro do prazo",
-        "Veuillez appuyer sur le bouton de votre télécommande": "Por favor, pressione o botão no seu controle remoto"
+        "Fréquence RF trouvée, vous pouvez lachez le bouton et vous préparer a appuyer dans 3 secondes": "Frequência de RF encontrada, você pode soltar o botão e se preparar para pressionar em 3 segundos",
+        "Aucune Fréquence RF trouvée": "Nenhuma frequência de RF encontrada",
+        "Etape 2, appuyez sur le bouton": "Etapa 2, pressione o botão",
+        "Veuillez appuyer sur le bouton de votre télécommande": "Por favor, pressione o botão no seu controle remoto",
+        "Veuillez maintenir appuyé le bouton de votre télécommande (ou appuyez successivement dessus) pour trouver la fréquence RF": "Mantenha pressionado o botão no seu controle remoto (ou pressione-o sucessivamente) para encontrar a frequência de RF"
     },
     "plugins\/broadlink\/core\/php\/jeeBroadlink.php": {
         "Aucun équipement trouvé pour : ": "Nenhum equipamento encontrado para:",
@@ -97,5 +103,8 @@
         "Périphérique reconnu, intégration en cours": "Dispositivo reconhecido, integração em andamento",
         "Création des commandes": "Criação de pedidos",
         "Envoi des commandes post-inclusion": "Envio de pedidos pós-inclusão"
+    },
+    "info.json": {
+        "Plugin ajoutant le support de certains produits Broadlink comme (le RM, le A1 etccc)": "Plugin adicionando suporte para alguns produtos Broadlink, como (RM, A1 etccc)"
     }
 }

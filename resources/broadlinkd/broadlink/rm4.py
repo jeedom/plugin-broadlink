@@ -5,24 +5,25 @@ import time
 from broadlink.exceptions import ReadError, StorageError
 import globals
 
-def read_rm2(device):
+def read_rm4(device):
 	result ={}
 	host = device['ip']
 	port = device['port']
 	mac = device['mac']
 	name = device['name']
-	product = broadlink.gendevice(0x2712,host=(host,int(port)), mac=bytearray.fromhex(mac))
+	product = broadlink.gendevice(0x61a2,host=(host,int(port)), mac=bytearray.fromhex(mac))
 	logging.debug("Connecting to Broadlink device with name " + name + "....")
 	product.auth()
 	logging.debug("Connected to Broadlink device with name " + name + "....")
 	result['mac']=mac
 	result['temperature'] = product.check_temperature()
+	result['humidity'] = product.check_humidity()
 	logging.debug(str(result))
 	return result
 
-def learn_rm2(device):
+def learn_rm4(device):
 	if device['mode'] == 'rf':
-		result = learn_rm2_rf(device)
+		result = learn_rm4_rf(device)
 		return result
 	result ={}
 	host = device['ip']
@@ -32,7 +33,7 @@ def learn_rm2(device):
 		logging.debug("This is a child device original mac is " + mac[:-4])
 		mac = mac[:-4]
 	name = device['name']
-	product = broadlink.gendevice(0x2712,host=(host,int(port)), mac=bytearray.fromhex(mac))
+	product = broadlink.gendevice(0x61a2,host=(host,int(port)), mac=bytearray.fromhex(mac))
 	logging.debug("Connecting to Broadlink device with name " + name + "....")
 	product.auth()
 	logging.debug("Connected to Broadlink device with name " + name + "....")
@@ -61,7 +62,7 @@ def learn_rm2(device):
 	logging.debug("Quit learning")
 	return result
 
-def learn_rm2_rf(device):
+def learn_rm4_rf(device):
 	result ={}
 	host = device['ip']
 	port = device['port']
@@ -70,7 +71,7 @@ def learn_rm2_rf(device):
 		logging.debug("This is a child device original mac is " + mac[:-4])
 		mac = mac[:-4]
 	name = device['name']
-	product = broadlink.gendevice(0x2712,host=(host,int(port)), mac=bytearray.fromhex(mac))
+	product = broadlink.gendevice(0x61a2,host=(host,int(port)), mac=bytearray.fromhex(mac))
 	logging.debug("Connecting to Broadlink device with name " + name + "....")
 	product.auth()
 	logging.debug("Connected to Broadlink device with name " + name + "....")
@@ -118,7 +119,7 @@ def learn_rm2_rf(device):
 		logging.debug("Quit learning")
 	return result
 
-def send_rm2(device):
+def send_rm4(device):
 	result ={}
 	host = device['ip']
 	port = device['port']
@@ -128,7 +129,7 @@ def send_rm2(device):
 		mac = mac[:-4]
 	name = device['name']
 	hex2send = device['hex2send']
-	product = broadlink.gendevice(0x2712,host=(host,int(port)), mac=bytearray.fromhex(mac))
+	product = broadlink.gendevice(0x61a2,host=(host,int(port)), mac=bytearray.fromhex(mac))
 	logging.debug("Connecting to Broadlink device with name " + name + "....")
 	product.auth()
 	logging.debug("Connected to Broadlink device with name " + name + "....")

@@ -38,7 +38,7 @@ $source = eqLogic::byLogicalId($id,'broadlink');
 		<label>{{Veuillez choisir vers quelle(s) cible(s) vous voulez synchroniser les commandes de ce Broadlink :}}</label> <a class="btn btn-warning btn-xs" id="btn_allDevice"><i class="fa fa-check-square-o"></i> {{Tous les Broadlinks}}</a></br></br>
 			<?php
 			foreach ($eqLogics as $eqLogic) {
-				if ($eqLogic->getLogicalId() != $id && $eqLogic->getConfiguration('device') == 'rm2') {
+				if ($eqLogic->getLogicalId() != $id && ($eqLogic->getConfiguration('device') == 'rm2' || $eqLogic->getConfiguration('device') == 'rm4')) {
 					echo '<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr targets" logical="'.$eqLogic->getId().'"/>'.$eqLogic->getHumanName(true).'</label>';
 				}
 			}

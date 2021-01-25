@@ -9,10 +9,14 @@ echo "*             Installation des dépendances             *"
 echo "********************************************************"
 sudo apt-get update
 echo 50 > ${PROGRESS_FILE}
-sudo apt-get install -y python-pip python-dev python-pyudev libudev-dev python-serial python-requests
-sudo pip install pycrypto
-sudo pip install pyudev
-sudo pip install requests
+sudo apt-get install -y python3-pip python3-dev python3-pyudev libudev-dev python3-setuptools python3-serial python3-requests libffi-dev libssl-dev
+sudo pip3 install wheel
+sudo apt-get remove -y python3-cryptography
+sudo pip3 uninstall -y cryptography
+sudo pip3 install cryptography
+sudo pip3 install pycrypto
+sudo pip3 install pyudev
+sudo pip3 install requests
 echo 100 > ${PROGRESS_FILE}
 echo "********************************************************"
 echo "*             Installation terminée                    *"

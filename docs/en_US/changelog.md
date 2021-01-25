@@ -1,3 +1,22 @@
+# Changelog Broadlink
+
+# 23/11/2020
+
+- Management of the dependencies of certain corrupted installations by third parties of cryptography in python 3 (relaunch the dependencies if you are faced with a problem)
+
+# 20/11/2020
+
+- General optimizations
+- New presentation of the list of objects
+- Addition of the tag "V4 compatibility"
+
+# 07/31/2020
+
+- Switching to python 3 (it is probably necessary to restart the dependencies)
+- Added management of RM4 (read the doc for the particularity)
+- Added advanced RF learning (with two steps, one to vary frequencies and find it and another to learn). It will increase learning compatibility
+
+
 # 09/11/2019
 
 - Adaptation for jeedom v4
