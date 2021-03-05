@@ -529,8 +529,27 @@ class broadlinkCmd extends cmd {
 						break;
 					default:
 						$finalValue = trim($value[1]);
+						break;
 				}
-				$data[trim($value[0])] = $finalValue;
+				if ($value[0] == 'pwr')
+					$data[trim($value[0])] = intval($finalValue);
+				else
+					$data[trim($value[0])] = $finalValue;
+			}
+			if (count($value) == 1) {
+				switch ($this->getSubType()) {
+					case 'color':
+						if (implode (",",  $values) == "rgbAct")
+							$r=implode (",", $_options);
+							$rgb=substr(ltrim($r, $r[0]),0,6);
+							$data['red']   = hexdec (substr($rgb,0,2));
+							$data['green'] = hexdec (substr($rgb,2,2));
+							$data['blue']  = hexdec (substr($rgb,4,2));
+						break;
+					case 'slider':
+						$data[substr(implode (",",  $values), 0, -3)] = intval(ltrim(implode (",", $_options),','));
+						break;
+				}
 			}
 		}
 		$data['ip'] = $eqLogic->getConfiguration('ip');
