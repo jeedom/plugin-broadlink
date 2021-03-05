@@ -1,6 +1,8 @@
 {
     "changelog.md": {
         "Changelog Broadlink": "Changelog Broadlink",
+        "15\/01\/2021": "15\/01\/2021",
+        "Correction d'un soucis sur les dépendances en buster": "Corrigido um problema com dependências de buster",
         "23\/11\/2020": "23\/11\/2020",
         "Gestion des les dependances de certains installations corrompus par tierces de cryptography en python 3 (relancez les dépendances si vous êtes confrontés a un soucis": "Gestão das dependências de certas instalações corrompidas por terceiros de criptografia em python 3 (reinicie as dependências se você se deparar com um problema",
         "20\/11\/2020": "20\/11\/2020",

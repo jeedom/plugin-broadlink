@@ -13,10 +13,11 @@ sudo apt-get install -y python3-pip python3-dev python3-pyudev libudev-dev pytho
 sudo pip3 install wheel
 sudo apt-get remove -y python3-cryptography
 sudo pip3 uninstall -y cryptography
-sudo pip3 install cryptography
+sudo pip3 install cryptography==2.6.1
 sudo pip3 install pycrypto
 sudo pip3 install pyudev
 sudo pip3 install requests
+sudo pip3 install asn1crypto
 echo 100 > ${PROGRESS_FILE}
 echo "********************************************************"
 echo "*             Installation terminée                    *"
