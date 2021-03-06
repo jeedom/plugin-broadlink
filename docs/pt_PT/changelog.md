@@ -1,5 +1,9 @@
 # Changelog Broadlink
 
+# 05/03/2021
+
+- Atualização do script de dependência seguindo a mudança de criptografia
+
 # 15/01/2021
 
 - Corrigido um problema com dependências de buster

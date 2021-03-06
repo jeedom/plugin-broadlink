@@ -1,6 +1,8 @@
 {
     "changelog.md": {
         "Changelog Broadlink": "Registro de cambios Broadlink",
+        "05\/03\/2021": "05\/03\/2021",
+        "Mise à jour du script de dépendances suite au changemetn cryptography": "Actualización del script de dependencia tras el cambio de criptografía",
         "15\/01\/2021": "15\/01\/2021",
         "Correction d'un soucis sur les dépendances en buster": "Se solucionó un problema con las dependencias de buster",
         "23\/11\/2020": "23\/11\/2020",

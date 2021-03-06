@@ -1,5 +1,9 @@
 # Changelog Broadlink
 
+# 03/05/2021
+
+- Aktualisierung des Abhängigkeitsskripts nach der Kryptografieänderung
+
 # 15.01.2021
 
 - Ein Problem mit Buster-Abhängigkeiten wurde behoben
