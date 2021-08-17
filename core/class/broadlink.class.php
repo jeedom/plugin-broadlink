@@ -267,7 +267,7 @@ class broadlink extends eqLogic {
 	}
 	
 	public function preUpdate() {
-		if (substr($this->getLogicalId(), -3) != 'sub' && $this->getConfiguration('ischild',0) == 1) {
+		if (!preg_match('/.*?(-sub[0-9]*)$/', $this->getLogicalId()) && $this->getConfiguration('ischild',0) == 1) {
 			$this->setLogicalId($this->getLogicalId().'-sub');
 		}
 	}
