@@ -2,11 +2,11 @@
     "changelog.md": {
         "Changelog Broadlink": "Changelog Broadlink",
         "05\/03\/2021": "03\/05\/2021",
-        "Mise à jour du script de dépendances suite au changemetn cryptography": "Aktualisierung des Abhängigkeitsskripts nach der Kryptografieänderung",
+        "Mise à jour du script de dépendances suite au changement cryptography": "Aktualisierung des Abhängigkeitsskripts nach der Änderung der Kryptografie",
         "15\/01\/2021": "15.01.2021",
         "Correction d'un soucis sur les dépendances en buster": "Ein Problem mit Buster-Abhängigkeiten wurde behoben",
         "23\/11\/2020": "23\/11\/2020",
-        "Gestion des les dependances de certains installations corrompus par tierces de cryptography en python 3 (relancez les dépendances si vous êtes confrontés a un soucis": "Verwaltung der Abhängigkeiten bestimmter beschädigter Installationen durch Drittanbieter von Kryptografie in Python 3 (Starten Sie die Abhängigkeiten neu, wenn Sie auf ein Problem stoßen",
+        "Gestion des les dépendances de certains installations corrompus par tierces de cryptography en python 3 (relancez les dépendances si vous êtes confrontés a un soucis": "Verwaltung der Abhängigkeiten bestimmter beschädigter Installationen durch Drittanbieter von Kryptografie in Python 3 (Starten Sie die Abhängigkeiten neu, wenn Sie auf ein Problem stoßen",
         "20\/11\/2020": "20\/11\/2020",
         "Optimisations générales": "Allgemeine Optimierungen",
         "Nouvelle présentation de la liste des objets": "Neue Darstellung der Objektliste",
@@ -21,7 +21,7 @@
         "09\/05\/2018": "05\/09\/2018",
         "Rajout de l'image des SC1": "Hinzufügen des Bildes von SC1",
         "10\/03\/2018": "2018.03.10",
-        "Force yes sur les dependances": "Erzwingen Sie Ja für Abhängigkeiten"
+        "Force yes sur les dépendances": "Erzwingen Sie Ja für Abhängigkeiten"
     },
     "index.md": {
         "Plugin permettant de s'interfacer avec des équipements broadlink": "Plugin zur Anbindung an Broadlink-Geräte",
