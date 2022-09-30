@@ -1,11 +1,17 @@
 {
-  "apt" : {
-    "python" : {},
-    "python-pip" : {},
-    "python-pyudev" : {},
-    "python-requests" : {},
-    "python-dev" : {},
-    "libudev-dev" : {},
-    "python-serial" : {}
+  "apt": {
+    "python3": {},
+    "python3-pip": {},
+    "python3-requests": {},
+    "python3-dev": {},
+    "libudev-dev": {},
+    "python3-serial": {}
+  },
+  "pip3": {
+    "wheel": {},
+    "cryptography": {},
+    "pycrypto": {},
+    "pyudev": {},
+    "asn1crypto": {}
   }
 }

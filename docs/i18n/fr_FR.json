@@ -1,10 +1,12 @@
 {
     "changelog.md": {
         "Changelog Broadlink": "Changelog Broadlink",
+        "05\/03\/2021": "05\/03\/2021",
+        "Mise à jour du script de dépendances suite au changement cryptography": "Mise à jour du script de dépendances suite au changement cryptography",
         "15\/01\/2021": "15\/01\/2021",
         "Correction d'un soucis sur les dépendances en buster": "Correction d'un soucis sur les dépendances en buster",
         "23\/11\/2020": "23\/11\/2020",
-        "Gestion des les dependances de certains installations corrompus par tierces de cryptography en python 3 (relancez les dépendances si vous êtes confrontés a un soucis": "Gestion des les dependances de certains installations corrompus par tierces de cryptography en python 3 (relancez les dépendances si vous êtes confrontés a un soucis",
+        "Gestion des les dépendances de certains installations corrompus par tierces de cryptography en python 3 (relancez les dépendances si vous êtes confrontés a un soucis": "Gestion des les dépendances de certains installations corrompus par tierces de cryptography en python 3 (relancez les dépendances si vous êtes confrontés a un soucis",
         "20\/11\/2020": "20\/11\/2020",
         "Optimisations générales": "Optimisations générales",
         "Nouvelle présentation de la liste des objets": "Nouvelle présentation de la liste des objets",
@@ -19,7 +21,7 @@
         "09\/05\/2018": "09\/05\/2018",
         "Rajout de l'image des SC1": "Rajout de l'image des SC1",
         "10\/03\/2018": "10\/03\/2018",
-        "Force yes sur les dependances": "Force yes sur les dependances"
+        "Force yes sur les dépendances": "Force yes sur les dépendances"
     },
     "index.md": {
         "Plugin permettant de s'interfacer avec des équipements broadlink": "Plugin permettant de s'interfacer avec des équipements broadlink",
