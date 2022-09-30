@@ -1,49 +1,49 @@
 {
-    "rm2": {
-        "name": "Broadlink Universal Remote",
-		"groupe" : "Télécommande",
-		"category" : {
-			"automatism" : 1
-		},
-		"configuration" : {
-			"device" : "rm2",
-			"delay" : 300,
-			"canlearn" : 1,
-			"ischild" :0
-		},
-        "commands": [
-            {
-                "name": "Température",
-                "type": "info",
-                "subtype": "numeric",
-                "isVisible": 1,
-                "isHistorized": 0,
-                "unite": "°C",
-                "logicalId": "temperature",
-                "configuration" : {
-					"logicalid" : "temperature"
-				},
-				"display": {
-					"icon": "<i class=\"fa fa-thermometer-empty\"><\/i>",
-					"generic_type": "DONT"
-				},
-				"template": {
-					"dashboard": "line",
-					"mobile": "line"
-				}
-            },
-			 {
-                "name": "Rafraîchir",
-                "type": "action",
-                "subtype": "other",
-                "isVisible": 1,
-                "isHistorized": 0,
-                "unite": "",
-                "logicalId": "refresh",
-                "configuration" : {
-					"logicalid" : "refresh"
-				}
-            }
-        ]
-    }
+  "rm2": {
+    "name": "Broadlink Universal Remote",
+    "groupe" : "Télécommande",
+    "category" : {
+      "automatism" : 1
+    },
+    "configuration" : {
+      "device" : "rm2",
+      "delay" : 300,
+      "canlearn" : 1,
+      "ischild" :0
+    },
+    "commands": [
+      {
+        "name": "Température",
+        "type": "info",
+        "subtype": "numeric",
+        "isVisible": 1,
+        "isHistorized": 0,
+        "unite": "°C",
+        "logicalId": "temperature",
+        "configuration" : {
+          "logicalid" : "temperature"
+        },
+        "display": {
+          "icon": "<i class=\"fa fa-thermometer-empty\"><\/i>",
+          "generic_type": "DONT"
+        },
+        "template": {
+          "dashboard": "line",
+          "mobile": "line"
+        }
+      },
+      {
+        "name": "Rafraîchir",
+        "type": "action",
+        "subtype": "other",
+        "isVisible": 1,
+        "isHistorized": 0,
+        "unite": "",
+        "logicalId": "refresh",
+        "configuration" : {
+          "logicalid" : "refresh"
+        }
+      }
+    ]
+  }
 }
