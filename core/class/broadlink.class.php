@@ -16,32 +16,29 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* * ***************************Includes********************************* */
-
 class broadlink extends eqLogic {
-	/*     * ***********************Methode static*************************** */
 
 	public static function createFromDef($_def) {
 		event::add('jeedom::alert', array(
 			'level' => 'warning',
-			'page' => 'broadlink',
+			'page' => __CLASS__,
 			'message' => __('Nouveau module detecté', __FILE__),
 		));
-		$banId = explode(' ', config::byKey('banId', 'broadlink'));
+		$banId = explode(' ', config::byKey('banId', __CLASS__));
 		if (in_array($_def['mac'], $banId)) {
 			event::add('jeedom::alert', array(
 				'level' => 'danger',
-				'page' => 'broadlink',
+				'page' => __CLASS__,
 				'message' => __('Le module a un id banni. Inclusion impossible', __FILE__),
 			));
 			return false;
 		}
 		if (!isset($_def['mac']) || !isset($_def['type'])) {
-			log::add('broadlink', 'error', 'Information manquante pour ajouter l\'équipement : ' . print_r($_def, true));
+			log::add(__CLASS__, 'error', __("Information manquante pour ajouter l'équipement", __FILE__) . ' : ' . print_r($_def, true));
 			event::add('jeedom::alert', array(
 				'level' => 'danger',
-				'page' => 'broadlink',
-				'message' => __('Information manquante pour ajouter l\'équipement. Inclusion impossible', __FILE__),
+				'page' => __CLASS__,
+				'message' => __("Information manquante pour ajouter l'équipement. Inclusion impossible", __FILE__),
 			));
 			return false;
 		}
@@ -50,13 +47,13 @@ class broadlink extends eqLogic {
 		if (isset($_def['data']['mac'])) {
 			$logicalId = $_def['data']['mac'];
 		}
-		$broadlink = broadlink::byLogicalId($logicalId, 'broadlink');
+		$broadlink = self::byLogicalId($logicalId, __CLASS__);
 		if (!is_object($broadlink)) {
-			$eqLogic = new broadlink();
+			$eqLogic = new self();
 			$eqLogic->setName($logicalId);
 		}
 		$eqLogic->setLogicalId($logicalId);
-		$eqLogic->setEqType_name('broadlink');
+		$eqLogic->setEqType_name(__CLASS__);
 		$eqLogic->setIsEnable(1);
 		$eqLogic->setIsVisible(1);
 		$eqLogic->setConfiguration('device', strtolower($_def['type']));
@@ -70,8 +67,8 @@ class broadlink extends eqLogic {
 
 		event::add('jeedom::alert', array(
 			'level' => 'warning',
-			'page' => 'broadlink',
-			'message' => __('Module inclu avec succès', __FILE__),
+			'page' => __CLASS__,
+			'message' => __('Module inclus avec succès', __FILE__),
 		));
 		return $eqLogic;
 	}
@@ -91,7 +88,6 @@ class broadlink extends eqLogic {
 						$return += json_decode($content, true);
 					}
 				} catch (Exception $e) {
-
 				}
 			}
 		}
@@ -106,9 +102,9 @@ class broadlink extends eqLogic {
 
 	public static function deamon_info() {
 		$return = array();
-		$return['log'] = 'broadlink';
+		$return['log'] = __CLASS__;
 		$return['state'] = 'nok';
-		$pid_file = jeedom::getTmpFolder('broadlink') . '/deamon.pid';
+		$pid_file = jeedom::getTmpFolder(__CLASS__) . '/deamon.pid';
 		if (file_exists($pid_file)) {
 			if (@posix_getsid(trim(file_get_contents($pid_file)))) {
 				$return['state'] = 'ok';
@@ -132,7 +128,7 @@ class broadlink extends eqLogic {
 
 	public static function dependancy_install() {
 		log::remove(__CLASS__ . '_update');
-		return array('script' => dirname(__FILE__) . '/../../resources/install_#stype#.sh ' . jeedom::getTmpFolder('broadlink') . '/dependance', 'log' => log::getPathToLog(__CLASS__ . '_update'));
+		return array('script' => dirname(__FILE__) . '/../../resources/install_#stype#.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependance', 'log' => log::getPathToLog(__CLASS__ . '_update'));
 	}
 
 	public static function deamon_start() {
@@ -143,15 +139,15 @@ class broadlink extends eqLogic {
 		}
 		$broadlink_path = realpath(dirname(__FILE__) . '/../../resources/broadlinkd');
 		$cmd = 'sudo /usr/bin/python3 ' . $broadlink_path . '/broadlinkd.py';
-		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel('broadlink'));
-		$cmd .= ' --socketport ' . config::byKey('socketport', 'broadlink');
+		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel(__CLASS__));
+		$cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__);
 		$cmd .= ' --sockethost 127.0.0.1';
 		$cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/broadlink/core/php/jeeBroadlink.php';
-		$cmd .= ' --apikey ' . jeedom::getApiKey('broadlink');
-		$cmd .= ' --cycle ' . config::byKey('cycle', 'broadlink');
-		$cmd .= ' --pid ' . jeedom::getTmpFolder('broadlink') . '/deamon.pid';
-		log::add('broadlink', 'info', 'Lancement démon broadlink : ' . $cmd);
-		$result = exec($cmd . ' >> ' . log::getPathToLog('broadlink') . ' 2>&1 &');
+		$cmd .= ' --apikey ' . jeedom::getApiKey(__CLASS__);
+		$cmd .= ' --cycle ' . config::byKey('cycle', __CLASS__);
+		$cmd .= ' --pid ' . jeedom::getTmpFolder(__CLASS__) . '/deamon.pid';
+		log::add(__CLASS__, 'info', __('Démarrage du démon Broadlink', __FILE__) . ' : ' . $cmd);
+		$result = exec($cmd . ' >> ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
 		$i = 0;
 		while ($i < 30) {
 			$deamon_info = self::deamon_info();
@@ -162,48 +158,48 @@ class broadlink extends eqLogic {
 			$i++;
 		}
 		if ($i >= 30) {
-			log::add('broadlink', 'error', 'Impossible de lancer le démon broadlink, vérifiez la log', 'unableStartDeamon');
+			log::add(__CLASS__, 'error', __('Impossible de démarrer le démon Broadlink, vérifiez les logs', __FILE__), 'unableStartDeamon');
 			return false;
 		}
-		message::removeAll('broadlink', 'unableStartDeamon');
+		message::removeAll(__CLASS__, 'unableStartDeamon');
 		sleep(2);
 		self::sendIdToDeamon();
-		config::save('include_mode', 0, 'broadlink');
+		config::save('include_mode', 0, __CLASS__);
 		return true;
 	}
 
 	public static function sendIdToDeamon() {
-		foreach (self::byType('broadlink') as $eqLogic) {
+		foreach (self::byType(__CLASS__) as $eqLogic) {
 			$eqLogic->allowDevice();
 			usleep(500);
 		}
 	}
 
 	public static function deamon_stop() {
-		$pid_file = jeedom::getTmpFolder('broadlink') . '/deamon.pid';
+		$pid_file = jeedom::getTmpFolder(__CLASS__) . '/deamon.pid';
 		if (file_exists($pid_file)) {
 			$pid = intval(trim(file_get_contents($pid_file)));
 			system::kill($pid);
 		}
 		system::kill('broadlinkd.py');
-		system::fuserk(config::byKey('socketport', 'broadlink'));
-		config::save('include_mode', 0, 'broadlink');
+		system::fuserk(config::byKey('socketport', __CLASS__));
+		config::save('include_mode', 0, __CLASS__);
 		sleep(1);
 	}
 
 	public static function changeIncludeState($_state) {
 		if ($_state == 1) {
-			$value = json_encode(array('apikey' => jeedom::getApiKey('broadlink'), 'cmd' => 'learnin'));
+			$value = json_encode(array('apikey' => jeedom::getApiKey(__CLASS__), 'cmd' => 'learnin'));
 		} else {
-			$value = json_encode(array('apikey' => jeedom::getApiKey('broadlink'), 'cmd' => 'learnout'));
+			$value = json_encode(array('apikey' => jeedom::getApiKey(__CLASS__), 'cmd' => 'learnout'));
 		}
 		$socket = socket_create(AF_INET, SOCK_STREAM, 0);
-		socket_connect($socket, '127.0.0.1', config::byKey('socketport', 'broadlink'));
+		socket_connect($socket, '127.0.0.1', config::byKey('socketport', __CLASS__));
 		socket_write($socket, $value, strlen($value));
 		socket_close($socket);
 	}
 
-/*     * *********************Methode d'instance************************* */
+	/*     * *********************Methode d'instance************************* */
 	public function getModelListParam($_conf = '') {
 		if ($_conf == '') {
 			$_conf = $this->getConfiguration('device');
@@ -265,15 +261,15 @@ class broadlink extends eqLogic {
 	public function preRemove() {
 		$this->disallowDevice();
 	}
-	
+
 	public function preUpdate() {
-		if (substr($this->getLogicalId(), -3) != 'sub' && $this->getConfiguration('ischild',0) == 1) {
-			$this->setLogicalId($this->getLogicalId().'-sub');
+		if (substr($this->getLogicalId(), -3) != 'sub' && $this->getConfiguration('ischild', 0) == 1) {
+			$this->setLogicalId($this->getLogicalId() . '-sub');
 		}
 	}
 
 	public function allowDevice() {
-		$value = array('apikey' => jeedom::getApiKey('broadlink'), 'cmd' => 'add');
+		$value = array('apikey' => jeedom::getApiKey(__CLASS__), 'cmd' => 'add');
 		if ($this->getConfiguration('device') != '') {
 			$value['device'] = array(
 				'mac' => $this->getLogicalId(),
@@ -285,7 +281,7 @@ class broadlink extends eqLogic {
 			);
 			$value = json_encode($value);
 			$socket = socket_create(AF_INET, SOCK_STREAM, 0);
-			socket_connect($socket, '127.0.0.1', config::byKey('socketport', 'broadlink'));
+			socket_connect($socket, '127.0.0.1', config::byKey('socketport', __CLASS__));
 			socket_write($socket, $value, strlen($value));
 			socket_close($socket);
 		}
@@ -295,15 +291,15 @@ class broadlink extends eqLogic {
 		if ($this->getLogicalId() == '') {
 			return;
 		}
-		$value = json_encode(array('apikey' => jeedom::getApiKey('broadlink'), 'cmd' => 'remove', 'device' => array('mac' => $this->getLogicalId())));
+		$value = json_encode(array('apikey' => jeedom::getApiKey(__CLASS__), 'cmd' => 'remove', 'device' => array('mac' => $this->getLogicalId())));
 		$socket = socket_create(AF_INET, SOCK_STREAM, 0);
-		socket_connect($socket, '127.0.0.1', config::byKey('socketport', 'broadlink'));
+		socket_connect($socket, '127.0.0.1', config::byKey('socketport', __CLASS__));
 		socket_write($socket, $value, strlen($value));
 		socket_close($socket);
 	}
 
 	public function learn($_mode) {
-		$value = array('apikey' => jeedom::getApiKey('broadlink'), 'cmd' => 'send', 'cmdType' => 'learn');
+		$value = array('apikey' => jeedom::getApiKey(__CLASS__), 'cmd' => 'send', 'cmdType' => 'learn');
 		if ($this->getConfiguration('device') != '') {
 			$value['device'] = array(
 				'mac' => $this->getLogicalId(),
@@ -316,7 +312,7 @@ class broadlink extends eqLogic {
 			);
 			$value = json_encode($value);
 			$socket = socket_create(AF_INET, SOCK_STREAM, 0);
-			socket_connect($socket, '127.0.0.1', config::byKey('socketport', 'broadlink'));
+			socket_connect($socket, '127.0.0.1', config::byKey('socketport', __CLASS__));
 			socket_write($socket, $value, strlen($value));
 			socket_close($socket);
 		}
@@ -326,7 +322,7 @@ class broadlink extends eqLogic {
 		$commands = json_decode($_commands, true);
 		$targets = json_decode($_targets, true);
 		foreach ($targets as $targetid) {
-			$target = broadlink::byId($targetid);
+			$target = self::byId($targetid);
 			foreach ($commands as $commandid) {
 				$command = cmd::byId($commandid);
 				foreach ($target->getCmd('action') as $targetcmd) {
@@ -336,7 +332,7 @@ class broadlink extends eqLogic {
 				}
 				$newCmd = new broadlinkCmd();
 				$newCmd->setEqLogic_id($target->getId());
-				$newCmd->setEqType('broadlink');
+				$newCmd->setEqType(__CLASS__);
 				$newCmd->setLogicalId($command->getLogicalId());
 				$newCmd->setName($command->getName());
 				$newCmd->setConfiguration('logicalid', $command->getConfiguration('logicalid'));
@@ -360,7 +356,7 @@ class broadlink extends eqLogic {
 		}
 		event::add('jeedom::alert', array(
 			'level' => 'warning',
-			'page' => 'broadlink',
+			'page' => __CLASS__,
 			'message' => __('Périphérique reconnu, intégration en cours', __FILE__),
 		));
 
@@ -379,7 +375,7 @@ class broadlink extends eqLogic {
 		$link_actions = array();
 		event::add('jeedom::alert', array(
 			'level' => 'warning',
-			'page' => 'broadlink',
+			'page' => __CLASS__,
 			'message' => __('Création des commandes', __FILE__),
 		));
 
@@ -401,14 +397,14 @@ class broadlink extends eqLogic {
 				try {
 					$cmdToRemove->remove();
 				} catch (Exception $e) {
-
 				}
 			}
 			foreach ($device['commands'] as $command) {
 				$cmd = null;
 				foreach ($this->getCmd() as $liste_cmd) {
 					if ((isset($command['logicalId']) && $liste_cmd->getLogicalId() == $command['logicalId'])
-						|| (isset($command['name']) && $liste_cmd->getName() == $command['name'])) {
+						|| (isset($command['name']) && $liste_cmd->getName() == $command['name'])
+					) {
 						$cmd = $liste_cmd;
 						break;
 					}
@@ -435,7 +431,6 @@ class broadlink extends eqLogic {
 					}
 					$cmd_order++;
 				} catch (Exception $exc) {
-
 				}
 				$cmd->event('');
 			}
@@ -471,7 +466,7 @@ class broadlink extends eqLogic {
 		if (isset($device['afterInclusionSend']) && $device['afterInclusionSend'] != '') {
 			event::add('jeedom::alert', array(
 				'level' => 'warning',
-				'page' => 'broadlink',
+				'page' => __CLASS__,
 				'message' => __('Envoi des commandes post-inclusion', __FILE__),
 			));
 			sleep(5);
@@ -484,23 +479,17 @@ class broadlink extends eqLogic {
 				}
 				sleep(1);
 			}
-
 		}
 		sleep(2);
 		event::add('jeedom::alert', array(
 			'level' => 'warning',
-			'page' => 'broadlink',
+			'page' => __CLASS__,
 			'message' => '',
 		));
 	}
 }
 
 class broadlinkCmd extends cmd {
-	/*     * *************************Attributs****************************** */
-
-	/*     * ***********************Methode static*************************** */
-
-	/*     * *********************Methode d'instance************************* */
 
 	public function preSave() {
 		if ($this->getType() == 'action') {

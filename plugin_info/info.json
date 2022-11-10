@@ -14,8 +14,8 @@
         "tr": "Plugin ajoutant le support de certains produits Broadlink comme (le RM, le A1 etccc)"
     },
     "licence": "AGPL",
-    "author": "Ludovic",
-    "require": "3.0",
+    "author": "Jeedom SAS",
+    "require": "3.3.39",
     "category": "automation protocol",
     "hasDependency": true,
     "hasOwnDeamon": true,
@@ -36,6 +36,7 @@
     "compatibility": [
         "miniplus",
         "smart",
+        "atlas",
         "rpi",
         "docker",
         "diy",

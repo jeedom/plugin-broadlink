@@ -21,7 +21,7 @@ try {
 	include_file('core', 'authentification', 'php');
 
 	if (!isConnect('admin')) {
-		throw new Exception('401 Unauthorized');
+		throw new Exception(__('401 - Accès non autorisé', __FILE__));
 	}
 
 	ajax::init();
@@ -38,7 +38,7 @@ try {
 		}
 		ajax::success($broadlink->getModelListParam(init('conf')));
 	}
-	
+
 	if (init('action') == 'learn') {
 		$broadlink = broadlink::byId(init('id'));
 		if (!is_object($broadlink)) {
@@ -46,18 +46,17 @@ try {
 		}
 		ajax::success($broadlink->learn(init('mode')));
 	}
-	
+
 	if (init('action') == 'synchronise') {
-		$broadlink = broadlink::byLogicalId(init('id'),'broadlink');
+		$broadlink = broadlink::byLogicalId(init('id'), 'broadlink');
 		if (!is_object($broadlink)) {
 			ajax::success(array());
 		}
-		ajax::success($broadlink->synchronise(init('commands'),init('targets')));
+		ajax::success($broadlink->synchronise(init('commands'), init('targets')));
 	}
 
-	throw new Exception('Aucune methode correspondante');
+	throw new Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
 	/*     * *********Catch exeption*************** */
 } catch (Exception $e) {
 	ajax::error(displayExeption($e), $e->getCode());
 }
- 

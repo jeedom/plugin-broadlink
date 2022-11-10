@@ -1,16 +1,16 @@
 {
     "rm4": {
         "name": "Broadlink Universal Remote RM4",
-		"groupe" : "Télécommande",
-		"category" : {
-			"automatism" : 1
-		},
-		"configuration" : {
-			"device" : "rm4",
-			"delay" : 300,
-			"canlearn" : 1,
-			"ischild" :0
-		},
+        "groupe": "Télécommandes",
+        "category": {
+            "automatism": 1
+        },
+        "configuration": {
+            "device": "rm4",
+            "delay": 300,
+            "canlearn": 1,
+            "ischild": 0
+        },
         "commands": [
             {
                 "name": "Température",
@@ -20,19 +20,19 @@
                 "isHistorized": 0,
                 "unite": "°C",
                 "logicalId": "temperature",
-                "configuration" : {
-					"logicalid" : "temperature"
-				},
-				"display": {
-					"icon": "<i class=\"fa fa-thermometer-empty\"><\/i>",
-					"generic_type": "DONT"
-				},
-				"template": {
-					"dashboard": "line",
-					"mobile": "line"
-				}
+                "configuration": {
+                    "logicalid": "temperature"
+                },
+                "display": {
+                    "icon": "<i class=\"fas fa-thermometer-empty\"><\/i>",
+                    "generic_type": "DONT"
+                },
+                "template": {
+                    "dashboard": "line",
+                    "mobile": "line"
+                }
             },
-			 {
+            {
                 "name": "Rafraîchir",
                 "type": "action",
                 "subtype": "other",
@@ -40,9 +40,9 @@
                 "isHistorized": 0,
                 "unite": "",
                 "logicalId": "refresh",
-                "configuration" : {
-					"logicalid" : "refresh"
-				}
+                "configuration": {
+                    "logicalid": "refresh"
+                }
             }
         ]
     }
