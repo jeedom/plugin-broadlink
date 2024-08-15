@@ -32,6 +32,7 @@ try {
 	}
 
 	if (init('action') == 'getModelListParam') {
+		/** @var broadlink */
 		$broadlink = broadlink::byId(init('id'));
 		if (!is_object($broadlink)) {
 			ajax::success(array());
@@ -40,6 +41,7 @@ try {
 	}
 
 	if (init('action') == 'learn') {
+		/** @var broadlink */
 		$broadlink = broadlink::byId(init('id'));
 		if (!is_object($broadlink)) {
 			ajax::success(array());
@@ -48,6 +50,7 @@ try {
 	}
 
 	if (init('action') == 'synchronise') {
+		/** @var broadlink */
 		$broadlink = broadlink::byLogicalId(init('id'), 'broadlink');
 		if (!is_object($broadlink)) {
 			ajax::success(array());
@@ -58,5 +61,5 @@ try {
 	throw new Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
 	/*     * *********Catch exeption*************** */
 } catch (Exception $e) {
-	ajax::error(displayExeption($e), $e->getCode());
+	ajax::error(displayException($e), $e->getCode());
 }
