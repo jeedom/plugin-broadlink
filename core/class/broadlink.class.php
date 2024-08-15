@@ -75,8 +75,8 @@ class broadlink extends eqLogic {
 
 	public static function devicesParameters($_device = '') {
 		$return = array();
-		foreach (ls(dirname(__FILE__) . '/../config/devices', '*') as $dir) {
-			$path = dirname(__FILE__) . '/../config/devices/' . $dir;
+		foreach (ls(__DIR__ . '/../config/devices', '*') as $dir) {
+			$path = __DIR__ . '/../config/devices/' . $dir;
 			if (!is_dir($path)) {
 				continue;
 			}
@@ -116,29 +116,14 @@ class broadlink extends eqLogic {
 		return $return;
 	}
 
-	public static function dependancy_info() {
-		$return = array();
-		$return['progress_file'] = '/tmp/dependancy_broadlink_in_progress';
-		$return['state'] = 'ok';
-		if (exec('sudo pip3 list | grep -E "pycrypto" | wc -l') < 1) {
-			$return['state'] = 'nok';
-		}
-		return $return;
-	}
-
-	public static function dependancy_install() {
-		log::remove(__CLASS__ . '_update');
-		return array('script' => dirname(__FILE__) . '/../../resources/install_#stype#.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependance', 'log' => log::getPathToLog(__CLASS__ . '_update'));
-	}
-
 	public static function deamon_start() {
 		self::deamon_stop();
 		$deamon_info = self::deamon_info();
 		if ($deamon_info['launchable'] != 'ok') {
 			throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
 		}
-		$broadlink_path = realpath(dirname(__FILE__) . '/../../resources/broadlinkd');
-		$cmd = 'sudo /usr/bin/python3 ' . $broadlink_path . '/broadlinkd.py';
+		$broadlink_path = realpath(__DIR__ . '/../../resources/broadlinkd');
+		$cmd = system::getCmdPython3(__CLASS__) . " {$broadlink_path}/broadlinkd.py";
 		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel(__CLASS__));
 		$cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__);
 		$cmd .= ' --sockethost 127.0.0.1';
@@ -169,6 +154,7 @@ class broadlink extends eqLogic {
 	}
 
 	public static function sendIdToDeamon() {
+		/** @var broadlink */
 		foreach (self::byType(__CLASS__) as $eqLogic) {
 			$eqLogic->allowDevice();
 			usleep(500);
@@ -207,12 +193,12 @@ class broadlink extends eqLogic {
 		$modelList = array();
 		$user = false;
 		$files = array();
-		foreach (ls(dirname(__FILE__) . '/../config/devices', '*') as $dir) {
-			if (!is_dir(dirname(__FILE__) . '/../config/devices/' . $dir)) {
+		foreach (ls(__DIR__ . '/../config/devices', '*') as $dir) {
+			if (!is_dir(__DIR__ . '/../config/devices/' . $dir)) {
 				continue;
 			}
-			$files[$dir] = ls(dirname(__FILE__) . '/../config/devices/' . $dir, $_conf . '_*.png', false, array('files', 'quiet'));
-			if (file_exists(dirname(__FILE__) . '/../config/devices/' . $dir . $_conf . '.png')) {
+			$files[$dir] = ls(__DIR__ . '/../config/devices/' . $dir, $_conf . '_*.png', false, array('files', 'quiet'));
+			if (file_exists(__DIR__ . '/../config/devices/' . $dir . $_conf . '.png')) {
 				$selected = 0;
 				if ($dir . $_conf == $this->getConfiguration('iconModel')) {
 					$selected = 1;
