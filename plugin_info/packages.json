@@ -1,6 +1,5 @@
 {
   "apt": {
-    "python3-dev": {},
     "libudev-dev": {},
     "libffi-dev": {},
     "libssl-dev": {}
@@ -11,7 +10,6 @@
       "version": "2.6.1"
     },
     "pycrypto": {},
-    "pyudev": {},
     "asn1crypto": {},
     "requests": {}
   }

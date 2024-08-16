@@ -19,13 +19,11 @@ import threading
 import _thread as thread
 import requests
 import datetime
-import collections
+from collections.abc import Mapping
 import os
 from queue import Queue
 import socketserver
 from socketserver import (TCPServer, StreamRequestHandler)
-import unicodedata
-import pyudev
 
 # ------------------------------------------------------------------------------
 
@@ -38,7 +36,7 @@ class jeedom_com():
 		self.changes = {}
 		if cycle > 0 :
 			self.send_changes_async()
-		logging.debug('Init request module v%s' % (str(requests.__version__),))
+		logging.debug('Init request module v%s', requests.__version__)
 
 	def send_changes_async(self):
 		try:
@@ -49,7 +47,7 @@ class jeedom_com():
 			start_time = datetime.datetime.now()
 			changes = self.changes
 			self.changes = {}
-			logging.debug('Send to jeedom : '+str(changes))
+			logging.debug('Send to jeedom : %s', changes)
 			i=0
 			while i < self.retry:
 				try:
@@ -57,10 +55,10 @@ class jeedom_com():
 					if r.status_code == requests.codes.ok:
 						break
 				except Exception as error:
-					logging.error('Error on send request to jeedom ' + str(error)+' retry : '+str(i)+'/'+str(self.retry))
+					logging.error('Error on send request to jeedom "%s" retry: %i/%i', error, i, self.retry)
 				i = i + 1
 			if r.status_code != requests.codes.ok:
-				logging.error('Error on send request to jeedom, return code %s' % (str(r.status_code),))
+				logging.error('Error on send request to jeedom, return code %s', r.status_code)
 			dt = datetime.datetime.now() - start_time
 			ms = (dt.days * 24 * 60 * 60 + dt.seconds) * 1000 + dt.microseconds / 1000.0
 			timer_duration = self.cycle - ms
@@ -71,7 +69,7 @@ class jeedom_com():
 			resend_changes = threading.Timer(timer_duration, self.send_changes_async)
 			resend_changes.start()
 		except Exception as error:
-			logging.error('Critical error on  send_changes_async %s' % (str(error),))
+			logging.error('Critical error on  send_changes_async %s', error)
 			resend_changes = threading.Timer(self.cycle, self.send_changes_async)
 			resend_changes.start()
 
@@ -96,10 +94,10 @@ class jeedom_com():
 				self.changes[key] = value
 
 	def send_change_immediate(self,change):
-		thread.start_new_thread( self.thread_change, (change,))
+		thread.start_new_thread(self.thread_change, (change,))
 
 	def thread_change(self,change):
-		logging.debug('Send to jeedom :  %s' % (str(change),))
+		logging.debug('Send to jeedom :  %s', change)
 		i=0
 		while i < self.retry:
 			try:
@@ -107,7 +105,7 @@ class jeedom_com():
 				if r.status_code == requests.codes.ok:
 					break
 			except Exception as error:
-				logging.error('Error on send request to jeedom ' + str(error)+' retry : '+str(i)+'/'+str(self.retry))
+				logging.error('Error on send request to jeedom "%s" retry: %i/%i', error, i, self.retry)
 			i = i + 1
 
 	def set_change(self,changes):
@@ -116,11 +114,11 @@ class jeedom_com():
 	def get_change(self):
 		return self.changes
 
-	def merge_dict(self,d1, d2):
+	def merge_dict(self, d1, d2):
 		for k,v2 in d2.items():
 			v1 = d1.get(k) # returns None if v1 has no value for this key
-			if ( isinstance(v1, collections.Mapping) and
-				 isinstance(v2, collections.Mapping) ):
+			if ( isinstance(v1, Mapping) and
+				 isinstance(v2, Mapping) ):
 				self.merge_dict(v1, v2)
 			else:
 				d1[k] = v2
@@ -131,8 +129,8 @@ class jeedom_com():
 			if response.status_code != requests.codes.ok:
 				logging.error('Callback error: %s %s. Please check your network configuration page'% ( response.status_code, response.text,))
 				return False
-		except Exception as e:
-			logging.error('Callback result as a unknown error: %s. Please check your network configuration page ' % (str(e),))
+		except Exception as ex:
+			logging.error('Callback result as a unknown error: %s. Please check your network configuration page', ex)
 			return False
 		return True
 
@@ -157,32 +155,12 @@ class jeedom_utils():
 		logging.basicConfig(level=jeedom_utils.convert_log_level(level),format=FORMAT,datefmt='%Y-%m-%d %H:%M:%S')
 
 	@staticmethod
-	def find_tty_usb(idVendor, idProduct, product = None):
-		context = pyudev.Context()
-		for device in context.list_devices(subsystem='tty'):
-			if 'ID_VENDOR' not in device:
-				continue
-			if device['ID_VENDOR_ID'] != idVendor:
-				continue
-			if device['ID_MODEL_ID'] != idProduct:
-				continue
-			if product is not None:
-				if 'ID_VENDOR' not in device or device['ID_VENDOR'].lower().find(product.lower()) == -1 :
-					continue
-			return str(device.device_node)
-		return None
-
-	@staticmethod
 	def stripped(str):
 		return "".join([i for i in str if i in range(32, 127)])
 
 	@staticmethod
 	def ByteToHex( byteStr ):
 		return ''.join( [ "%02X " % ord( x ) for x in str(byteStr) ] ).strip()
-
-	@staticmethod
-	def dec2bin(x, width=8):
-		return ''.join(str((x>>i)&1) for i in xrange(width-1,-1,-1))
 
 	@staticmethod
 	def dec2hex(dec):
@@ -207,13 +185,8 @@ class jeedom_utils():
 	@staticmethod
 	def write_pid(path):
 		pid = str(os.getpid())
-		logging.debug("Writing PID " + pid + " to " + str(path))
+		logging.debug("Writing PID %s to %s", pid, path)
 		open(path, 'w').write("%s\n" % pid)
-
-	@staticmethod
-	def remove_accents(input_str):
-		nkfd_form = unicodedata.normalize('NFKD', unicode(input_str))
-		return u"".join([c for c in nkfd_form if not unicodedata.combining(c)])
 
 # ------------------------------------------------------------------------------
 
@@ -225,7 +198,7 @@ class jeedom_socket_handler(StreamRequestHandler):
 		logging.debug("Client connected to [%s:%d]" % self.client_address)
 		lg = self.rfile.readline()
 		JEEDOM_SOCKET_MESSAGE.put(lg)
-		logging.debug("Message read from socket: " + str(lg.strip()))
+		logging.debug("Message read from socket: %s", lg.strip())
 		self.netAdapterClientConnected = False
 		logging.debug("Client disconnected from [%s:%d]" % self.client_address)
 
