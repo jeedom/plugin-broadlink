@@ -14,24 +14,18 @@
 # along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 #
 
-import time
 import logging
 import threading
 import _thread as thread
 import requests
 import datetime
 import collections
-import serial
 import os
-from os.path import join
-import socket
 from queue import Queue
 import socketserver
 from socketserver import (TCPServer, StreamRequestHandler)
-import signal
 import unicodedata
 import pyudev
-import globals
 
 # ------------------------------------------------------------------------------
 
@@ -220,69 +214,6 @@ class jeedom_utils():
 	def remove_accents(input_str):
 		nkfd_form = unicodedata.normalize('NFKD', unicode(input_str))
 		return u"".join([c for c in nkfd_form if not unicodedata.combining(c)])
-
-# ------------------------------------------------------------------------------
-
-class jeedom_serial():
-
-	def __init__(self,device = '',rate = '',timeout = 1):
-		self.device = device
-		self.rate = rate
-		self.timeout = timeout
-		self.port = None
-		logging.debug('Init serial module v%s' % (str(serial.VERSION),))
-
-	def open(self):
-		if self.device:
-			logging.debug("Open serial port on device: " + str(self.device)+', rate '+str(self.rate)+', timeout : '+str(self.timeout))
-		else:
-			logging.error("Device name missing.")
-			return False
-		logging.debug("Open Serialport")
-		try:
-			self.port = serial.Serial(self.device,self.rate,timeout=self.timeout)
-		except serial.SerialException as e:
-			logging.error("Error: Failed to connect on device " + self.device + " Details : " + str(e))
-			return False
-		if not self.port.isOpen():
-			self.port.open()
-		time.sleep(0.2)
-		self.flushOutput()
-		self.flushInput()
-		return True
-
-	def close(self):
-		logging.debug("Close serial port")
-		try:
-			self.port.close()
-			logging.debug("Serial port closed")
-			return True
-		except:
-			logging.error("Failed to close the serial port (" + self.device + ")")
-			return False
-
-	def write(self,data,fromqueue = False):
-		self.port.write(data)
-		if fromqueue:
-			globals.SENDQUEUE.task_done()
-
-	def flushOutput(self,):
-		logging.debug("flushOutput serial port ")
-		self.port.flushOutput()
-
-	def flushInput(self):
-		logging.debug("flushInput serial port ")
-		self.port.flushInput()
-
-	def read(self):
-		if self.port.inWaiting() > 0:
-			return self.port.read()
-		return None
-
-	def readbytes(self,number):
-		if self.port.inWaiting() > 0:
-			return self.port.read(number)
-		return None
 
 # ------------------------------------------------------------------------------
 

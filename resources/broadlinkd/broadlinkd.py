@@ -5,40 +5,28 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # Jeedom is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 
 import logging
-import string
 import sys
 import os
 import time
 import datetime
-import binascii
-import struct
-import threading
-from threading import Thread, Event, Timer
-import re
 import signal
 import argparse
 import traceback
-from os.path import join
 import json
 from broadlink import broadlink,rm2,a1,mp1,sp2,rm4
 import globals
 
-try:
-	from jeedom.jeedom import *
-except ImportError:
-	print("Error: importing module from jeedom folder")
-	sys.exit(1)
-
+from jeedom.jeedom import *
 
 # ----------------------------------------------------------------------------
 
@@ -61,24 +49,24 @@ def read_socket():
 			message = JEEDOM_SOCKET_MESSAGE.get().decode('utf-8')
 			message =json.loads(message)
 			if message['apikey'] != _apikey:
-				logging.error("Invalid apikey from socket : " + str(message))
+				logging.error("Invalid apikey from socket: %s", message)
 				return
 			if message['cmd'] == 'add':
-				logging.debug('Add device : '+str(message['device']))
+				logging.debug('Add device : %s', message['device'])
 				if 'mac' in message['device']:
 					globals.KNOWN_DEVICES[message['device']['mac']] = message['device']
 			elif message['cmd'] == 'remove':
-				logging.debug('Remove device : '+str(message['device']))
+				logging.debug('Remove device : %s', message['device'])
 				if 'mac' in message['device']:
 					del globals.KNOWN_DEVICES[message['device']['mac']]
 			elif message['cmd'] == 'learnin':
 				logging.debug('Enter in learn mode')
 				globals.LEARN_MODE = True
-				globals.JEEDOMCOM.send_change_immediate({'learn_mode' : 1});
+				globals.JEEDOMCOM.send_change_immediate({'learn_mode' : 1})
 				devices = broadlink.discover(timeout=5)
-				logging.debug("found " + str(devices))
+				logging.debug("found %s", devices)
 				globals.LEARN_MODE = False
-				globals.JEEDOMCOM.send_change_immediate({'learn_mode' : 0});
+				globals.JEEDOMCOM.send_change_immediate({'learn_mode' : 0})
 				for device in devices:
 					type = device.type
 					devtype = device.devtype
@@ -91,11 +79,11 @@ def read_socket():
 				if 'mac' in message['device']:
 					logging.debug('Send command')
 					send_broadlink(message)
-	except Exception as e:
-		logging.error(str(e))
+	except Exception as ex:
+		logging.error(ex)
 # ----------------------------------------------------------------------------
 def read_broadlink():
-	now = datetime.datetime.utcnow()
+	now = datetime.datetime.now(datetime.UTC)
 	result = {}
 	try:
 		for device in globals.KNOWN_DEVICES:
@@ -127,12 +115,12 @@ def read_broadlink():
 					else:
 						globals.LAST_STATE[mac] = result
 						globals.JEEDOMCOM.add_changes('devices::'+mac,result)
-	except Exception as e:
-		if str(e) == 'timed out':
+	except Exception as ex:
+		if str(ex) == 'timed out':
 			logging.debug('Device seems offline')
 		else:
-			logging.error(str(e))
-	
+			logging.error(ex)
+
 # ----------------------------------------------------------------------------
 
 def send_broadlink(message):
@@ -183,22 +171,18 @@ def send_broadlink(message):
 # ----------------------------------------------------------------------------
 
 def handler(signum=None, frame=None):
-	logging.debug("Signal %i caught, exiting..." % int(signum))
+	logging.debug("Signal %i caught, exiting...", signum)
 	shutdown()
 
 def shutdown():
 	logging.debug("Shutdown")
-	logging.debug("Removing PID file " + str(_pidfile))
+	logging.debug("Removing PID file %s", _pidfile)
 	try:
 		os.remove(_pidfile)
 	except:
 		pass
 	try:
 		jeedom_socket.close()
-	except:
-		pass
-	try:
-		globals.JEEDOM_SERIAL.close()
 	except:
 		pass
 	logging.debug("Exit 0")
@@ -213,7 +197,7 @@ _socket_host = '127.0.0.1'
 _pidfile = '/tmp/broadlinkd.pid'
 _apikey = ''
 _callback = ''
-_cycle = 0.3;
+_cycle = 0.3
 
 parser = argparse.ArgumentParser(description='Broadlink Daemon for Jeedom plugin')
 parser.add_argument("--socketport", help="Socketport for server", type=str)
@@ -241,26 +225,25 @@ if args.pid:
 jeedom_utils.set_log_level(_log_level)
 
 logging.info('Start broadlinkd')
-logging.info('Log level : '+str(_log_level))
-logging.info('Socket port : '+str(_socket_port))
-logging.info('Socket host : '+str(_socket_host))
-logging.info('PID file : '+str(_pidfile))
-logging.info('Apikey : '+str(_apikey))
-logging.info('Callback : '+str(_callback))
-logging.info('Cycle : '+str(_cycle))
+logging.info('Log level: %s', _log_level)
+logging.info('Socket port: %s', _socket_port)
+logging.info('Socket host: %s', _socket_host)
+logging.info('PID file: %s', _pidfile)
+logging.info('Callback: %s', _callback)
+logging.info('Cycle: %s', _cycle)
 
 signal.signal(signal.SIGINT, handler)
 signal.signal(signal.SIGTERM, handler)
 
 try:
-	jeedom_utils.write_pid(str(_pidfile))
+	jeedom_utils.write_pid(_pidfile)
 	globals.JEEDOMCOM = jeedom_com(apikey = _apikey,url = _callback,cycle=_cycle)
 	if not globals.JEEDOMCOM.test():
-		logging.error('Network communication issues. Please fixe your Jeedom network configuration.')
+		logging.error('Network communication issues. Please fix your Jeedom network configuration.')
 		shutdown()
 	jeedom_socket = jeedom_socket(port=_socket_port,address=_socket_host)
 	listen()
-except Exception as e:
-	logging.error('Fatal error : '+str(e))
+except Exception as ex:
+	logging.error('Fatal error : %s', ex)
 	logging.debug(traceback.format_exc())
 	shutdown()

@@ -132,7 +132,7 @@ class broadlink extends eqLogic {
 		$cmd .= ' --cycle ' . config::byKey('cycle', __CLASS__);
 		$cmd .= ' --pid ' . jeedom::getTmpFolder(__CLASS__) . '/deamon.pid';
 		log::add(__CLASS__, 'info', __('Démarrage du démon Broadlink', __FILE__) . ' : ' . $cmd);
-		$result = exec($cmd . ' >> ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
+		$result = exec($cmd . ' >> ' . log::getPathToLog(__CLASS__ . '_daemon') . ' 2>&1 &');
 		$i = 0;
 		while ($i < 30) {
 			$deamon_info = self::deamon_info();

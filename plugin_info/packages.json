@@ -1,9 +1,7 @@
 {
   "apt": {
-    "python3-requests": {},
     "python3-dev": {},
     "libudev-dev": {},
-    "python3-serial": {},
     "libffi-dev": {},
     "libssl-dev": {}
   },
