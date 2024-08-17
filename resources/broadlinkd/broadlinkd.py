@@ -83,7 +83,7 @@ def read_socket():
 		logging.error(ex)
 # ----------------------------------------------------------------------------
 def read_broadlink():
-	now = datetime.datetime.now(datetime.UTC)
+	now = datetime.datetime.now(datetime.timezone.utc)
 	result = {}
 	try:
 		for device in globals.KNOWN_DEVICES:
