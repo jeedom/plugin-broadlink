@@ -2,8 +2,10 @@
     "changelog.md": {
         "Changelog Broadlink": "Changelog Broadlink",
         "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "If there is no information on the update, it means that it concerns only the update of documentation, translation or text",
+        "25\/11\/2024": "11\/25\/2024",
+        "Fix un soucis d'installation de dépendances qui pouvait se produire sur certaines installations": "Fixed a dependency installation issue that could occur on some installations",
         "05\/09\/2024": "05\/09\/2024",
-        "Ajout d'un redemarrage du demon toute les nuits pour eviter un soucis mémoire": "Added a restart of the daemon every night to avoid a memory problem",
+        "Ajout d'un redémarrage du demon toute les nuits pour éviter un soucis mémoire": "Added a restart of the daemon every night to avoid a memory problem",
         "16\/08\/2024": "08\/16\/2024",
         "Compatibilité Debian 12": "Debian 12 Compatibility",
         "Jeedom v4.4": "Jeedom v4.4",
