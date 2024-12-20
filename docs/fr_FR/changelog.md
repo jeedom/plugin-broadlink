@@ -7,6 +7,7 @@
 # 20/12/2024
 
 - Fix une fuite de mémoire sur le démon
+- Debian 11 requis
 
 # 25/11/2024
 
