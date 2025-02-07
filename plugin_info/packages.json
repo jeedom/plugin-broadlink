@@ -6,8 +6,6 @@
   },
   "pip3": {
     "wheel": {},
-    "pycrypto": {},
-    "asn1crypto": {},
     "requests": {},
     "cryptography": {
       "version": "42.0.8"

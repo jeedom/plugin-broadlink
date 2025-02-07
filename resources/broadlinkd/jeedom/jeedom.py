@@ -166,7 +166,8 @@ class jeedom_utils():
     def write_pid(path):
         pid = str(os.getpid())
         logging.debug("Writing PID %s to %s", pid, path)
-        open(path, 'w').write("%s\n" % pid)
+        with open(path, 'w') as f:
+            f.write("%s\n" % pid)
 
 
 JEEDOM_SOCKET_MESSAGE = Queue()
