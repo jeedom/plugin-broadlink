@@ -2,6 +2,9 @@
     "changelog.md": {
         "Changelog Broadlink": "Changelog Broadlink",
         "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "If there is no information on the update, it means that it concerns only the update of documentation, translation or text",
+        "08\/02\/2025": "",
+        "Suppression de": "",
+        "de 2 dépendances (`pycrypto` & `asn1crypto`) qui ne sont plus utiles pour le plugin": "",
         "27\/12\/2024": "12\/27\/2024",
         "Fix une fuite de mémoire sur le démon": "Fix memory leak on daemon",
         "Fix un soucis d'installation de dépendances qui pouvait se produire sur certaines installations": "Fixed a dependency installation issue that could occur on some installations",
@@ -42,7 +45,14 @@
         " IMPORTANT]": " IMPORTANT]",
         "[IMPORTANT]": "[IMPORTANT]",
         "*IMPORTANT*": "*IMPORTANT*",
-        " IMPORTANT*": " IMPORTANT*"
+        " IMPORTANT*": " IMPORTANT*",
+        " l'installation.": " .",
+        " l'installation?": " ?",
+        "l'installation ": " ",
+        " l'installation]": " ]",
+        "[l'installation]": "[]",
+        "*l'installation*": "**",
+        " l'installation*": " *"
     },
     "index.md": {
         "Plugin Broadlink": "Broadlink plug-in",
