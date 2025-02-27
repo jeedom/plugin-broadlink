@@ -18,18 +18,19 @@
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 include_file('core', 'authentification', 'php');
 if (!isConnect()) {
-	include_file('desktop', '404', 'php');
-	die();
+    include_file('desktop', '404', 'php');
+    die();
 }
 ?>
 <form class="form-horizontal">
     <fieldset>
- <legend><i class="icon loisir-darth"></i> {{Démon}}</legend>
-<div class="form-group">
-    <label class="col-lg-4 control-label">{{Port socket interne (modification dangereuse)}}</label>
-    <div class="col-lg-2">
-        <input class="configKey form-control" data-l1key="socketport" />
-    </div>
-</div>
-</fieldset>
+        <div class="form-group">
+            <label class="col-md-4 control-label">{{Port socket interne}}
+                <sup><i class="fas fa-question-circle tooltips" title="{{Modification dangereuse}}"></i></sup>
+            </label>
+            <div class="col-md-4">
+                <input class="configKey form-control" data-l1key="socketport">
+            </div>
+        </div>
+    </fieldset>
 </form>

@@ -1,11 +1,11 @@
 {
     "a1": {
         "name": "Broadlink A1 E-Air",
-		"groupe" : "Capteurs",
-		"configuration" : {
-			"device" : "a1",
-			"delay" : 300
-		},
+        "groupe": "Capteurs",
+        "configuration": {
+            "device": "a1",
+            "delay": 300
+        },
         "commands": [
             {
                 "name": "Température",
@@ -15,19 +15,19 @@
                 "isHistorized": 0,
                 "unite": "°C",
                 "logicalId": "temperature",
-                "configuration" : {
-					"logicalid" : "temperature"
-				},
-				"display": {
-					"icon": "<i class=\"fa fa-thermometer-empty\"><\/i>",
-					"generic_type": "DONT"
-				},
-				"template": {
-					"dashboard": "line",
-					"mobile": "line"
-				}
+                "configuration": {
+                    "logicalid": "temperature"
+                },
+                "display": {
+                    "icon": "<i class=\"fas fa-thermometer-empty\"><\/i>",
+                    "generic_type": "DONT"
+                },
+                "template": {
+                    "dashboard": "line",
+                    "mobile": "line"
+                }
             },
-			 {
+            {
                 "name": "Humidité",
                 "type": "info",
                 "subtype": "numeric",
@@ -35,19 +35,19 @@
                 "isHistorized": 0,
                 "unite": "%",
                 "logicalId": "humidity",
-                "configuration" : {
-					"logicalid" : "humidity"
-				},
-				"display": {
-					"icon": "<i class=\"fa fa-tint\"><\/i>",
-					"generic_type": "DONT"
-				},
-				"template": {
-					"dashboard": "line",
-					"mobile": "line"
-				}
+                "configuration": {
+                    "logicalid": "humidity"
+                },
+                "display": {
+                    "icon": "<i class=\"fas fa-tint\"><\/i>",
+                    "generic_type": "DONT"
+                },
+                "template": {
+                    "dashboard": "line",
+                    "mobile": "line"
+                }
             },
-			 {
+            {
                 "name": "Luminosité",
                 "type": "info",
                 "subtype": "numeric",
@@ -55,19 +55,19 @@
                 "isHistorized": 0,
                 "unite": "",
                 "logicalId": "luminosity",
-                "configuration" : {
-					"logicalid" : "luminosity"
-				},
-				"display": {
-					"icon": "<i class=\"fa fa-sun-o\"><\/i>",
-					"generic_type": "DONT"
-				},
-				"template": {
-					"dashboard": "line",
-					"mobile": "line"
-				}
+                "configuration": {
+                    "logicalid": "luminosity"
+                },
+                "display": {
+                    "icon": "<i class=\"fas fa-sun-o\"><\/i>",
+                    "generic_type": "DONT"
+                },
+                "template": {
+                    "dashboard": "line",
+                    "mobile": "line"
+                }
             },
-			 {
+            {
                 "name": "Air",
                 "type": "info",
                 "subtype": "numeric",
@@ -75,19 +75,19 @@
                 "isHistorized": 0,
                 "unite": "",
                 "logicalId": "air",
-                "configuration" : {
-					"logicalid" : "air"
-				},
-				"display": {
-					"icon": "<i class=\"fa fa-leaf\"><\/i>",
-					"generic_type": "DONT"
-				},
-				"template": {
-					"dashboard": "line",
-					"mobile": "line"
-				}
+                "configuration": {
+                    "logicalid": "air"
+                },
+                "display": {
+                    "icon": "<i class=\"fas fa-leaf\"><\/i>",
+                    "generic_type": "DONT"
+                },
+                "template": {
+                    "dashboard": "line",
+                    "mobile": "line"
+                }
             },
-			 {
+            {
                 "name": "Bruit",
                 "type": "info",
                 "subtype": "numeric",
@@ -95,19 +95,19 @@
                 "isHistorized": 0,
                 "unite": "",
                 "logicalId": "noise",
-                "configuration" : {
-					"logicalid" : "noise"
-				},
-				"display": {
-					"icon": "<i class=\"fa fa-microphone\"><\/i>",
-					"generic_type": "DONT"
-				},
-				"template": {
-					"dashboard": "line",
-					"mobile": "line"
-				}
+                "configuration": {
+                    "logicalid": "noise"
+                },
+                "display": {
+                    "icon": "<i class=\"fas fa-microphone\"><\/i>",
+                    "generic_type": "DONT"
+                },
+                "template": {
+                    "dashboard": "line",
+                    "mobile": "line"
+                }
             },
-			{
+            {
                 "name": "Luminosité-Info",
                 "type": "info",
                 "subtype": "string",
@@ -115,11 +115,11 @@
                 "isHistorized": 0,
                 "unite": "",
                 "logicalId": "luminosity_human",
-                "configuration" : {
-					"logicalid" : "luminosity_human"
-				}
+                "configuration": {
+                    "logicalid": "luminosity_human"
+                }
             },
-			 {
+            {
                 "name": "Air-Info",
                 "type": "info",
                 "subtype": "string",
@@ -127,11 +127,11 @@
                 "isHistorized": 0,
                 "unite": "",
                 "logicalId": "air_human",
-                "configuration" : {
-					"logicalid" : "air_human"
-				}
+                "configuration": {
+                    "logicalid": "air_human"
+                }
             },
-			 {
+            {
                 "name": "Bruit-Info",
                 "type": "info",
                 "subtype": "string",
@@ -139,11 +139,11 @@
                 "isHistorized": 0,
                 "unite": "",
                 "logicalId": "noise_human",
-                "configuration" : {
-					"logicalid" : "noise_human"
-				}
+                "configuration": {
+                    "logicalid": "noise_human"
+                }
             },
-			 {
+            {
                 "name": "Rafraîchir",
                 "type": "action",
                 "subtype": "other",
@@ -151,9 +151,9 @@
                 "isHistorized": 0,
                 "unite": "",
                 "logicalId": "refresh",
-                "configuration" : {
-					"logicalid" : "refresh"
-				}
+                "configuration": {
+                    "logicalid": "refresh"
+                }
             }
         ]
     }

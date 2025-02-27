@@ -16,9 +16,8 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 require_once dirname(__FILE__) . "/../../../../core/php/core.inc.php";
-
 if (!jeedom::apiAccess(init('apikey'), 'broadlink')) {
-	echo 'Clef API non valide, vous n\'etes pas autorisé à effectuer cette action';
+	echo __("Vous n'êtes pas autorisé à effectuer cette action", __FILE__);
 	die();
 }
 
@@ -34,33 +33,48 @@ if (!is_array($result)) {
 if (isset($result['learn_mode'])) {
 	if ($result['learn_mode'] == 1) {
 		config::save('include_mode', 1, 'broadlink');
-		event::add('broadlink::includeState', array(
-			'state' => 1)
+		event::add(
+			'broadlink::includeState',
+			array(
+				'state' => 1
+			)
 		);
 	} else {
 		config::save('include_mode', 0, 'broadlink');
-		event::add('broadlink::includeState', array(
-			'state' => 0)
+		event::add(
+			'broadlink::includeState',
+			array(
+				'state' => 0
+			)
 		);
 	}
 	die();
 }
 if (isset($result['foundfrequency'])) {
 	if ($result['foundfrequency'] == 1) {
-		event::add('broadlink::foundfrequency', array(
-			'state' => 1)
+		event::add(
+			'broadlink::foundfrequency',
+			array(
+				'state' => 1
+			)
 		);
 	} else {
-		event::add('broadlink::foundfrequency', array(
-			'state' => 0)
+		event::add(
+			'broadlink::foundfrequency',
+			array(
+				'state' => 0
+			)
 		);
 	}
 	die();
 }
 if (isset($result['step2'])) {
-	event::add('broadlink::step2', array(
-			'state' => 1)
-		);
+	event::add(
+		'broadlink::step2',
+		array(
+			'state' => 1
+		)
+	);
 	die();
 }
 if (isset($result['devices'])) {
@@ -70,7 +84,7 @@ if (isset($result['devices'])) {
 		}
 		$logicalId = $key;
 		$broadlink = broadlink::byLogicalId($logicalId, 'broadlink');
-		if (isset($datas['reversemac'])){
+		if (isset($datas['reversemac'])) {
 			$broadlink2 = broadlink::byLogicalId($datas['reversemac'], 'broadlink');
 			if (!is_object($broadlink) && is_object($broadlink2)) {
 				$broadlink = $broadlink2;
@@ -82,7 +96,7 @@ if (isset($result['devices'])) {
 			}
 			$broadlink = broadlink::createFromDef($datas);
 			if (!is_object($broadlink)) {
-				log::add('broadlink', 'debug', __('Aucun équipement trouvé pour : ', __FILE__) . secureXSS($datas['id']));
+				log::add('broadlink', 'debug', __('Aucun équipement trouvé pour', __FILE__) . ' : ' . secureXSS($datas['id']));
 				continue;
 			}
 			event::add('jeedom::alert', array(
@@ -96,21 +110,21 @@ if (isset($result['devices'])) {
 			continue;
 		}
 		if (isset($datas['learnedCmd']) && $datas['learnedCmd'] == 1) {
-			if ($datas['hexcode'] == 'no'){
+			if ($datas['hexcode'] == 'no') {
 				event::add('broadlink::missedCommand', $broadlink->getId());
 				continue;
 			}
-			$number = count($broadlink->getCmd())+1;
-			$cmd = $broadlink->getCmd(null, $number.substr($datas['hexcode'],0,50));
+			$number = count($broadlink->getCmd()) + 1;
+			$cmd = $broadlink->getCmd(null, $number . substr($datas['hexcode'], 0, 50));
 			if (!is_object($cmd)) {
 				$cmd = new broadlinkCmd();
-				$cmd->setLogicalId($number.substr($datas['hexcode'],0,50));
+				$cmd->setLogicalId($number . substr($datas['hexcode'], 0, 50));
 				$cmd->setIsVisible(1);
-				$cmd->setName($number .__('Commande', __FILE__) . substr($datas['hexcode'],0,10));
+				$cmd->setName($number . __('Commande', __FILE__) . substr($datas['hexcode'], 0, 10));
 			}
 			$cmd->setType('action');
 			$cmd->setSubType('other');
-			$cmd->setconfiguration('logicalid','hex2send:' . $datas['hexcode']);
+			$cmd->setconfiguration('logicalid', 'hex2send:' . $datas['hexcode']);
 			$cmd->setEqLogic_id($broadlink->getId());
 			$cmd->save();
 			event::add('broadlink::includeCommand', $broadlink->getId());
@@ -133,7 +147,7 @@ if (isset($result['devices'])) {
 					$value = ($value != 0) ? 0 : 1;
 				}
 				if ($key == 'battery') {
-					log::add('broadlink','debug',$value);
+					log::add('broadlink', 'debug', $value);
 					$value = ($value != 0) ? 0 : 100;
 					$broadlink->batteryStatus($value);
 				}

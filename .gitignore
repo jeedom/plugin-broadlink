@@ -5,3 +5,4 @@ plugins
 sftp-config.json
 .project
 *.pyc
+.vscode/

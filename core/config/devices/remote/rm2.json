@@ -1,15 +1,15 @@
 {
   "rm2": {
     "name": "Broadlink Universal Remote",
-    "groupe" : "Télécommande",
-    "category" : {
-      "automatism" : 1
+    "groupe": "Télécommandes",
+    "category": {
+      "automatism": 1
     },
-    "configuration" : {
-      "device" : "rm2",
-      "delay" : 300,
-      "canlearn" : 1,
-      "ischild" :0
+    "configuration": {
+      "device": "rm2",
+      "delay": 300,
+      "canlearn": 1,
+      "ischild": 0
     },
     "commands": [
       {
@@ -20,11 +20,11 @@
         "isHistorized": 0,
         "unite": "°C",
         "logicalId": "temperature",
-        "configuration" : {
-          "logicalid" : "temperature"
+        "configuration": {
+          "logicalid": "temperature"
         },
         "display": {
-          "icon": "<i class=\"fa fa-thermometer-empty\"><\/i>",
+          "icon": "<i class=\"fas fa-thermometer-empty\"><\/i>",
           "generic_type": "DONT"
         },
         "template": {
@@ -40,8 +40,8 @@
         "isHistorized": 0,
         "unite": "",
         "logicalId": "refresh",
-        "configuration" : {
-          "logicalid" : "refresh"
+        "configuration": {
+          "logicalid": "refresh"
         }
       }
     ]
