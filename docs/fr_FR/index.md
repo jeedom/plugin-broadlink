@@ -39,6 +39,7 @@ Vous pouvez choisir les commandes à transférer ainsi que les Broadlink vers le
 # FAQ
 
 ## Enregistrement commandes RF
+
 (pagu mai 2021)
 
 Donc, Voici comment enregistrer les commandes RF avec l’appli mobile Broadlink et le plugin Broadlink Jeedom:
@@ -50,6 +51,7 @@ Avant de passer au plugin sous jeedom, il faut déverrouiller l’utilisation de
 Dans le plugin, l’ajout de la passerelle se fait par le bouton "Mode Inclusion" (Voir doc du plugin pour l’onglet équipement).  Onglet commandes: vous pouvez cliquer sur "Apprendre commande RF avancée" pour vérifier que le voyant de la passerelle passe bien au rouge, mais l’apprentissage ne fonctionnera pas.
 
 Voici la méthode:
+
 - Lancer l’apprentissage via l’appli en premier
 - sélectionner l’équipement
 - Appuyer sur "…" en haut à droite, puis relearn buttons
