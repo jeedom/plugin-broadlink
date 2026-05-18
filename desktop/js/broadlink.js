@@ -15,13 +15,13 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
-$('.changeIncludeState').on('click', function() {
-    var state = $(this).attr('data-state')
+$('.changeIncludeState').on('click', function () {
+    const state = $(this).attr('data-state')
     changeIncludeState(state)
 })
 
-$('#bt_autoDetectModule').on('click', function() {
-    bootbox.confirm('{{Etes-vous sûr de vouloir recréer toutes les commandes ? Cela va supprimer les commandes existantes.}}', function(result) {
+$('#bt_autoDetectModule').on('click', function () {
+    bootbox.confirm('{{Etes-vous sûr de vouloir recréer toutes les commandes ? Cela va supprimer les commandes existantes.}}', function (result) {
         if (result) {
             $.ajax({
                 type: "POST",
@@ -32,10 +32,10 @@ $('#bt_autoDetectModule').on('click', function() {
                 },
                 dataType: 'json',
                 global: false,
-                error: function(error) {
+                error: function (error) {
                     $.fn.showAlert({ message: error.message, level: 'danger' })
                 },
-                success: function(data) {
+                success: function (data) {
                     if (data.state != 'ok') {
                         $.fn.showAlert({ message: data.result, level: 'danger' })
                         return
@@ -47,18 +47,18 @@ $('#bt_autoDetectModule').on('click', function() {
     })
 })
 
-$('#bt_healthbroadlink').on('click', function() {
+$('#bt_healthbroadlink').on('click', function () {
     $('#md_modal').dialog({ title: "{{Santé Broadlink}}" })
     $('#md_modal').load('index.php?v=d&plugin=broadlink&modal=health').dialog('open')
 })
 
-$('#btn_sync').on('click', function() {
-    var logicalId = $('.eqLogicAttr[data-l1key=logicalId]').value()
+$('#btn_sync').on('click', function () {
+    const logicalId = $('.eqLogicAttr[data-l1key=logicalId]').value()
     $('#md_modal').dialog({ title: "{{Synchronisation Broadlink}}" })
     $('#md_modal').load('index.php?v=d&plugin=broadlink&modal=synchro&id=' + logicalId).dialog('open')
 })
 
-$('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').on('change', function() {
+$('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').on('change', function () {
     if ($('.eqLogicDisplayCard.active').attr('data-eqlogic_id') != '') {
         getModelListParam($(this).value(), $('.eqLogicDisplayCard.active').attr('data-eqlogic_id'))
     } else {
@@ -66,13 +66,13 @@ $('.eqLogicAttr[data-l1key=configuration][data-l2key=device]').on('change', func
     }
 })
 
-$('.eqLogicAttr[data-l1key=configuration][data-l2key=iconModel]').on('change', function() {
+$('.eqLogicAttr[data-l1key=configuration][data-l2key=iconModel]').on('change', function () {
     if ($(this).value() != '' && $(this).value() != null) {
         $('#img_device').attr("src", 'plugins/broadlink/core/config/devices/' + $(this).value() + '.png')
     }
 })
 
-$('body').on('change', '.cmd .cmdAttr[data-l1key=type]', function() {
+$('body').on('change', '.cmd .cmdAttr[data-l1key=type]', function () {
     if ($(this).value() == 'action') {
         $(this).closest('.cmd').find('.cmdAttr[data-l1key=configuration][data-l2key=id]').show()
         $(this).closest('.cmd').find('.cmdAttr[data-l1key=configuration][data-l2key=group]').show()
@@ -92,16 +92,16 @@ function getModelListParam(_conf, _id) {
         },
         dataType: 'json',
         global: false,
-        error: function(error) {
+        error: function (error) {
             $.fn.showAlert({ message: error.message, level: 'danger' })
         },
-        success: function(data) {
+        success: function (data) {
             if (data.state != 'ok') {
                 $.fn.showAlert({ message: data.result, level: 'danger' })
                 return
             }
-            var options = ''
-            for (var i in data.result[0]) {
+            let options = ''
+            for (let i in data.result[0]) {
                 if (data.result[0][i]['selected'] == 1) {
                     options += '<option value="' + i + '" selected>' + data.result[0][i]['value'] + '</option>'
                 } else {
@@ -136,12 +136,12 @@ $("#table_cmd").sortable({
 
 function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
-        var _cmd = { configuration: {} }
+        _cmd = { configuration: {} }
     }
     if (!isset(_cmd.configuration)) {
         _cmd.configuration = {}
     }
-    var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">'
+    let tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">'
     tr += '<td class="hidden-xs">'
     tr += '<span class="cmdAttr" data-l1key="id"></span>'
     tr += '</td>'
@@ -190,23 +190,24 @@ function addCmdToTable(_cmd) {
     tr += '<i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i></td>'
     tr += '</tr>'
     $('#table_cmd tbody').append(tr)
-    var tr = $('#table_cmd tbody tr:last')
+
+    const el = $('#table_cmd tbody tr:last')
     jeedom.eqLogic.buildSelectCmd({
         id: $('.eqLogicAttr[data-l1key=id]').value(),
         filter: { type: 'info' },
-        error: function(error) {
+        error: function (error) {
             $.fn.showAlert({ message: error.message, level: 'danger' })
         },
-        success: function(result) {
-            tr.find('.cmdAttr[data-l1key=value]').append(result)
-            tr.find('.cmdAttr[data-l1key=configuration][data-l2key=updateCmdId]').append(result)
-            tr.setValues(_cmd, '.cmdAttr')
-            jeedom.cmd.changeType(tr, init(_cmd.subType))
+        success: function (result) {
+            el.find('.cmdAttr[data-l1key=value]').append(result)
+            el.find('.cmdAttr[data-l1key=configuration][data-l2key=updateCmdId]').append(result)
+            el.setValues(_cmd, '.cmdAttr')
+            jeedom.cmd.changeType(el, init(_cmd.subType))
         }
     })
 }
 
-$('body').on('broadlink::includeState', function(_event, _options) {
+$('body').on('broadlink::includeState', function (_event, _options) {
     if (_options['state'] == 1) {
         if ($('.include').attr('data-state') != 0) {
             $.hideAlert()
@@ -223,7 +224,7 @@ $('body').on('broadlink::includeState', function(_event, _options) {
     }
 })
 
-$('body').on('broadlink::includeDevice', function(_event, _options) {
+$('body').on('broadlink::includeDevice', function (_event, _options) {
     if (modifyWithoutSave) {
         $('#div_inclusionAlert').showAlert({ message: "{{Un périphérique vient d'être inclus ou exclus. Veuillez réactualiser la page}}", level: 'warning' })
     } else {
@@ -235,16 +236,16 @@ $('body').on('broadlink::includeDevice', function(_event, _options) {
     }
 })
 
-$('body').on('broadlink::includeCommand', function(_event, _options) {
+$('body').on('broadlink::includeCommand', function (_event, _options) {
     $('#div_inclusionAlert').showAlert({ message: "{{Une nouvelle commande vient d'être ajoutée, pensez à la nommer.}}", level: 'success' })
     window.location.href = 'index.php?v=d&p=broadlink&m=broadlink&id=' + _options + '&nocache=' + (new Date()).getTime() + '#commandtab'
 })
 
-$('body').on('broadlink::missedCommand', function(_event, _options) {
+$('body').on('broadlink::missedCommand', function (_event, _options) {
     $('#div_inclusionAlert').showAlert({ message: '{{Aucune commande reçue dans le temps imparti}}', level: 'danger' })
 })
 
-$('body').on('broadlink::foundfrequency', function(_event, _options) {
+$('body').on('broadlink::foundfrequency', function (_event, _options) {
     if (_options['state'] == 1) {
         $('#div_inclusionAlert').showAlert({ message: '{{Radio-fréquence trouvée, vous pouvez lâchez le bouton et vous préparer à appuyer dans 3 secondes}}', level: 'warning' })
     } else {
@@ -252,7 +253,7 @@ $('body').on('broadlink::foundfrequency', function(_event, _options) {
     }
 })
 
-$('body').on('broadlink::step2', function(_event, _options) {
+$('body').on('broadlink::step2', function (_event, _options) {
     $('#div_inclusionAlert').showAlert({ message: '{{Etape 2, appuyez sur le bouton}}', level: 'warning' })
 })
 
@@ -266,10 +267,10 @@ function changeIncludeState(_state) {
             state: _state,
         },
         dataType: 'json',
-        error: function(error) {
+        error: function (error) {
             $.fn.showAlert({ message: error.message, level: 'danger' })
         },
-        success: function(data) { // si l'appel a bien fonctionné
+        success: function (data) { // si l'appel a bien fonctionné
             if (data.state != 'ok') {
                 $.fn.showAlert({ message: data.result, level: 'danger' })
                 return
@@ -278,7 +279,7 @@ function changeIncludeState(_state) {
     })
 }
 
-$('.learnCommand').on('click', function() {
+$('.learnCommand').on('click', function () {
     $('#div_inclusionAlert').showAlert({ message: '{{Veuillez appuyer sur le bouton de votre télécommande}}', level: 'warning' })
     $.ajax({// fonction permettant de faire de l'ajax
         type: "POST", // methode de transmission des données au fichier php
@@ -289,10 +290,10 @@ $('.learnCommand').on('click', function() {
             mode: 'normal',
         },
         dataType: 'json',
-        error: function(error) {
+        error: function (error) {
             $.fn.showAlert({ message: error.message, level: 'danger' })
         },
-        success: function(data) { // si l'appel a bien fonctionné
+        success: function (data) { // si l'appel a bien fonctionné
             if (data.state != 'ok') {
                 $.fn.showAlert({ message: data.result, level: 'danger' })
                 return
@@ -301,7 +302,7 @@ $('.learnCommand').on('click', function() {
     })
 })
 
-$('.learnCommandRF').on('click', function() {
+$('.learnCommandRF').on('click', function () {
     $('#div_inclusionAlert').showAlert({ message: '{{Veuillez maintenir appuyé le bouton de votre télécommande (ou appuyer successivement dessus) pour trouver la radio-fréquence}}', level: 'warning' })
     $.ajax({// fonction permettant de faire de l'ajax
         type: "POST", // methode de transmission des données au fichier php
@@ -312,10 +313,10 @@ $('.learnCommandRF').on('click', function() {
             mode: 'rf',
         },
         dataType: 'json',
-        error: function(error) {
+        error: function (error) {
             $.fn.showAlert({ message: error.message, level: 'danger' })
         },
-        success: function(data) { // si l'appel a bien fonctionné
+        success: function (data) { // si l'appel a bien fonctionné
             if (data.state != 'ok') {
                 $.fn.showAlert({ message: data.result, level: 'danger' })
                 return
