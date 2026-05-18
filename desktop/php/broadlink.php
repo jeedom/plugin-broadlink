@@ -183,7 +183,7 @@ if (config::byKey('include_mode', 'broadlink', 0) == 1) {
 							</div>
 							<div class="form-group">
 								<label class="col-sm-4 control-label">{{Sous-équipement}}
-									<sup><i class="fas fa-question-circle tooltips" title="{{Ne jamais cocher sur l'équipement principal uniquement en cas de duplication d'un Broadlink RM pour séparer les commandes (l'adresse MAC doit alors obligatoirement finir par}} -sub)"></i></sup>
+									<sup><i class="fas fa-question-circle tooltips" title="{{Ne jamais cocher sur l'équipement principal uniquement en cas de duplication d'un Broadlink RM pour séparer les commandes (l'adresse MAC doit alors obligatoirement finir par '-sub')}}"></i></sup>
 								</label>
 								<div class="col-sm-6">
 									<input type="checkbox" class="eqLogicAttr twoids" data-l1key="configuration" data-l2key="ischild">
