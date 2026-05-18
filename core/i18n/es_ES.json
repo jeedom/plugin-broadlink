@@ -107,7 +107,7 @@
         "Informations": "Información",
         "Mes Broadlink": "Mis enlaces amplios",
         "Modèle": "Modelo",
-        "Ne jamais cocher sur l'équipement principal uniquement en cas de duplication d'un Broadlink RM pour séparer les commandes (l'adresse MAC doit alors obligatoirement finir par": "Nunca marque el equipo principal solo en caso de duplicación de un Broadlink RM para separar los comandos (la dirección MAC debe terminar con",
+        "Ne jamais cocher sur l'équipement principal uniquement en cas de duplication d'un Broadlink RM pour séparer les commandes (l'adresse MAC doit alors obligatoirement finir par '-sub')": "Nunca marques «solo en el equipo principal» en caso de duplicar un Broadlink RM para separar los comandos (la dirección MAC debe terminar obligatoriamente en «-sub»).",
         "Nom": "Nombre",
         "Nom de l'équipement": "Nombre del equipo",
         "Objet parent": "Objeto padre",
