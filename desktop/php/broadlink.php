@@ -178,7 +178,7 @@ if (config::byKey('include_mode', 'broadlink', 0) == 1) {
 									<sup><i class="fas fa-question-circle tooltips" title="{{Délai de rafraichissement des commandes d'information en secondes}}"></i></sup>
 								</label>
 								<div class="col-sm-6">
-									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="delay" placeholder="Délai en secondes">
+									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="delay" placeholder="{{Délai en secondes}}">
 								</div>
 							</div>
 							<div class="form-group">

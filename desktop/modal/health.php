@@ -26,7 +26,7 @@ $eqLogics = broadlink::byType('broadlink');
 		<tr>
 			<th>{{Image}}</th>
 			<th>{{Module}}</th>
-			<th>{{ID}}</th>
+			<th>ID</th>
 			<th>{{Famille}}</th>
 			<th>{{Statut}}</th>
 			<th>{{Batterie}}</th>
