@@ -1,44 +1,42 @@
 {
-    "id": "broadlink",
-    "name": "Broadlink",
-    "description": {
-        "fr_FR": "Plugin ajoutant le support de certains produits Broadlink comme (le RM, le A1 etccc)",
-        "en_US": "Plugin adding support for some Broadlink products such as (RM, A1 etccc)",
-        "es_ES": "Complemento que agrega soporte para algunos productos Broadlink como (RM, A1, etc.cc)",
-        "de_DE": "Plugin, das Unterstützung für einige Broadlink-Produkte wie (RM, A1 usw.) hinzufügt"
-    },
-    "licence": "AGPL",
-    "author": "Jeedom SAS",
-    "require": "4.5",
-    "os": {
-        "min": 11
-    },
-    "category": "automation protocol",
-    "hasDependency": true,
-    "hasOwnDeamon": true,
-    "changelog": "https:\/\/doc.jeedom.com\/#language#\/plugins\/automation protocol\/broadlink\/changelog",
-    "documentation": "https:\/\/doc.jeedom.com\/#language#\/plugins\/automation protocol\/broadlink\/",
-    "language": [
-        "fr_FR",
-        "en_US",
-        "es_ES",
-        "de_DE",
-        "ru_RU",
-        "id_ID",
-        "it_IT",
-        "ja_JP",
-        "pt_PT",
-        "tr"
-    ],
-    "compatibility": [
-        "smart",
-        "atlas",
-        "rpi",
-        "docker",
-        "diy",
-        "mobile",
-        "v4"
-    ],
-    "changelog_beta": "https:\/\/doc.jeedom.com\/#language#\/plugins\/automation protocol\/broadlink\/beta\/changelog",
-    "documentation_beta": "https:\/\/doc.jeedom.com\/#language#\/plugins\/automation protocol\/broadlink\/beta"
+	"id": "broadlink",
+	"name": "Broadlink",
+	"description": {
+		"fr_FR": "Plugin ajoutant le support de certains produits Broadlink comme (le RM, le A1 etccc)",
+		"en_US": "Plugin adding support for some Broadlink products such as (RM, A1 etccc)",
+		"es_ES": "Complemento que agrega soporte para algunos productos Broadlink como (RM, A1, etc.cc)",
+		"de_DE": "Plugin, das Unterstützung für einige Broadlink-Produkte wie (RM, A1 usw.) hinzufügt",
+		"it_IT": "Plugin che aggiunge il supporto per alcuni prodotti Broadlink come (RM, A1 ecc.)",
+		"pt_PT": "Plugin que adiciona suporte a determinados produtos Broadlink, como (o RM, o A1, etc.)"
+	},
+	"licence": "AGPL",
+	"author": "Jeedom SAS",
+	"require": "4.5",
+	"os": {
+		"min": 11
+	},
+	"category": "automation protocol",
+	"hasDependency": true,
+	"hasOwnDeamon": true,
+	"changelog": "https://doc.jeedom.com/#language#/plugins/automation protocol/broadlink/changelog",
+	"documentation": "https://doc.jeedom.com/#language#/plugins/automation protocol/broadlink/",
+	"language": [
+		"de_DE",
+		"en_US",
+		"es_ES",
+		"fr_FR",
+		"it_IT",
+		"pt_PT"
+	],
+	"compatibility": [
+		"smart",
+		"atlas",
+		"rpi",
+		"docker",
+		"diy",
+		"mobile",
+		"v4"
+	],
+	"changelog_beta": "https://doc.jeedom.com/#language#/plugins/automation protocol/broadlink/beta/changelog",
+	"documentation_beta": "https://doc.jeedom.com/#language#/plugins/automation protocol/broadlink/beta"
 }
