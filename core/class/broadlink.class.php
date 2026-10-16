@@ -18,7 +18,7 @@
 
 class broadlink extends eqLogic {
 
-	public static function createFromDef($_def) {
+	public static function createFromDef(array $_def) {
 		event::add('jeedom::alert', array(
 			'level' => 'warning',
 			'page' => __CLASS__,
@@ -47,15 +47,17 @@ class broadlink extends eqLogic {
 		if (isset($_def['data']['mac'])) {
 			$logicalId = $_def['data']['mac'];
 		}
-		$broadlink = self::byLogicalId($logicalId, __CLASS__);
-		if (!is_object($broadlink)) {
+		/** @var broadlink */
+		$eqLogic = self::byLogicalId($logicalId, __CLASS__);
+		if (!is_object($eqLogic)) {
 			$eqLogic = new self();
 			$eqLogic->setName($logicalId);
+			$eqLogic->setLogicalId($logicalId);
+			$eqLogic->setEqType_name(__CLASS__);
+			$eqLogic->setIsEnable(1);
+			$eqLogic->setIsVisible(1);
 		}
-		$eqLogic->setLogicalId($logicalId);
-		$eqLogic->setEqType_name(__CLASS__);
-		$eqLogic->setIsEnable(1);
-		$eqLogic->setIsVisible(1);
+
 		$eqLogic->setConfiguration('device', strtolower($_def['type']));
 		$eqLogic->setConfiguration('ip', $_def['ip']);
 		$eqLogic->setConfiguration('port', $_def['port']);

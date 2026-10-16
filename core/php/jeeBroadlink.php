@@ -78,11 +78,10 @@ if (isset($result['step2'])) {
 	die();
 }
 if (isset($result['devices'])) {
-	foreach ($result['devices'] as $key => $datas) {
+	foreach ($result['devices'] as $logicalId => $datas) {
 		if (!isset($datas['mac'])) {
 			continue;
 		}
-		$logicalId = $key;
 		$broadlink = broadlink::byLogicalId($logicalId, 'broadlink');
 		if (isset($datas['reversemac'])) {
 			$broadlink2 = broadlink::byLogicalId($datas['reversemac'], 'broadlink');
