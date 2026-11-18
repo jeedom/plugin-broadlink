@@ -59,7 +59,7 @@ def read_socket():
             elif message['cmd'] == 'remove':
                 logging.debug('Remove device : %s', message['device'])
                 if 'mac' in message['device']:
-                    del globals.KNOWN_DEVICES[message['device']['mac']]
+                    globals.KNOWN_DEVICES.pop(message['device']['mac'], None)
             elif message['cmd'] == 'learnin':
                 logging.debug('Enter in learn mode')
                 globals.LEARN_MODE = True

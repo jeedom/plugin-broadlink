@@ -257,6 +257,10 @@ class broadlink extends eqLogic {
 	}
 
 	public function allowDevice() {
+		if ($this->getIsEnable() == 0) {
+			$this->disallowDevice();
+			return;
+		}
 		$value = array('apikey' => jeedom::getApiKey(__CLASS__), 'cmd' => 'add');
 		if ($this->getConfiguration('device') != '') {
 			$value['device'] = array(
